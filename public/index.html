@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Tracking System</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    h1 { text-align: center; }
+    #buses, #routes { list-style-type: none; padding: 0; }
+    #buses li, #routes li { margin: 10px 0; cursor: pointer; }
+    .details { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Real-Time Bus Tracking</h1>
+  
+  <div>
+    <h2>Routes</h2>
+    <ul id="routes"></ul>
+  </div>
+  
+  <div>
+    <h2>Buses</h2>
+    <ul id="buses"></ul>
+  </div>
+  
+  <div id="busDetails" class="details"></div>
+
+  <script>
+    // API URL
+    const apiUrl = 'http://localhost:5000';
+
+    // Function to fetch and display routes
+    function fetchRoutes() {
+      fetch(`${apiUrl}/routes`)
+        .then(response => response.json())
+        .then(routes => {
+          const routesList = document.getElementById('routes');
+          routes.forEach(route => {
+            const listItem = document.createElement('li');
+            listItem.textContent = route.route_name;
+            routesList.appendChild(listItem);
+          });
+        })
+        .catch(error => console.error('Error fetching routes:', error));
+    }
+
+    // Function to fetch and display buses
+    function fetchBuses() {
+      fetch(`${apiUrl}/buses`)
+        .then(response => response.json())
+        .then(buses => {
+          const busesList = document.getElementById('buses');
+          buses.forEach(bus => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Bus ID: ${bus.bus_id} - Status: ${bus.status}`;
+            listItem.onclick = () => showBusDetails(bus.bus_id);
+            busesList.appendChild(listItem);
+          });
+        })
+        .catch(error => console.error('Error fetching buses:', error));
+    }
+
+    // Function to fetch and display bus details
+    function showBusDetails(busId) {
+      fetch(`${apiUrl}/buses/${busId}`)
+        .then(response => response.json())
+        .then(bus => {
+          const busDetailsDiv = document.getElementById('busDetails');
+          busDetailsDiv.innerHTML = `
+            <h3>Bus ${bus.bus_id} Details</h3>
+            <p>Route ID: ${bus.route_id}</p>
+            <p>Status: ${bus.status}</p>
+            <h4>Location</h4>
+            <p>Latitude: 6.9271, Longitude: 79.8612</p> <!-- Static Location for now -->
+          `;
+        })
+        .catch(error => console.error('Error fetching bus details:', error));
+    }
+
+    // Fetch and display routes and buses when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchRoutes();
+      fetchBuses();
+    });
+  </script>
+</body>
+</html>

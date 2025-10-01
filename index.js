@@ -79,11 +79,15 @@ app.get('/buses/:bus_id/location', async (req, res) => {
   }
 });
 
+
 // 5. Simulate real-time bus location updates
-function updateBusLocations() {
-  Bus.find({}, (err, buses) => {
-    if (err) {
-      console.error('Error fetching buses for location update:', err);
+async function updateBusLocations() {
+  try {
+    // Fetch all buses from MongoDB (use async/await instead of callbacks)
+    const buses = await Bus.find(); // Fetch buses from MongoDB
+
+    if (buses.length === 0) {
+      console.log('No buses found');
       return;
     }
 
@@ -97,19 +101,56 @@ function updateBusLocations() {
       bus.last_updated = new Date(); // Update the last_updated timestamp
 
       // Save updated bus data
-      bus.save((err) => {
-        if (err) {
-          console.error('Error updating bus location:', err);
-        } else {
+      bus.save()
+        .then(() => {
           console.log(`Bus ${bus.bus_id} location updated:`, bus.current_location);
-        }
-      });
+        })
+        .catch(err => {
+          console.error('Error updating bus location:', err);
+        });
     });
-  });
+  } catch (err) {
+    console.error('Error fetching buses for location update:', err);
+  }
 }
 
 // Update bus locations every 5 seconds
 setInterval(updateBusLocations, 5000); // 5000 ms = 5 seconds
+
+
+
+
+// // 5. Simulate real-time bus location updates
+// function updateBusLocations() {
+//   Bus.find({}, (err, buses) => {
+//     if (err) {
+//       console.error('Error fetching buses for location update:', err);
+//       return;
+//     }
+
+//     buses.forEach(bus => {
+//       // Simulate slight changes in location (latitude and longitude)
+//       const newLatitude = bus.current_location.latitude + (Math.random() * 0.01); // Simulate a small change in latitude
+//       const newLongitude = bus.current_location.longitude + (Math.random() * 0.01); // Simulate a small change in longitude
+
+//       // Update bus location in the database
+//       bus.current_location = { latitude: newLatitude, longitude: newLongitude };
+//       bus.last_updated = new Date(); // Update the last_updated timestamp
+
+//       // Save updated bus data
+//       bus.save((err) => {
+//         if (err) {
+//           console.error('Error updating bus location:', err);
+//         } else {
+//           console.log(`Bus ${bus.bus_id} location updated:`, bus.current_location);
+//         }
+//       });
+//     });
+//   });
+// }
+
+// // Update bus locations every 5 seconds
+// setInterval(updateBusLocations, 5000); // 5000 ms = 5 seconds
 
 // Serve the index.html file when accessing the root route
 app.get('/', (req, res) => {

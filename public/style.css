@@ -1,6 +1,70 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+#route-select {
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+#bus-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#bus-table th, #bus-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+#bus-table th {
+  background-color: #3498db;
+  color: #fff;
+}
+.status-on-time {
+  color: #27ae60;
+  font-weight: bold;
+}
+.status-delayed {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f9fc;
   color: #333;
   margin: 0;
   padding: 0;
@@ -60,4 +124,4 @@ h2 {
 .status-delayed {
   color: #e74c3c;
   font-weight: bold;
-}
+} */

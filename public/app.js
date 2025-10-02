@@ -84,6 +84,24 @@ function initMap() {
   }).addTo(map);
 }
 
+function addMapLegend() {
+  const legend = L.control({ position: 'bottomright' });
+
+  legend.onAdd = function(map) {
+    const div = L.DomUtil.create('div', 'legend');
+    div.innerHTML = `
+      <h4>Bus Status</h4>
+      <i style="background: #27ae60"></i> On Time<br>
+      <i style="background: #e74c3c"></i> Delayed
+    `;
+    return div;
+  };
+
+  legend.addTo(map);
+}
+
+
 initMap();
+addMapLegend();
 fetchRoutes();
 setInterval(fetchBuses, 5000);

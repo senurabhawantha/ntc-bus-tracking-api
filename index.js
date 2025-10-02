@@ -79,43 +79,76 @@ app.get('/buses/:bus_id/location', async (req, res) => {
   }
 });
 
-
 // 5. Simulate real-time bus location updates
 async function updateBusLocations() {
   try {
-    // Fetch all buses from MongoDB (use async/await instead of callbacks)
-    const buses = await Bus.find(); // Fetch buses from MongoDB
+    // Fetch all buses
+    const buses = await Bus.find();
 
-    if (buses.length === 0) {
-      console.log('No buses found');
+    if (!buses || buses.length === 0) {
+      console.log('No buses found for update');
       return;
     }
 
-    buses.forEach(bus => {
-      // Simulate slight changes in location (latitude and longitude)
-      const newLatitude = bus.current_location.latitude + (Math.random() * 0.01); // Simulate a small change in latitude
-      const newLongitude = bus.current_location.longitude + (Math.random() * 0.01); // Simulate a small change in longitude
+    // Loop over each bus
+    for (let bus of buses) {
+      // Simulate small random movement
+      bus.current_location.latitude += (Math.random() * 0.01 - 0.005);  // random move +/- 0.005
+      bus.current_location.longitude += (Math.random() * 0.01 - 0.005);
 
-      // Update bus location in the database
-      bus.current_location = { latitude: newLatitude, longitude: newLongitude };
-      bus.last_updated = new Date(); // Update the last_updated timestamp
+      bus.last_updated = new Date();
 
-      // Save updated bus data
-      bus.save()
-        .then(() => {
-          console.log(`Bus ${bus.bus_id} location updated:`, bus.current_location);
-        })
-        .catch(err => {
-          console.error('Error updating bus location:', err);
-        });
-    });
+      // Save updated bus to DB
+      await bus.save();
+      console.log(`Bus ${bus.bus_id} location updated:`, bus.current_location);
+    }
+
   } catch (err) {
-    console.error('Error fetching buses for location update:', err);
+    console.error('Error updating bus locations:', err);
   }
 }
 
-// Update bus locations every 5 seconds
-setInterval(updateBusLocations, 5000); // 5000 ms = 5 seconds
+// Run every 5 seconds
+setInterval(updateBusLocations, 2000);
+
+
+
+// // 5. Simulate real-time bus location updates
+// async function updateBusLocations() {
+//   try {
+//     // Fetch all buses from MongoDB (use async/await instead of callbacks)
+//     const buses = await Bus.find(); // Fetch buses from MongoDB
+
+//     if (buses.length === 0) {
+//       console.log('No buses found');
+//       return;
+//     }
+
+//     buses.forEach(bus => {
+//       // Simulate slight changes in location (latitude and longitude)
+//       const newLatitude = bus.current_location.latitude + (Math.random() * 0.01); // Simulate a small change in latitude
+//       const newLongitude = bus.current_location.longitude + (Math.random() * 0.01); // Simulate a small change in longitude
+
+//       // Update bus location in the database
+//       bus.current_location = { latitude: newLatitude, longitude: newLongitude };
+//       bus.last_updated = new Date(); // Update the last_updated timestamp
+
+//       // Save updated bus data
+//       bus.save()
+//         .then(() => {
+//           console.log(`Bus ${bus.bus_id} location updated:`, bus.current_location);
+//         })
+//         .catch(err => {
+//           console.error('Error updating bus location:', err);
+//         });
+//     });
+//   } catch (err) {
+//     console.error('Error fetching buses for location update:', err);
+//   }
+// }
+
+// // Update bus locations every 5 seconds
+// setInterval(updateBusLocations, 5000); // 5000 ms = 5 seconds
 
 
 

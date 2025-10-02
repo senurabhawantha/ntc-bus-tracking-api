@@ -1,26 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Real-Time Bus Tracking</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Real-Time Bus Tracking</h1>
+  <div class="container">
+    <h1>🚌 Real-Time Bus Tracking</h1>
 
-  <h2>Routes</h2>
-  <ul>
-    <li>Colombo to Ja-Ela</li>
-    <li>Colombo to Matara</li>
-    <li>Colombo to Jaffna</li>
-    <li>Colombo to Anuradhapura</li>
-    <li>Colombo to Galle</li>
-  </ul>
+    <h2>Routes</h2>
+    <ul class="routes-list">
+      <li>Colombo to Kandy</li>
+      <li>Colombo to Galle</li>
+      <li>Colombo to Jaffna</li>
+      <li>Colombo to Anuradhapura</li>
+      <li>Colombo to Matara</li>
+    </ul>
 
-  <h2>Buses</h2>
-  <div id="bus-list"></div>
+    <h2>Buses</h2>
+    <table id="bus-table">
+      <thead>
+        <tr>
+          <th>Bus ID</th>
+          <th>Route ID</th>
+          <th>Status</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+      <tbody id="bus-list">
+        <!-- Bus data will populate here -->
+      </tbody>
+    </table>
+  </div>
 
   <script src="app.js"></script>
 </body>
 </html>
+
 
 
 

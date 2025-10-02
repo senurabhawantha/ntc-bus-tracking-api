@@ -4,6 +4,65 @@
   <meta charset="UTF-8">
   <title>Bus Tracking System</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    #map { height: 500px; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>Real-Time Bus Tracking</h1>
+
+  <label for="routeSelect">Select Route:</label>
+  <select id="routeSelect"></select>
+
+  <h2>Buses Preview</h2>
+  <table id="busTable">
+    <thead>
+      <tr>
+        <th>Bus ID</th>
+        <th>Route ID</th>
+        <th>Status</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody id="busList"></tbody>
+  </table>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bus Tracking System</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         crossorigin=""/>
@@ -35,4 +94,4 @@
           crossorigin=""></script>
   <script src="app.js"></script>
 </body>
-</html>
+</html> -->

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Bus = require('../models/bus');
 const Route = require('../models/route');
 
-const mongoUri = 'YOUR_MONGODB_URI_HERE'; // Use your MongoDB URI here
+const mongoUri = 'mongodb+srv://senurabawantha_db_user:koOuQbtRbIJcI4sd@bus-traking-api.hxctmjs.mongodb.net/?retryWrites=true&w=majority&appName=bus-traking-api'; // Use your MongoDB URI here
 
 // 5 routes
 const routesData = [

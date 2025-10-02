@@ -1,3 +1,39 @@
-body { font-family: Arial, sans-serif; text-align: center; }
-#map { height: 500px; width: 80%; margin: 20px auto; }
-#busList { list-style: none; padding: 0; margin-top: 20px; }
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 500px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+#busTable {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+#busTable th, #busTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+#busTable th {
+  background-color: #3498db;
+  color: white;
+}
+
+.status-on-time {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.status-delayed {
+  color: #e74c3c;
+  font-weight: bold;
+}

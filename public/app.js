@@ -1,11 +1,25 @@
 let map;
 let markers = [];
-let currentRouteId;
+let currentRouteId = 'all';
+
+// Bus icon
+const busIcon = L.icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/61/61188.png', // bus icon URL
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+  popupAnchor: [0, -30]
+});
 
 async function fetchRoutes() {
   const res = await fetch('/routes');
   const routes = await res.json();
   const select = document.getElementById('routeSelect');
+
+  // Add "All Routes" option
+  const allOption = document.createElement('option');
+  allOption.value = 'all';
+  allOption.textContent = 'All Routes';
+  select.appendChild(allOption);
 
   routes.forEach(route => {
     const option = document.createElement('option');
@@ -15,19 +29,17 @@ async function fetchRoutes() {
   });
 
   select.addEventListener('change', () => {
-    currentRouteId = parseInt(select.value);
+    currentRouteId = select.value;
     fetchBuses();
   });
 
-  // Default select first route
   select.selectedIndex = 0;
-  currentRouteId = routes[0].route_id;
   fetchBuses();
 }
 
 async function fetchBuses() {
   try {
-    const res = await fetch(`/buses?route_id=${currentRouteId}`);
+    const res = await fetch(currentRouteId === 'all' ? '/buses' : `/buses?route_id=${currentRouteId}`);
     const buses = await res.json();
     updateMapAndList(buses);
   } catch (err) {
@@ -36,21 +48,32 @@ async function fetchBuses() {
 }
 
 function updateMapAndList(routeBuses) {
+  // Clear previous markers
   markers.forEach(m => map.removeLayer(m));
   markers = [];
 
-  const busList = document.getElementById('busList');
-  busList.innerHTML = '';
+  // Update table
+  const tableBody = document.getElementById('busList');
+  tableBody.innerHTML = '';
 
   routeBuses.forEach(bus => {
-    const marker = L.marker([bus.current_location.latitude, bus.current_location.longitude])
+    // Map marker
+    const marker = L.marker([bus.current_location.latitude, bus.current_location.longitude], { icon: busIcon })
       .bindPopup(`Bus ${bus.bus_id}: ${bus.status}`)
       .addTo(map);
     markers.push(marker);
 
-    const li = document.createElement('li');
-    li.textContent = `Bus ${bus.bus_id} - ${bus.status} (${new Date(bus.last_updated).toLocaleTimeString()})`;
-    busList.appendChild(li);
+    // Table row
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${bus.bus_id}</td>
+      <td>${bus.route_id}</td>
+      <td class="${bus.status === 'On Time' ? 'status-on-time' : 'status-delayed'}">${bus.status}</td>
+      <td>${bus.current_location.latitude.toFixed(5)}</td>
+      <td>${bus.current_location.longitude.toFixed(5)}</td>
+      <td>${new Date(bus.last_updated).toLocaleTimeString()}</td>
+    `;
+    tableBody.appendChild(row);
   });
 }
 
@@ -63,4 +86,4 @@ function initMap() {
 
 initMap();
 fetchRoutes();
-setInterval(fetchBuses, 5000); // Update map every 5s
+setInterval(fetchBuses, 5000);

@@ -1,83 +1,385 @@
+require('dotenv').config();
 const express = require('express');
-const path = require('path');
-const Bus = require('./models/bus');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const { routes, buses } = require('./data/seedData');
+
 const Route = require('./models/route');
-const connectDB = require('./config/db');
+const Bus = require('./models/bus');
 
 const app = express();
-connectDB();
-
+app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
-// API Endpoints
+const PORT = process.env.PORT || 5000;
 
-// Get all buses (optionally filter by route_id)
-app.get('/buses', async (req, res) => {
-  const { route_id } = req.query; // Optional route_id filter
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
+// Seed DB
+async function seedDB() {
   try {
-    const query = route_id ? { route_id: Number(route_id) } : {};
-    const buses = await Bus.find(query);
-    if (!buses || buses.length === 0) {
-      return res.status(404).send('No buses found');
-    }
-    res.json(buses);
-  } catch (err) {
-    console.error('Error fetching buses:', err);
-    res.status(500).send('Error fetching buses');
-  }
-});
+    const routeCount = await Route.countDocuments();
+    if (routeCount === 0) await Route.insertMany(routes);
 
-// Get all routes
+    const busCount = await Bus.countDocuments();
+    if (busCount === 0) await Bus.insertMany(buses);
+
+    console.log('Database seeded!');
+  } catch (err) {
+    console.error('Error seeding database:', err);
+  }
+}
+seedDB();
+
+// Routes
 app.get('/routes', async (req, res) => {
-  try {
-    const routes = await Route.find();
-    res.json(routes);
-  } catch (err) {
-    console.error('Error fetching routes:', err);
-    res.status(500).send('Error fetching routes');
-  }
+  const allRoutes = await Route.find();
+  res.json(allRoutes);
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('/buses', async (req, res) => {
+  const allBuses = await Bus.find();
+  res.json(allBuses);
 });
 
-// --- Simulation ---
+// Simulate bus updates every 30 sec
+setInterval(async () => {
+  const allBuses = await Bus.find();
+  for (let bus of allBuses) {
+    // Random location change
+    bus.current_location.latitude += (Math.random() - 0.5) * 0.01;
+    bus.current_location.longitude += (Math.random() - 0.5) * 0.01;
 
-// Update bus locations every 5 seconds
-async function updateBusLocations() {
-  try {
-    const buses = await Bus.find();
-    for (let bus of buses) {
-      bus.current_location.latitude += (Math.random() * 0.01 - 0.005);
-      bus.current_location.longitude += (Math.random() * 0.01 - 0.005);
-      bus.last_updated = new Date();
-      await bus.save();
+    // Random status change
+    if (Math.random() < 0.2) {
+      bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
     }
-  } catch (err) {
-    console.error("Error updating bus locations:", err);
-  }
-}
-setInterval(updateBusLocations, 5000);
 
-// Update bus status independently every 30 seconds
-async function updateBusStatus() {
-  try {
-    const buses = await Bus.find();
-    for (let bus of buses) {
-      if (Math.random() < 0.3) { // 30% chance to toggle status
-        bus.status = bus.status === "On Time" ? "Delayed" : "On Time";
-        await bus.save();
-      }
-    }
-  } catch (err) {
-    console.error("Error updating bus status:", err);
+    await bus.save();
   }
-}
-setInterval(updateBusStatus, 30000);
+  console.log('Bus locations & statuses updated');
+}, 30000);
 
-app.listen(5000, () => console.log("API running on http://localhost:5000"));
+app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// require('dotenv').config();
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const seedData = require('./data/seedData');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public')); // serve frontend files
+
+// const mongoUri = process.env.MONGO_URI;
+
+// // ====== SCHEMAS ======
+// const busSchema = new mongoose.Schema({
+//   bus_id: Number,
+//   route_id: Number,
+//   status: String,
+//   current_location: { latitude: Number, longitude: Number }
+// });
+// const routeSchema = new mongoose.Schema({
+//   route_id: Number,
+//   name: String
+// });
+
+// const Bus = mongoose.models.Bus || mongoose.model('Bus', busSchema);
+// const Route = mongoose.models.Route || mongoose.model('Route', routeSchema);
+
+// // ====== CONNECT TO MONGO ======
+// mongoose.connect(mongoUri)
+//   .then(() => {
+//     console.log('MongoDB connected successfully');
+//     seedDB();
+//     startBusUpdates();
+//   })
+//   .catch(err => console.error('MongoDB connection error:', err));
+
+// // ====== SEED DATABASE ======
+// async function seedDB() {
+//   try {
+//     const busCount = await Bus.countDocuments();
+//     const routeCount = await Route.countDocuments();
+
+//     if (busCount === 0 && routeCount === 0) {
+//       await Route.insertMany(seedData.routes);
+//       await Bus.insertMany(seedData.buses);
+//       console.log('Seed data inserted!');
+//     }
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// }
+
+// // ====== API ROUTES ======
+// app.get('/', (req, res) => {
+//   res.send('Welcome to the Bus Tracking API');
+// });
+
+// app.get('/routes', async (req, res) => {
+//   try {
+//     const routes = await Route.find();
+//     res.json(routes);
+//   } catch (err) {
+//     console.error('Error fetching routes:', err);
+//     res.status(500).send('Error fetching routes');
+//   }
+// });
+
+// app.get('/buses', async (req, res) => {
+//   try {
+//     const buses = await Bus.find();
+//     res.json(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//     res.status(500).send('Error fetching buses');
+//   }
+// });
+
+// // ====== SIMULATE BUS MOVEMENT & STATUS UPDATES ======
+// function startBusUpdates() {
+//   setInterval(async () => {
+//     try {
+//       const buses = await Bus.find();
+
+//       for (let bus of buses) {
+//         // Update location slightly
+//         bus.current_location.latitude += (Math.random() - 0.5) * 0.001;
+//         bus.current_location.longitude += (Math.random() - 0.5) * 0.001;
+
+//         // Randomly update status independently
+//         if (Math.random() < 0.3) {
+//           bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
+//         }
+
+//         await bus.save();
+//       }
+//       console.log('Bus locations & statuses updated');
+//     } catch (err) {
+//       console.error('Error updating bus locations/status:', err);
+//     }
+//   }, 30000); // every 30 seconds
+// }
+
+// // ====== START SERVER ======
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
+
+
+
+// // index.js
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const dotenv = require('dotenv');
+// const seedData = require('./data/seedData');
+
+// dotenv.config();
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public')); // serve frontend
+
+// // MongoDB connection
+// mongoose.connect(process.env.MONGO_URI)
+//   .then(() => console.log('MongoDB connected successfully'))
+//   .catch(err => console.error('MongoDB connection error:', err));
+
+// // Schemas
+// const busSchema = new mongoose.Schema({
+//   bus_id: Number,
+//   route_id: Number,
+//   status: String,
+//   current_location: { latitude: Number, longitude: Number }
+// });
+
+// const routeSchema = new mongoose.Schema({
+//   route_id: Number,
+//   name: String
+// });
+
+// const Bus = mongoose.model('Bus', busSchema);
+// const Route = mongoose.model('Route', routeSchema);
+
+// // Seed database if empty
+// const seedDB = async () => {
+//   const busesCount = await Bus.countDocuments();
+//   const routesCount = await Route.countDocuments();
+//   if (busesCount === 0 && routesCount === 0) {
+//     await Route.insertMany(seedData.routes);
+//     await Bus.insertMany(seedData.buses);
+//     console.log('Seed data inserted!');
+//   }
+// };
+// seedDB();
+
+// // Routes API
+// app.get('/routes', async (req, res) => {
+//   try {
+//     const routes = await Route.find();
+//     res.json(routes);
+//   } catch (err) {
+//     res.status(500).send('Error fetching routes');
+//   }
+// });
+
+// app.get('/buses/:routeId', async (req, res) => {
+//   try {
+//     const buses = await Bus.find({ route_id: req.params.routeId });
+//     res.json(buses);
+//   } catch (err) {
+//     res.status(500).send('Error fetching buses');
+//   }
+// });
+
+// // Simulate real-time updates
+// setInterval(async () => {
+//   const buses = await Bus.find();
+//   buses.forEach(async bus => {
+//     // Move bus slightly
+//     bus.current_location.latitude += (Math.random() - 0.5) * 0.001;
+//     bus.current_location.longitude += (Math.random() - 0.5) * 0.001;
+//     // Random status update independently
+//     if (Math.random() < 0.3) bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
+//     await bus.save();
+//   });
+//   console.log('Bus locations and status updated!');
+// }, 30000); // 30 seconds
+
+// app.listen(5000, () => {
+//   console.log('API running on http://localhost:5000');
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const express = require('express');
+// const path = require('path');
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+// const connectDB = require('./config/db');
+
+// const app = express();
+// connectDB();
+
+// app.use(express.json());
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// // API Endpoints
+
+// // Get all buses (optionally filter by route_id)
+// app.get('/buses', async (req, res) => {
+//   const { route_id } = req.query; // Optional route_id filter
+//   try {
+//     const query = route_id ? { route_id: Number(route_id) } : {};
+//     const buses = await Bus.find(query);
+//     if (!buses || buses.length === 0) {
+//       return res.status(404).send('No buses found');
+//     }
+//     res.json(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//     res.status(500).send('Error fetching buses');
+//   }
+// });
+
+// // Get all routes
+// app.get('/routes', async (req, res) => {
+//   try {
+//     const routes = await Route.find();
+//     res.json(routes);
+//   } catch (err) {
+//     console.error('Error fetching routes:', err);
+//     res.status(500).send('Error fetching routes');
+//   }
+// });
+
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
+
+// // --- Simulation ---
+
+// // Update bus locations every 5 seconds
+// async function updateBusLocations() {
+//   try {
+//     const buses = await Bus.find();
+//     for (let bus of buses) {
+//       bus.current_location.latitude += (Math.random() * 0.01 - 0.005);
+//       bus.current_location.longitude += (Math.random() * 0.01 - 0.005);
+//       bus.last_updated = new Date();
+//       await bus.save();
+//     }
+//   } catch (err) {
+//     console.error("Error updating bus locations:", err);
+//   }
+// }
+// setInterval(updateBusLocations, 5000);
+
+// // Update bus status independently every 30 seconds
+// async function updateBusStatus() {
+//   try {
+//     const buses = await Bus.find();
+//     for (let bus of buses) {
+//       if (Math.random() < 0.3) { // 30% chance to toggle status
+//         bus.status = bus.status === "On Time" ? "Delayed" : "On Time";
+//         await bus.save();
+//       }
+//     }
+//   } catch (err) {
+//     console.error("Error updating bus status:", err);
+//   }
+// }
+// setInterval(updateBusStatus, 30000);
+
+// app.listen(5000, () => console.log("API running on http://localhost:5000"));
 
 
 

@@ -1,52 +1,124 @@
+// data/seedData.js
+
 const mongoose = require('mongoose');
 const Bus = require('../models/bus');
 const Route = require('../models/route');
 
-const mongoUri = 'mongodb+srv://senurabawantha_db_user:koOuQbtRbIJcI4sd@bus-traking-api.hxctmjs.mongodb.net/bus-tracking-api?retryWrites=true&w=majority&appName=bus-traking-api'; // Use your MongoDB URI here
+const mongoUri = 'mongodb+srv://senurabawantha_db_user:koOuQbtRbIJcI4sd@bus-traking-api.hxctmjs.mongodb.net/bus-traking-api?retryWrites=true&w=majority&appName=bus-traking-api';
 
-// 5 routes
-const routesData = [
-  { route_id: 101, route_name: "Colombo to Kandy" },
-  { route_id: 102, route_name: "Colombo to Galle" },
-  { route_id: 103, route_name: "Colombo to Jaffna" },
-  { route_id: 104, route_name: "Colombo to Anuradhapura" },
-  { route_id: 105, route_name: "Colombo to Matara" }
+
+// data/seedData.js
+const routes = [
+  { route_id: 101, name: 'Colombo to Kandy' },
+  { route_id: 102, name: 'Colombo to Galle' },
+  { route_id: 103, name: 'Colombo to Jaffna' },
+  { route_id: 104, name: 'Colombo to Anuradhapura' },
+  { route_id: 105, name: 'Colombo to Matara' }
 ];
 
-// 75 buses (15 per route)
-const busesData = [];
-let busIdCounter = 1;
-routesData.forEach(route => {
-  for (let i = 0; i < 15; i++) {
-    busesData.push({
-      bus_id: busIdCounter++, // Ensure unique bus_id
+const buses = [];
+routes.forEach(route => {
+  for (let i = 1; i <= 15; i++) {
+    buses.push({
+      bus_id: route.route_id * 100 + i,
       route_id: route.route_id,
-      status: Math.random() < 0.7 ? "On Time" : "Delayed", // Random initial status
+      status: Math.random() < 0.5 ? 'On Time' : 'Delayed',
       current_location: {
-        latitude: 6.9271 + Math.random() * 0.05, // Randomize around Colombo
+        latitude: 6.9271 + Math.random() * 0.05,
         longitude: 79.8612 + Math.random() * 0.05
-      },
-      last_updated: new Date()
+      }
     });
   }
 });
 
-mongoose.connect(mongoUri)
-  .then(async () => {
-    console.log("Connected to MongoDB");
+module.exports = { routes, buses };
 
-    await Route.deleteMany({});
-    await Bus.deleteMany({});
 
-    await Route.insertMany(routesData);
-    console.log("Routes inserted");
+// // 5 routes
+// const routes = [
+//   { route_id: 101, name: 'Colombo to Kandy' },
+//   { route_id: 102, name: 'Colombo to Galle' },
+//   { route_id: 103, name: 'Colombo to Jaffna' },
+//   { route_id: 104, name: 'Colombo to Anuradhapura' },
+//   { route_id: 105, name: 'Colombo to Matara' },
+// ];
 
-    await Bus.insertMany(busesData); // Insert 75 buses
-    console.log("Buses inserted");
+// // 15 buses per route = 75 buses
+// const buses = [];
+// routes.forEach(route => {
+//   for (let i = 1; i <= 15; i++) {
+//     buses.push({
+//       bus_id: route.route_id * 100 + i, // unique bus id
+//       route_id: route.route_id,
+//       status: Math.random() < 0.5 ? 'On Time' : 'Delayed',
+//       current_location: {
+//         latitude: 6.9271 + Math.random() * 0.01,
+//         longitude: 79.8612 + Math.random() * 0.01
+//       }
+//     });
+//   }
+// });
 
-    mongoose.disconnect();
-  })
-  .catch(err => console.error("Error:", err));
+// module.exports = { routes, buses };
+
+
+
+
+
+
+
+
+
+
+// const mongoose = require('mongoose');
+// const Bus = require('../models/bus');
+// const Route = require('../models/route');
+
+// const mongoUri = 'mongodb+srv://senurabawantha_db_user:koOuQbtRbIJcI4sd@bus-traking-api.hxctmjs.mongodb.net/bus-traking-api?retryWrites=true&w=majority&appName=bus-traking-api';
+
+// // 5 routes
+// const routesData = [
+//   { route_id: 101, route_name: "Colombo to Kandy" },
+//   { route_id: 102, route_name: "Colombo to Galle" },
+//   { route_id: 103, route_name: "Colombo to Jaffna" },
+//   { route_id: 104, route_name: "Colombo to Anuradhapura" },
+//   { route_id: 105, route_name: "Colombo to Matara" }
+// ];
+
+// // 75 buses (15 per route)
+// const busesData = [];
+// let busIdCounter = 1;
+// routesData.forEach(route => {
+//   for (let i = 0; i < 15; i++) {
+//     busesData.push({
+//       bus_id: busIdCounter++, // Ensure unique bus_id
+//       route_id: route.route_id,
+//       status: Math.random() < 0.7 ? "On Time" : "Delayed", // Random initial status
+//       current_location: {
+//         latitude: 6.9271 + Math.random() * 0.05, // Randomize around Colombo
+//         longitude: 79.8612 + Math.random() * 0.05
+//       },
+//       last_updated: new Date()
+//     });
+//   }
+// });
+
+// mongoose.connect(mongoUri)
+//   .then(async () => {
+//     console.log("Connected to MongoDB");
+
+//     await Route.deleteMany({});
+//     await Bus.deleteMany({});
+
+//     await Route.insertMany(routesData);
+//     console.log("Routes inserted");
+
+//     await Bus.insertMany(busesData); // Insert 75 buses
+//     console.log("Buses inserted");
+
+//     mongoose.disconnect();
+//   })
+//   .catch(err => console.error("Error:", err));
 
 
 

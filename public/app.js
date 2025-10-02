@@ -5,13 +5,13 @@ let currentRouteId = 'all';
 // Bus icons
 const busIcons = {
   onTime: L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/4565/4565023.png',
+    iconUrl: 'https://cdn-user-icons.flaticon.com/93776/93776300/1759411105998.svg?token=exp=1759412006~hmac=a7bec415b17937db6cc1648e02bafc80',
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   }),
   delayed: L.icon({
-    iconUrl: 'https://img.freepik.com/premium-vector/bus-schedule-arrival-time-icon_116137-4525.jpg',
+    iconUrl: 'https://cdn-user-icons.flaticon.com/93776/93776300/1759410956535.svg?token=exp=1759411947~hmac=88f319f96f53752ff11b2de3d5a78788',
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
@@ -95,6 +95,24 @@ function initMap() {
   }).addTo(map);
 }
 
+function addMapLegend() {
+  const legend = L.control({ position: 'bottomright' });
+
+  legend.onAdd = function(map) {
+    const div = L.DomUtil.create('div', 'legend');
+    div.innerHTML = `
+      <h4>Bus Status</h4>
+      <i style="background: #27ae60"></i> On Time<br>
+      <i style="background: #e74c3c"></i> Delayed
+    `;
+    return div;
+  };
+
+  legend.addTo(map);
+}
+
+
 initMap();
+addMapLegend();
 fetchRoutes();
 setInterval(fetchBuses, 5000);

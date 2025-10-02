@@ -2,13 +2,21 @@ let map;
 let markers = [];
 let currentRouteId = 'all';
 
-// Bus icon
-const busIcon = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/4565/4565023.png', // bus icon URL
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
-  popupAnchor: [0, -30]
-});
+// Bus icons
+const busIcons = {
+  onTime: L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/4565/4565023.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  }),
+  delayed: L.icon({
+    iconUrl: 'https://img.freepik.com/premium-vector/bus-schedule-arrival-time-icon_116137-4525.jpg',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  })
+};
 
 async function fetchRoutes() {
   const res = await fetch('/routes');
@@ -57,9 +65,12 @@ function updateMapAndList(routeBuses) {
   tableBody.innerHTML = '';
 
   routeBuses.forEach(bus => {
+    // Determine the appropriate icon
+    const busIcon = bus.status === 'On Time' ? busIcons.onTime : busIcons.delayed;
+
     // Map marker
     const marker = L.marker([bus.current_location.latitude, bus.current_location.longitude], { icon: busIcon })
-      .bindPopup(`Bus ${bus.bus_id}: ${bus.status}`)
+      .bindPopup(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`)
       .addTo(map);
     markers.push(marker);
 
@@ -84,24 +95,6 @@ function initMap() {
   }).addTo(map);
 }
 
-function addMapLegend() {
-  const legend = L.control({ position: 'bottomright' });
-
-  legend.onAdd = function(map) {
-    const div = L.DomUtil.create('div', 'legend');
-    div.innerHTML = `
-      <h4>Bus Status</h4>
-      <i style="background: #27ae60"></i> On Time<br>
-      <i style="background: #e74c3c"></i> Delayed
-    `;
-    return div;
-  };
-
-  legend.addTo(map);
-}
-
-
 initMap();
-addMapLegend();
 fetchRoutes();
 setInterval(fetchBuses, 5000);

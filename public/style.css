@@ -28,6 +28,69 @@ body {
   color: white;
 }
 
+.status-delayed {
+  color: black;
+  font-weight: bold;
+}
+
+.status-on-time {
+  color: #e74c3c;
+  font-weight: bold;
+}
+.legend {
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  line-height: 1.5;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  font-size: 14px;
+}
+
+.legend h4 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.8;
+}
+
+
+
+/* body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 500px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+#busTable {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+#busTable th, #busTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+#busTable th {
+  background-color: #3498db;
+  color: white;
+}
+
 .status-on-time {
   color: #27ae60;
   font-weight: bold;
@@ -58,4 +121,4 @@ body {
   float: left;
   margin-right: 8px;
   opacity: 0.8;
-}
+} */

@@ -5,100 +5,213 @@ const Route = require('./models/route');
 const connectDB = require('./config/db');
 
 const app = express();
-
-// Connect to MongoDB
 connectDB();
 
-// Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API Endpoints
-
-// Get all buses
+// API endpoints
 app.get('/buses', async (req, res) => {
+  const { route_id } = req.query; // optional filter by route
   try {
-    const buses = await Bus.find();
-    if (!buses || buses.length === 0) return res.status(404).send('No buses found');
+    const query = route_id ? { route_id: Number(route_id) } : {};
+    const buses = await Bus.find(query);
     res.json(buses);
   } catch (err) {
-    console.error('Error fetching buses:', err);
+    console.error(err);
     res.status(500).send('Error fetching buses');
   }
 });
 
-// Get all routes
 app.get('/routes', async (req, res) => {
   try {
     const routes = await Route.find();
-    if (!routes || routes.length === 0) return res.status(404).send('No routes found');
     res.json(routes);
   } catch (err) {
-    console.error('Error fetching routes:', err);
+    console.error(err);
     res.status(500).send('Error fetching routes');
   }
 });
 
-// Get a specific bus
-app.get('/buses/:bus_id', async (req, res) => {
-  try {
-    const bus = await Bus.findOne({ bus_id: req.params.bus_id });
-    if (!bus) return res.status(404).send('Bus not found');
-    res.json(bus);
-  } catch (err) {
-    console.error('Error fetching bus details:', err);
-    res.status(500).send('Error fetching bus details');
-  }
-});
-
-// Get bus location
-app.get('/buses/:bus_id/location', async (req, res) => {
-  try {
-    const bus = await Bus.findOne({ bus_id: req.params.bus_id });
-    if (!bus) return res.status(404).send('Bus not found');
-    res.json({ bus_id: bus.bus_id, location: bus.current_location, status: bus.status });
-  } catch (err) {
-    console.error('Error fetching bus location:', err);
-    res.status(500).send('Error fetching bus location');
-  }
-});
-
-// Real-time bus location & status simulation
-async function updateBusLocations() {
-  try {
-    const buses = await Bus.find();
-    if (!buses || buses.length === 0) return;
-
-    for (let bus of buses) {
-      // Random movement
-      bus.current_location.latitude += (Math.random() * 0.01 - 0.005);
-      bus.current_location.longitude += (Math.random() * 0.01 - 0.005);
-
-      // Random status update (20% chance)
-      if (Math.random() < 0.2) {
-        bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
-      }
-
-      bus.last_updated = new Date();
-      await bus.save();
-      console.log(`Bus ${bus.bus_id} updated: ${bus.status}`, bus.current_location);
-    }
-  } catch (err) {
-    console.error('Error updating bus locations:', err);
-  }
-}
-
-// Update buses every 5 seconds
-setInterval(updateBusLocations, 5000);
-
-// Serve index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(5000, () => {
-  console.log('API running on http://localhost:5000');
-});
+// --- Simulation ---
+
+// Update bus locations every 5 seconds
+async function updateBusLocations() {
+  try {
+    const buses = await Bus.find();
+    for (let bus of buses) {
+      bus.current_location.latitude += (Math.random() * 0.01 - 0.005);
+      bus.current_location.longitude += (Math.random() * 0.01 - 0.005);
+      bus.last_updated = new Date();
+      await bus.save();
+    }
+  } catch (err) {
+    console.error("Error updating bus locations:", err);
+  }
+}
+setInterval(updateBusLocations, 5000);
+
+// Update bus status independently every 30 seconds
+async function updateBusStatus() {
+  try {
+    const buses = await Bus.find();
+    for (let bus of buses) {
+      if (Math.random() < 0.1) { // 30% chance to toggle status
+        bus.status = bus.status === "On Time" ? "Delayed" : "On Time";
+        await bus.save();
+      }
+    }
+  } catch (err) {
+    console.error("Error updating bus status:", err);
+  }
+}
+setInterval(updateBusStatus, 30000);
+
+app.listen(5000, () => console.log("API running on http://localhost:5000"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const express = require('express');
+// const path = require('path');
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+// const connectDB = require('./config/db');
+
+// const app = express();
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Middleware
+// app.use(express.json());
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// // API Endpoints
+
+// // Get all buses
+// app.get('/buses', async (req, res) => {
+//   try {
+//     const buses = await Bus.find();
+//     if (!buses || buses.length === 0) return res.status(404).send('No buses found');
+//     res.json(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//     res.status(500).send('Error fetching buses');
+//   }
+// });
+
+// // Get all routes
+// app.get('/routes', async (req, res) => {
+//   try {
+//     const routes = await Route.find();
+//     if (!routes || routes.length === 0) return res.status(404).send('No routes found');
+//     res.json(routes);
+//   } catch (err) {
+//     console.error('Error fetching routes:', err);
+//     res.status(500).send('Error fetching routes');
+//   }
+// });
+
+// // Get a specific bus
+// app.get('/buses/:bus_id', async (req, res) => {
+//   try {
+//     const bus = await Bus.findOne({ bus_id: req.params.bus_id });
+//     if (!bus) return res.status(404).send('Bus not found');
+//     res.json(bus);
+//   } catch (err) {
+//     console.error('Error fetching bus details:', err);
+//     res.status(500).send('Error fetching bus details');
+//   }
+// });
+
+// // Get bus location
+// app.get('/buses/:bus_id/location', async (req, res) => {
+//   try {
+//     const bus = await Bus.findOne({ bus_id: req.params.bus_id });
+//     if (!bus) return res.status(404).send('Bus not found');
+//     res.json({ bus_id: bus.bus_id, location: bus.current_location, status: bus.status });
+//   } catch (err) {
+//     console.error('Error fetching bus location:', err);
+//     res.status(500).send('Error fetching bus location');
+//   }
+// });
+
+// // Real-time bus location & status simulation
+// async function updateBusLocations() {
+//   try {
+//     const buses = await Bus.find();
+//     if (!buses || buses.length === 0) return;
+
+//     for (let bus of buses) {
+//       // Random movement
+//       bus.current_location.latitude += (Math.random() * 0.01 - 0.005);
+//       bus.current_location.longitude += (Math.random() * 0.01 - 0.005);
+
+//       // Random status update (20% chance)
+//       if (Math.random() < 0.2) {
+//         bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
+//       }
+
+//       bus.last_updated = new Date();
+//       await bus.save();
+//       console.log(`Bus ${bus.bus_id} updated: ${bus.status}`, bus.current_location);
+//     }
+//   } catch (err) {
+//     console.error('Error updating bus locations:', err);
+//   }
+// }
+
+// // Update buses every 5 seconds
+// setInterval(updateBusLocations, 5000);
+
+// // Serve index.html
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
+
+// app.listen(5000, () => {
+//   console.log('API running on http://localhost:5000');
+// });
 
 
 

@@ -4,7 +4,7 @@ let currentRouteId = 'all';
 
 // Bus icon
 const busIcon = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/61/61188.png', // bus icon URL
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/4565/4565023.png', // bus icon URL
   iconSize: [30, 30],
   iconAnchor: [15, 30],
   popupAnchor: [0, -30]

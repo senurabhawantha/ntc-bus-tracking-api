@@ -310,15 +310,15 @@ app.listen(5000, () => {
 // // Update bus locations every 5 seconds
 // setInterval(updateBusLocations, 5000); // 5000 ms = 5 seconds
 
-// Serve the index.html file when accessing the root route
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// // Serve the index.html file when accessing the root route
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
-// Start the server on port 5000
-app.listen(5000, () => {
-  console.log('API is running on http://localhost:5000');
-});
+// // Start the server on port 5000
+// app.listen(5000, () => {
+//   console.log('API is running on http://localhost:5000');
+// });
 
 
 

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Real-Time Bus Tracking</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Include Leaflet.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
   <div class="container">
@@ -13,6 +15,10 @@
     <select id="route-select">
       <option value="">All Routes</option>
     </select>
+
+    <h2>Bus Locations</h2>
+    <!-- Add a container for the map -->
+    <div id="map" style="height: 400px;"></div>
 
     <table id="bus-table">
       <thead>
@@ -29,5 +35,7 @@
     </table>
   </div>
   <script src="app.js"></script>
+  <!-- Include Leaflet.js JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </body>
 </html>

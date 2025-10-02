@@ -96,6 +96,104 @@ app.listen(5000, () => console.log("API running on http://localhost:5000"));
 
 
 
+// const express = require('express');
+// const path = require('path');
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+// const connectDB = require('./config/db');
+
+// const app = express();
+// connectDB();
+
+// app.use(express.json());
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// // API Endpoints
+
+// // Get all buses (optionally filter by route_id)
+// app.get('/buses', async (req, res) => {
+//   const { route_id } = req.query; // Optional route_id filter
+//   try {
+//     const query = route_id ? { route_id: Number(route_id) } : {};
+//     const buses = await Bus.find(query);
+//     if (!buses || buses.length === 0) {
+//       return res.status(404).send('No buses found');
+//     }
+//     res.json(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//     res.status(500).send('Error fetching buses');
+//   }
+// });
+
+// // Get all routes
+// app.get('/routes', async (req, res) => {
+//   try {
+//     const routes = await Route.find();
+//     res.json(routes);
+//   } catch (err) {
+//     console.error('Error fetching routes:', err);
+//     res.status(500).send('Error fetching routes');
+//   }
+// });
+
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
+
+// // --- Simulation ---
+
+// // Update bus locations every 5 seconds
+// async function updateBusLocations() {
+//   try {
+//     const buses = await Bus.find();
+//     for (let bus of buses) {
+//       bus.current_location.latitude += (Math.random() * 0.01 - 0.005);
+//       bus.current_location.longitude += (Math.random() * 0.01 - 0.005);
+//       bus.last_updated = new Date();
+//       await bus.save();
+//     }
+//   } catch (err) {
+//     console.error("Error updating bus locations:", err);
+//   }
+// }
+// setInterval(updateBusLocations, 5000);
+
+// // Update bus status independently every 30 seconds
+// async function updateBusStatus() {
+//   try {
+//     const buses = await Bus.find();
+//     for (let bus of buses) {
+//       if (Math.random() < 0.3) { // 30% chance to toggle status
+//         bus.status = bus.status === "On Time" ? "Delayed" : "On Time";
+//         await bus.save();
+//       }
+//     }
+//   } catch (err) {
+//     console.error("Error updating bus status:", err);
+//   }
+// }
+// setInterval(updateBusStatus, 30000);
+
+// app.listen(5000, () => console.log("API running on http://localhost:5000"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,3126 @@
+{
+  "routes": [
+    {
+      "route_id": 101,
+      "name": "Colombo to Kandy"
+    },
+    {
+      "route_id": 102,
+      "name": "Colombo to Galle"
+    },
+    {
+      "route_id": 103,
+      "name": "Colombo to Jaffna"
+    },
+    {
+      "route_id": 104,
+      "name": "Colombo to Anuradhapura"
+    },
+    {
+      "route_id": 105,
+      "name": "Colombo to Matara"
+    }
+  ],
+  "buses": [
+    {
+      "bus_id": 10101,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.931075127837919,
+            "longitude": 79.83010648038399
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955112596435622,
+            "longitude": 79.87270334910399
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.908961850062735,
+            "longitude": 79.83005607171813
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.937449009846896,
+            "longitude": 79.86157886975022
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953484065858088,
+            "longitude": 79.87057510417257
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9265930578962465,
+            "longitude": 79.84303742383463
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.935880114392398,
+            "longitude": 79.86131154897849
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10102,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930347004599965,
+            "longitude": 79.8381507355776
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907928289589457,
+            "longitude": 79.87209887613716
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9542241728344285,
+            "longitude": 79.86676176746049
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.921255072308023,
+            "longitude": 79.84665274711486
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934610756384089,
+            "longitude": 79.85823633658889
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913347766460641,
+            "longitude": 79.82781035507833
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.92754262056585,
+            "longitude": 79.8498101642639
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10103,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914707091212845,
+            "longitude": 79.82831442560219
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911327975922648,
+            "longitude": 79.86064372080645
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914664636749389,
+            "longitude": 79.84580270993865
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.923472375676234,
+            "longitude": 79.85705704598972
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.944799419338854,
+            "longitude": 79.87185043332224
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926515866077084,
+            "longitude": 79.86442122660604
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.944584363272326,
+            "longitude": 79.85935560855873
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10104,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955750732484342,
+            "longitude": 79.8628266321091
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.954875330174903,
+            "longitude": 79.85164643437491
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934865880135373,
+            "longitude": 79.86835675627599
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945592850312019,
+            "longitude": 79.8618112294865
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.918681227807505,
+            "longitude": 79.82944302066088
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9404960252580965,
+            "longitude": 79.83376079134247
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.912765648499614,
+            "longitude": 79.85739906014564
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10105,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.909468790347866,
+            "longitude": 79.8257989614887
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.936453272939841,
+            "longitude": 79.85248897207052
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.940265919874689,
+            "longitude": 79.84973739168557
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.925934897901725,
+            "longitude": 79.8427510991684
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.929364683601998,
+            "longitude": 79.83988631693676
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926944387376204,
+            "longitude": 79.82917520769695
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9069032696823065,
+            "longitude": 79.83510260472661
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10106,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.942815274995591,
+            "longitude": 79.86299989186159
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913075612444087,
+            "longitude": 79.86062290133464
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.939353321678707,
+            "longitude": 79.84780966566689
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.92037218231254,
+            "longitude": 79.83880905623292
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926548557067887,
+            "longitude": 79.8343731401025
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.946759334090361,
+            "longitude": 79.85467991408463
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.950545672135904,
+            "longitude": 79.87080832212638
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10107,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.94165683763164,
+            "longitude": 79.85411486133201
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.927142211686144,
+            "longitude": 79.84113944908202
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.944802287419433,
+            "longitude": 79.83475430014713
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.90748335095416,
+            "longitude": 79.87178086067544
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955493370152227,
+            "longitude": 79.84597594365295
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.952245957964011,
+            "longitude": 79.8459774706538
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9252916313614294,
+            "longitude": 79.84687094067257
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10108,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911683630894259,
+            "longitude": 79.83016820867748
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.954101899363101,
+            "longitude": 79.85052363547595
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.94179273717825,
+            "longitude": 79.85937894033873
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9326720187207105,
+            "longitude": 79.8573313143937
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.909658343168556,
+            "longitude": 79.82795621666953
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9291016728049355,
+            "longitude": 79.83835799729952
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.923832969404569,
+            "longitude": 79.84367184189296
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10109,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.925675991362003,
+            "longitude": 79.85446223412247
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9094362305618136,
+            "longitude": 79.85649373045148
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949626328468659,
+            "longitude": 79.83926743757462
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.935493566555104,
+            "longitude": 79.85789165373892
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9092535634384395,
+            "longitude": 79.86552497302334
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.948245057011929,
+            "longitude": 79.85259261743363
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.92329528724384,
+            "longitude": 79.86281610626847
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10110,
+      "route_id": 101,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911557475023543,
+            "longitude": 79.86761410711375
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926143711734717,
+            "longitude": 79.8241857698887
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.951092661148497,
+            "longitude": 79.85854304300332
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914151992156923,
+            "longitude": 79.82746365077475
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.929157189829597,
+            "longitude": 79.85689210092771
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907833204036505,
+            "longitude": 79.85401037244394
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9157077619731435,
+            "longitude": 79.8499926661186
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10201,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.940880784251395,
+            "longitude": 79.83605524063738
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9560566085227435,
+            "longitude": 79.86016923707973
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955141012103273,
+            "longitude": 79.86827607662632
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907200395542735,
+            "longitude": 79.84250518562925
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926352165685902,
+            "longitude": 79.84390057367189
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.935746060077718,
+            "longitude": 79.8571566242004
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.917885344804369,
+            "longitude": 79.82989415406514
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10202,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933530314942799,
+            "longitude": 79.82381320345415
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934675980469179,
+            "longitude": 79.83333545506531
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.936336130157024,
+            "longitude": 79.86891327039558
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953129627887384,
+            "longitude": 79.87207517526114
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.924561522855348,
+            "longitude": 79.85574357365219
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911947112176179,
+            "longitude": 79.84579197437901
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930377661267879,
+            "longitude": 79.86017738271498
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10203,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.93068236666635,
+            "longitude": 79.85366373898717
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9167352140350085,
+            "longitude": 79.85563482003603
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.947294036040437,
+            "longitude": 79.83263034500833
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.92204830021982,
+            "longitude": 79.85635534425484
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934204876132113,
+            "longitude": 79.83578862037618
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9400124990728,
+            "longitude": 79.83734941311228
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.918924661421385,
+            "longitude": 79.86052673534331
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10204,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.950750664500159,
+            "longitude": 79.83000287763011
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933915736145618,
+            "longitude": 79.8228958877768
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.938596719187099,
+            "longitude": 79.83361766630257
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.93099473933265,
+            "longitude": 79.82867967855651
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.922596455117874,
+            "longitude": 79.86978398568196
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955711631955394,
+            "longitude": 79.84052757934941
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.91797661659764,
+            "longitude": 79.82862761548674
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10205,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.908650001972392,
+            "longitude": 79.84919087454132
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.93489304073992,
+            "longitude": 79.84177400652142
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9379174009007025,
+            "longitude": 79.8294466516789
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.932347456241076,
+            "longitude": 79.85774442188769
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953261130182225,
+            "longitude": 79.87232393612145
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.92275058140739,
+            "longitude": 79.83435203285393
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930920043187651,
+            "longitude": 79.83639258279774
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10206,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945558110368901,
+            "longitude": 79.82891373165864
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933675162235356,
+            "longitude": 79.87243030917898
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.929385837744783,
+            "longitude": 79.86223657454622
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.91590530980836,
+            "longitude": 79.8267737260579
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955472303585263,
+            "longitude": 79.85603166350855
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.937314985834929,
+            "longitude": 79.84731395413581
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.94739178809832,
+            "longitude": 79.86364579601774
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10207,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.916794280816805,
+            "longitude": 79.84501916610466
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.95587822100494,
+            "longitude": 79.82699808949656
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9432416708159375,
+            "longitude": 79.83906294763771
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.912060640670603,
+            "longitude": 79.85028079325308
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953846480777841,
+            "longitude": 79.84611210095288
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.920188254977574,
+            "longitude": 79.83135567087233
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945477702398895,
+            "longitude": 79.82742936931082
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10208,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911519419031932,
+            "longitude": 79.8691730399135
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9252552990376115,
+            "longitude": 79.83479241268255
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.935760651686096,
+            "longitude": 79.86043455232858
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.912599736867122,
+            "longitude": 79.83239633504868
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930458816517379,
+            "longitude": 79.83961788525379
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.951418147065133,
+            "longitude": 79.84769571329998
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930326296100197,
+            "longitude": 79.83514622626616
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10209,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.924611677052279,
+            "longitude": 79.83845973311483
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.943235834620388,
+            "longitude": 79.84879634902079
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.922895117362899,
+            "longitude": 79.8506872419054
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.927306483105089,
+            "longitude": 79.87210807233593
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.915882336926286,
+            "longitude": 79.82717353838858
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.929306566218298,
+            "longitude": 79.86991958701077
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934661592163301,
+            "longitude": 79.84911818204503
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10210,
+      "route_id": 102,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934420877812706,
+            "longitude": 79.87216492684364
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.942518591447414,
+            "longitude": 79.87104948344036
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.932954856603382,
+            "longitude": 79.85889786550452
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9324242829731055,
+            "longitude": 79.85431900804451
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.946993111728874,
+            "longitude": 79.85938046085894
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.91207773003556,
+            "longitude": 79.82897278421741
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.923934986804171,
+            "longitude": 79.8684704645958
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10301,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.915045434971674,
+            "longitude": 79.83534677515958
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913957817178234,
+            "longitude": 79.84751332562062
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.921371713356346,
+            "longitude": 79.82464875084489
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.931301718923059,
+            "longitude": 79.85240926614526
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.925933565911079,
+            "longitude": 79.85044576927788
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.921084111250105,
+            "longitude": 79.86440551214346
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.935703596037866,
+            "longitude": 79.83565971443208
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10302,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9500603208480545,
+            "longitude": 79.86106174595058
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.91090605017066,
+            "longitude": 79.84189307284727
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.910776379481699,
+            "longitude": 79.82314255397074
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914704540453184,
+            "longitude": 79.83783394733088
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913255682559134,
+            "longitude": 79.85549430689456
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.938103165630213,
+            "longitude": 79.86182534319862
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.956748075272177,
+            "longitude": 79.83349777430192
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10303,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9294693773617295,
+            "longitude": 79.85243867526535
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9339049758712985,
+            "longitude": 79.82845259854267
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9476050772003255,
+            "longitude": 79.85443830648671
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914408103761819,
+            "longitude": 79.85957492636886
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.946296997134784,
+            "longitude": 79.82728424751444
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907710639406754,
+            "longitude": 79.82996121520885
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.910348773205097,
+            "longitude": 79.8719228103272
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10304,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.940034034575269,
+            "longitude": 79.85561315489082
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.931063389811901,
+            "longitude": 79.83750848306278
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9374804298654125,
+            "longitude": 79.8538354594165
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.927699796095102,
+            "longitude": 79.84167177400226
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9307421999305,
+            "longitude": 79.84030624982152
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.90825022409535,
+            "longitude": 79.83440769689878
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.921289733722016,
+            "longitude": 79.83058038897373
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10305,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.938494658304343,
+            "longitude": 79.84386868842374
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949189157002793,
+            "longitude": 79.85761844027087
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913722380449102,
+            "longitude": 79.82606746785788
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.917294099161312,
+            "longitude": 79.85972226380679
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930573682766043,
+            "longitude": 79.82706813541854
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.915720464137464,
+            "longitude": 79.8281197524723
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949272305181367,
+            "longitude": 79.85010383712175
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10306,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9272083987440665,
+            "longitude": 79.82876451445347
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.935149630408525,
+            "longitude": 79.83208774891193
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.922525796019777,
+            "longitude": 79.83329332970273
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.936163561035465,
+            "longitude": 79.86934396185451
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.952629096334047,
+            "longitude": 79.84838527088228
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.950816425370941,
+            "longitude": 79.82486723220578
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.941642786603515,
+            "longitude": 79.84545055857664
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10307,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933217334134571,
+            "longitude": 79.8666222374276
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.954129387128854,
+            "longitude": 79.85328586973472
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.927591395977421,
+            "longitude": 79.84439370036768
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.936956457960439,
+            "longitude": 79.86553981107113
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.917794254654244,
+            "longitude": 79.84856446523169
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9255321359558195,
+            "longitude": 79.85399367765093
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.944351479851953,
+            "longitude": 79.82703595983344
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10308,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949770869081329,
+            "longitude": 79.85266849406304
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9351909238974745,
+            "longitude": 79.8460840867475
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.920037701872913,
+            "longitude": 79.82499390920668
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.920403418064662,
+            "longitude": 79.840950602618
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9277406467745095,
+            "longitude": 79.84940538274604
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930593110402326,
+            "longitude": 79.8697524396455
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9498685847262704,
+            "longitude": 79.8652397672675
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10309,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.939306490675578,
+            "longitude": 79.86770690112388
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9197187465812195,
+            "longitude": 79.82403943795617
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.928701790107542,
+            "longitude": 79.83694936867431
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.954370088458019,
+            "longitude": 79.85562270820016
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.948404016129783,
+            "longitude": 79.83354675284949
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9367596666931375,
+            "longitude": 79.85613841773264
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.912637433795081,
+            "longitude": 79.85995183580413
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10310,
+      "route_id": 103,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.909190570947616,
+            "longitude": 79.85323397769672
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913740324495976,
+            "longitude": 79.83151348202382
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911599909815226,
+            "longitude": 79.83726183554572
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907134579662553,
+            "longitude": 79.83088969467565
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930468577251518,
+            "longitude": 79.84483080814094
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926221351933604,
+            "longitude": 79.85951324983057
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9074213375649665,
+            "longitude": 79.83398345519792
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10401,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933454584731154,
+            "longitude": 79.86799926812238
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911814995359391,
+            "longitude": 79.8456619095214
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.928047650127175,
+            "longitude": 79.86106603456875
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.918187146918338,
+            "longitude": 79.83978073627047
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945813794807068,
+            "longitude": 79.85238717739864
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945255755962942,
+            "longitude": 79.83726146284687
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914659299411345,
+            "longitude": 79.85484812114142
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10402,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.943487220665869,
+            "longitude": 79.85325227653067
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.948301977133013,
+            "longitude": 79.84944016006285
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9446809233396065,
+            "longitude": 79.85086443633213
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.92573423392962,
+            "longitude": 79.82700723858997
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.951730222551589,
+            "longitude": 79.86678850616735
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.922525889891287,
+            "longitude": 79.8289097127148
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.917562389187425,
+            "longitude": 79.855389826943
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10403,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.956633637566677,
+            "longitude": 79.83271879907792
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953172117047403,
+            "longitude": 79.82377012632519
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.944053069890366,
+            "longitude": 79.85256980409262
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.916828599697104,
+            "longitude": 79.82909171220754
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953449522285408,
+            "longitude": 79.87213594600784
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934526981113341,
+            "longitude": 79.83578638557388
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926961256089988,
+            "longitude": 79.8594846605573
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10404,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.912440205863093,
+            "longitude": 79.86678097449584
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.920715423600141,
+            "longitude": 79.85676582141645
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949648998453555,
+            "longitude": 79.85457622411502
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.909865136993462,
+            "longitude": 79.86493028562104
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.916831041869772,
+            "longitude": 79.85103294914916
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.932859928416081,
+            "longitude": 79.8347002934525
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.947955050291084,
+            "longitude": 79.82819326258398
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10405,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.948905153303941,
+            "longitude": 79.84635949389853
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949222494150165,
+            "longitude": 79.85302773044089
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.923449152761256,
+            "longitude": 79.8509832102763
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949600099951323,
+            "longitude": 79.84050894999244
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9069461508142895,
+            "longitude": 79.86696806350727
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.938757026863411,
+            "longitude": 79.86502362077111
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933553233023364,
+            "longitude": 79.83906630990741
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10406,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955517537995915,
+            "longitude": 79.82411382963097
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.922952747740368,
+            "longitude": 79.85659472797276
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.938081962774629,
+            "longitude": 79.8411742988039
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.951199861869577,
+            "longitude": 79.86593305024374
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.924861220809905,
+            "longitude": 79.8599757666871
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.952444963213845,
+            "longitude": 79.8635905322861
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913281057872894,
+            "longitude": 79.83972491384974
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10407,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.956180845429342,
+            "longitude": 79.87035359459078
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953414794604073,
+            "longitude": 79.85949952658423
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949216096590604,
+            "longitude": 79.84120384025984
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.934808088149546,
+            "longitude": 79.83904466310898
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.938017020331852,
+            "longitude": 79.84392780531905
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.924758860701707,
+            "longitude": 79.83982165961265
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955300036497573,
+            "longitude": 79.86694450600609
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10408,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.910633635511276,
+            "longitude": 79.87088962373247
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.912102391093546,
+            "longitude": 79.85014004319216
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907736896567636,
+            "longitude": 79.85338591425683
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9337859480078174,
+            "longitude": 79.84317307263684
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945255479889027,
+            "longitude": 79.85204539019647
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.925622477453749,
+            "longitude": 79.84483616273586
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.936220431875513,
+            "longitude": 79.86358944064946
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10409,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9289760456251495,
+            "longitude": 79.83687436884492
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.91643456264576,
+            "longitude": 79.86424808480731
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.925217536194057,
+            "longitude": 79.86944897113312
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.91735519172952,
+            "longitude": 79.86320058985214
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.953289265127988,
+            "longitude": 79.83503305925686
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.917189781949662,
+            "longitude": 79.82284271750848
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.947932055737778,
+            "longitude": 79.84634379236755
+          },
+          "status": "Delayed"
+        }
+      ]
+    },
+    {
+      "bus_id": 10410,
+      "route_id": 104,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.927104125534428,
+            "longitude": 79.85614097326976
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933372170109232,
+            "longitude": 79.86964700029506
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.917124807671294,
+            "longitude": 79.84111508063636
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.931935714534677,
+            "longitude": 79.82787364058086
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.910878685812169,
+            "longitude": 79.85703982827663
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945724488590169,
+            "longitude": 79.8500663558627
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.932810004456098,
+            "longitude": 79.8561633260921
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10501,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.933555747985276,
+            "longitude": 79.8538336552165
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.911062456403699,
+            "longitude": 79.84721476990599
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955307275449499,
+            "longitude": 79.83729980806332
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9160249130663685,
+            "longitude": 79.85035989788233
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.910745136026058,
+            "longitude": 79.84303840649743
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.91907669539092,
+            "longitude": 79.83258583193526
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.930925913361091,
+            "longitude": 79.84140821275486
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10502,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9450258896175905,
+            "longitude": 79.82884464774577
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.918761722545911,
+            "longitude": 79.86646872351253
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.952326136385689,
+            "longitude": 79.8371993412078
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.908080931310837,
+            "longitude": 79.84855309090209
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.909125038716482,
+            "longitude": 79.83665975051956
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.912469339603156,
+            "longitude": 79.83187048159368
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914992611216681,
+            "longitude": 79.8412147219434
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10503,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9461028174810435,
+            "longitude": 79.85818468309056
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.942071058374439,
+            "longitude": 79.84466796488346
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955945144506931,
+            "longitude": 79.83725975269084
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913632501128154,
+            "longitude": 79.85377004641765
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9229661237304345,
+            "longitude": 79.84695596625741
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.948210990046961,
+            "longitude": 79.8532671872646
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.932768641096245,
+            "longitude": 79.85206533085224
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10504,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.939412859743496,
+            "longitude": 79.84924204288505
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.95669082659331,
+            "longitude": 79.85049414513009
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.910238972010755,
+            "longitude": 79.85947474831302
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945470414731861,
+            "longitude": 79.83110373382047
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.937733119556868,
+            "longitude": 79.8641481468449
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.946078747034712,
+            "longitude": 79.87105999216948
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.940750786844861,
+            "longitude": 79.83009406741775
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10505,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.947694998269281,
+            "longitude": 79.86701492957415
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.945546097223814,
+            "longitude": 79.83601894873966
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.935262882939546,
+            "longitude": 79.86125438745849
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.910569462427582,
+            "longitude": 79.8589627213411
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949300162124032,
+            "longitude": 79.84484729321923
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.93207605413167,
+            "longitude": 79.8700765474012
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.943825672672292,
+            "longitude": 79.87243894973507
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10506,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.9336944387348725,
+            "longitude": 79.86085253431764
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.937064028172863,
+            "longitude": 79.87189482041038
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.955918362932049,
+            "longitude": 79.8370648641635
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.949632317648597,
+            "longitude": 79.84172268700173
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.919617465784229,
+            "longitude": 79.84406828861279
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.929073348489883,
+            "longitude": 79.86338310831076
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.950440920971289,
+            "longitude": 79.83948068037168
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10507,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907241362271679,
+            "longitude": 79.85348974534216
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.920468109787848,
+            "longitude": 79.8335866331012
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.947910434891729,
+            "longitude": 79.8463006060892
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.947175827115654,
+            "longitude": 79.8601597638177
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.914329403172409,
+            "longitude": 79.83173732658595
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.913050841313452,
+            "longitude": 79.8650429150754
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.927217700542265,
+            "longitude": 79.86671731454575
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10508,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.920942381532007,
+            "longitude": 79.8636412732098
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.909099332281522,
+            "longitude": 79.82686895577822
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.921050319237333,
+            "longitude": 79.82412307739902
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.926289136421754,
+            "longitude": 79.86049641247472
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.907937060617905,
+            "longitude": 79.84765962119336
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.937995030781551,
+            "longitude": 79.84917509412575
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.918824180851445,
+            "longitude": 79.82850617341143
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10509,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.943852316727462,
+            "longitude": 79.83562407422703
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.944044923596845,
+            "longitude": 79.87195677110236
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.942837650833847,
+            "longitude": 79.86501311467234
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.921362726908493,
+            "longitude": 79.83144577355549
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.939331653243291,
+            "longitude": 79.86149327562876
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.919949772475537,
+            "longitude": 79.84982191226088
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.938918425289827,
+            "longitude": 79.85216602390592
+          },
+          "status": "On Time"
+        }
+      ]
+    },
+    {
+      "bus_id": 10510,
+      "route_id": 105,
+      "dailyLocations": [
+        {
+          "date": "2025-10-03T10:06:13.639Z",
+          "location": {
+            "latitude": 6.940718608805629,
+            "longitude": 79.83432444261699
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-04T10:06:13.639Z",
+          "location": {
+            "latitude": 6.908779538791426,
+            "longitude": 79.85081214447291
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T10:06:13.639Z",
+          "location": {
+            "latitude": 6.917394975455856,
+            "longitude": 79.86109986436698
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T10:06:13.639Z",
+          "location": {
+            "latitude": 6.915670978643033,
+            "longitude": 79.83976483852628
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T10:06:13.639Z",
+          "location": {
+            "latitude": 6.916008563547389,
+            "longitude": 79.84291283825493
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T10:06:13.639Z",
+          "location": {
+            "latitude": 6.948533292969906,
+            "longitude": 79.84597021743126
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T10:06:13.639Z",
+          "location": {
+            "latitude": 6.931810814069413,
+            "longitude": 79.86229265875569
+          },
+          "status": "On Time"
+        }
+      ]
+    }
+  ]
+}

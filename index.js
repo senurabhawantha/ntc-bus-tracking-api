@@ -2,9 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-const { routes, buses } = require('./data/seedData');
-const Bus = require('./models/bus');
-const Route = require('./models/route');
 
 const app = express();
 app.use(cors());
@@ -16,7 +13,18 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 connectDB();
 
-// Seed DB if empty
+// Use route files
+const busRoutes = require('./routes/busRoutes');
+const routeRoutes = require('./routes/routeRoutes');
+
+app.use('/buses', busRoutes);
+app.use('/routes', routeRoutes);
+
+// Seed DB (optional, keep your previous seed logic if needed)
+const { routes, buses } = require('./data/seedData');
+const Bus = require('./models/bus');
+const Route = require('./models/route');
+
 const seedDB = async () => {
   try {
     const routeCount = await Route.countDocuments();
@@ -32,40 +40,163 @@ const seedDB = async () => {
 };
 seedDB();
 
-// API Endpoints
-app.get('/routes', async (req, res) => {
-  const allRoutes = await Route.find();
-  res.json(allRoutes);
-});
-
-// Support optional route filtering
-app.get('/buses', async (req, res) => {
-  const { route_id } = req.query;
-  const query = route_id ? { route_id: Number(route_id) } : {};
-  const allBuses = await Bus.find(query);
-  res.json(allBuses);
-});
-
-// Simulate bus location every 5s
-setInterval(async () => {
-  const allBuses = await Bus.find();
-  for (let bus of allBuses) {
-    bus.current_location.latitude += (Math.random() - 0.5) * 0.01;
-    bus.current_location.longitude += (Math.random() - 0.5) * 0.01;
-    bus.last_updated = new Date();
-    await bus.save();
-  }
-  console.log('Bus locations updated');
-}, 5000);
-
-// Simulate bus status every 30s
-setInterval(async () => {
-  const allBuses = await Bus.find();
-  for (let bus of allBuses) {
-    if (Math.random() < 0.2) bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
-    await bus.save();
-  }
-  console.log('Bus statuses updated');
-}, 30000);
-
+// Start server
 app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const connectDB = require('./config/db');
+// const { routes, buses } = require('./data/seedData');
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+
+// // Import API routes
+// const busRoutes = require('./routes/busRoutes');
+// const routeRoutes = require('./routes/routeRoutes');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public'));
+
+// const PORT = process.env.PORT || 5000;
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Seed DB if empty
+// const seedDB = async () => {
+//   try {
+//     const routeCount = await Route.countDocuments();
+//     const busCount = await Bus.countDocuments();
+
+//     if (routeCount === 0) await Route.insertMany(routes);
+//     if (busCount === 0) await Bus.insertMany(buses);
+
+//     console.log('Database seeded!');
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// };
+// seedDB();
+
+// // Use modular routes
+// app.use('/buses', busRoutes);
+// app.use('/routes', routeRoutes);
+
+// // Simulate bus location every 5s
+// setInterval(async () => {
+//   const allBuses = await Bus.find();
+//   for (let bus of allBuses) {
+//     bus.current_location.latitude += (Math.random() - 0.5) * 0.01;
+//     bus.current_location.longitude += (Math.random() - 0.5) * 0.01;
+//     bus.last_updated = new Date();
+//     await bus.save();
+//   }
+//   console.log('Bus locations updated');
+// }, 5000);
+
+// // Simulate bus status every 30s
+// setInterval(async () => {
+//   const allBuses = await Bus.find();
+//   for (let bus of allBuses) {
+//     if (Math.random() < 0.2) bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
+//     await bus.save();
+//   }
+//   console.log('Bus statuses updated');
+// }, 30000);
+
+// // Start server
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const connectDB = require('./config/db');
+// const { routes, buses } = require('./data/seedData');
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public'));
+
+// const PORT = process.env.PORT || 5000;
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Seed DB if empty
+// const seedDB = async () => {
+//   try {
+//     const routeCount = await Route.countDocuments();
+//     const busCount = await Bus.countDocuments();
+
+//     if (routeCount === 0) await Route.insertMany(routes);
+//     if (busCount === 0) await Bus.insertMany(buses);
+
+//     console.log('Database seeded!');
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// };
+// seedDB();
+
+// // API Endpoints
+// app.get('/routes', async (req, res) => {
+//   const allRoutes = await Route.find();
+//   res.json(allRoutes);
+// });
+
+// // Support optional route filtering
+// app.get('/buses', async (req, res) => {
+//   const { route_id } = req.query;
+//   const query = route_id ? { route_id: Number(route_id) } : {};
+//   const allBuses = await Bus.find(query);
+//   res.json(allBuses);
+// });
+
+// // Simulate bus location every 5s
+// setInterval(async () => {
+//   const allBuses = await Bus.find();
+//   for (let bus of allBuses) {
+//     bus.current_location.latitude += (Math.random() - 0.5) * 0.01;
+//     bus.current_location.longitude += (Math.random() - 0.5) * 0.01;
+//     bus.last_updated = new Date();
+//     await bus.save();
+//   }
+//   console.log('Bus locations updated');
+// }, 5000);
+
+// // Simulate bus status every 30s
+// setInterval(async () => {
+//   const allBuses = await Bus.find();
+//   for (let bus of allBuses) {
+//     if (Math.random() < 0.2) bus.status = bus.status === 'On Time' ? 'Delayed' : 'On Time';
+//     await bus.save();
+//   }
+//   console.log('Bus statuses updated');
+// }, 30000);
+
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));

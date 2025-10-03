@@ -1,39 +1,112 @@
 const fs = require('fs');
+const path = require('path');
 
-// Define routes with basic start & end coordinates
+// Define routes
 const routes = [
-  { route_id: 101, name: 'Colombo to Kandy', coordinates: [[6.9319, 79.8478], [7.2955, 80.6356]] },
-  { route_id: 102, name: 'Colombo to Galle', coordinates: [[6.9319, 79.8478], [6.0367, 80.217]] },
-  { route_id: 103, name: 'Colombo to Jaffna', coordinates: [[6.9319, 79.8478], [9.6685, 80.0074]] },
-  { route_id: 104, name: 'Colombo to Anuradhapura', coordinates: [[6.9319, 79.8478], [8.3122, 80.4131]] },
-  { route_id: 105, name: 'Colombo to Matara', coordinates: [[6.9319, 79.8478], [5.9485, 80.5353]] },
+  { route_id: 101, name: 'Colombo to Kandy' },
+  { route_id: 102, name: 'Colombo to Galle' },
+  { route_id: 103, name: 'Colombo to Jaffna' },
+  { route_id: 104, name: 'Colombo to Anuradhapura' },
+  { route_id: 105, name: 'Colombo to Matara' }
 ];
 
+// Define start locations for each route
+const routeStartLocations = {
+  101: { lat: 6.9319, lng: 79.8478 }, // Colombo
+  102: { lat: 6.9319, lng: 79.8478 },
+  103: { lat: 6.9319, lng: 79.8478 },
+  104: { lat: 6.9319, lng: 79.8478 },
+  105: { lat: 6.9319, lng: 79.8478 }
+};
+
 const buses = [];
+const days = 7;
 
-// Helper to generate a random point along a line
-function randomPointBetween(start, end) {
-  const lat = start[0] + Math.random() * (end[0] - start[0]);
-  const lng = start[1] + Math.random() * (end[1] - start[1]);
-  return { latitude: lat, longitude: lng };
-}
-
-// Generate 50 buses per route
+// Generate 50 buses distributed across routes
 routes.forEach(route => {
-  for (let i = 1; i <= 50; i++) {
+  for (let i = 1; i <= 10; i++) { // 10 buses per route → 5 routes x 10 = 50
+    const bus_id = route.route_id * 100 + i;
+    const dailyLocations = [];
+
+    for (let d = 0; d < days; d++) {
+      // Randomly move along small offsets to simulate the route
+      const latOffset = (Math.random() - 0.5) * 0.05;
+      const lngOffset = (Math.random() - 0.5) * 0.05;
+
+      dailyLocations.push({
+        date: new Date(Date.now() + d * 24 * 60 * 60 * 1000),
+        location: {
+          latitude: routeStartLocations[route.route_id].lat + latOffset,
+          longitude: routeStartLocations[route.route_id].lng + lngOffset
+        },
+        status: Math.random() < 0.8 ? 'On Time' : 'Delayed'
+      });
+    }
+
     buses.push({
-      bus_id: route.route_id * 100 + i,
+      bus_id,
       route_id: route.route_id,
-      status: Math.random() < 0.8 ? 'On Time' : 'Delayed', // 80% on-time, 20% delayed
-      current_location: randomPointBetween(route.coordinates[0], route.coordinates[1]),
-      last_updated: new Date()
+      dailyLocations
     });
   }
 });
 
-// Save to JSON file
-fs.writeFileSync('busSimulation.json', JSON.stringify({ routes, buses }, null, 2));
-console.log('busSimulation.json created with 50 buses per route!');
+// Save JSON
+const simulationData = { routes, buses };
+fs.writeFileSync(path.join(__dirname, 'busSimulation.json'), JSON.stringify(simulationData, null, 2));
+
+console.log('1-week bus simulation JSON created!');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const fs = require('fs');
+
+// // Define routes with basic start & end coordinates
+// const routes = [
+//   { route_id: 101, name: 'Colombo to Kandy', coordinates: [[6.9319, 79.8478], [7.2955, 80.6356]] },
+//   { route_id: 102, name: 'Colombo to Galle', coordinates: [[6.9319, 79.8478], [6.0367, 80.217]] },
+//   { route_id: 103, name: 'Colombo to Jaffna', coordinates: [[6.9319, 79.8478], [9.6685, 80.0074]] },
+//   { route_id: 104, name: 'Colombo to Anuradhapura', coordinates: [[6.9319, 79.8478], [8.3122, 80.4131]] },
+//   { route_id: 105, name: 'Colombo to Matara', coordinates: [[6.9319, 79.8478], [5.9485, 80.5353]] },
+// ];
+
+// const buses = [];
+
+// // Helper to generate a random point along a line
+// function randomPointBetween(start, end) {
+//   const lat = start[0] + Math.random() * (end[0] - start[0]);
+//   const lng = start[1] + Math.random() * (end[1] - start[1]);
+//   return { latitude: lat, longitude: lng };
+// }
+
+// // Generate 50 buses per route
+// routes.forEach(route => {
+//   for (let i = 1; i <= 50; i++) {
+//     buses.push({
+//       bus_id: route.route_id * 100 + i,
+//       route_id: route.route_id,
+//       status: Math.random() < 0.8 ? 'On Time' : 'Delayed', // 80% on-time, 20% delayed
+//       current_location: randomPointBetween(route.coordinates[0], route.coordinates[1]),
+//       last_updated: new Date()
+//     });
+//   }
+// });
+
+// // Save to JSON file
+// fs.writeFileSync('busSimulation.json', JSON.stringify({ routes, buses }, null, 2));
+// console.log('busSimulation.json created with 50 buses per route!');
 
 
 

@@ -5,13 +5,13 @@ let currentRouteId = 'all';
 // Bus icons
 const busIcons = {
   onTime: L.icon({
-    iconUrl: 'https://cdn-user-icons.flaticon.com/93776/93776300/1759411105998.svg?token=exp=1759412006~hmac=a7bec415b17937db6cc1648e02bafc80',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/18042/18042856.png',
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   }),
   delayed: L.icon({
-    iconUrl: 'https://cdn-user-icons.flaticon.com/93776/93776300/1759410956535.svg?token=exp=1759411947~hmac=88f319f96f53752ff11b2de3d5a78788',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/18357/18357012.png',
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]

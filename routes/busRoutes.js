@@ -2,19 +2,45 @@ const express = require('express');
 const router = express.Router();
 const busController = require('../controllers/busController');
 
-// Get all buses, optionally filtered by route
+// GET all buses (optional query ?route_id=)
 router.get('/', busController.getAllBuses);
 
-// Get a single bus by ID
+// GET bus details by bus_id
 router.get('/:bus_id', busController.getBusById);
 
-// Get bus location
+// GET bus location only
 router.get('/:bus_id/location', busController.getBusLocation);
 
-// Get bus status
+// GET bus status only
 router.get('/:bus_id/status', busController.getBusStatus);
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+// const express = require('express');
+// const router = express.Router();
+// const busController = require('../controllers/busController');
+
+// // Get all buses, optionally filtered by route
+// router.get('/', busController.getAllBuses);
+
+// // Get a single bus by ID
+// router.get('/:bus_id', busController.getBusById);
+
+// // Get bus location
+// router.get('/:bus_id/location', busController.getBusLocation);
+
+// // Get bus status
+// router.get('/:bus_id/status', busController.getBusStatus);
+
+// module.exports = router;
 
 
 

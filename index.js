@@ -67,6 +67,80 @@ app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
 
 
 
+
+
+
+
+
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const connectDB = require('./config/db');
+// const fs = require('fs');
+// const path = require('path');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public'));
+
+// const PORT = process.env.PORT || 5000;
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Import models
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+
+// // Import routes
+// const busRoutes = require('./routes/busRoutes');
+// const routeRoutes = require('./routes/routeRoutes');
+// app.use('/buses', busRoutes);
+// app.use('/routes', routeRoutes);
+
+// // Load 1-week simulation JSON
+// const simulationData = JSON.parse(
+//   fs.readFileSync(path.join(__dirname, 'data', 'busSimulation.json'))
+// );
+// const routes = simulationData.routes;
+// const buses = simulationData.buses;
+
+// // Seed database
+// const seedDB = async () => {
+//   try {
+//     const routeCount = await Route.countDocuments();
+//     const busCount = await Bus.countDocuments();
+
+//     if (routeCount === 0) await Route.insertMany(routes);
+//     if (busCount === 0) {
+//       await Bus.insertMany(
+//         buses.map(bus => ({
+//           bus_id: bus.bus_id,
+//           route_id: bus.route_id,
+//           current_location: bus.dailyLocations[0].location,
+//           status: bus.dailyLocations[0].status,
+//           last_updated: bus.dailyLocations[0].date
+//         }))
+//       );
+//     }
+
+//     console.log('Database seeded with 1-week simulation!');
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// };
+// seedDB();
+
+// // Start server
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
 // require('dotenv').config();
 // const express = require('express');
 // const cors = require('cors');

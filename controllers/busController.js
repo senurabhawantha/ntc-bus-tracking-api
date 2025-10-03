@@ -1,0 +1,97 @@
+const Bus = require('../models/bus');
+
+// Get all buses, optionally filtered by route_id
+exports.getAllBuses = async (req, res) => {
+  try {
+    const { route_id } = req.query;
+    const query = route_id ? { route_id: Number(route_id) } : {};
+    const buses = await Bus.find(query);
+    res.json(buses);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// Get bus by ID
+exports.getBusById = async (req, res) => {
+  try {
+    const bus = await Bus.findOne({ bus_id: Number(req.params.bus_id) });
+    if (!bus) return res.status(404).json({ message: 'Bus not found' });
+    res.json(bus);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// Get bus location
+exports.getBusLocation = async (req, res) => {
+  try {
+    const bus = await Bus.findOne({ bus_id: Number(req.params.bus_id) });
+    if (!bus) return res.status(404).json({ message: 'Bus not found' });
+    res.json({ latitude: bus.current_location.latitude, longitude: bus.current_location.longitude });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// Get bus status
+exports.getBusStatus = async (req, res) => {
+  try {
+    const bus = await Bus.findOne({ bus_id: Number(req.params.bus_id) });
+    if (!bus) return res.status(404).json({ message: 'Bus not found' });
+    res.json({ status: bus.status });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+
+
+
+
+
+
+
+
+// const Bus = require('../models/bus');
+
+// // Get all buses (optionally filtered by route_id)
+// exports.getAllBuses = async (req, res) => {
+//   try {
+//     const { route_id } = req.query;
+//     const query = route_id ? { route_id: Number(route_id) } : {};
+//     const buses = await Bus.find(query);
+//     res.json(buses);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// };
+
+// // Get a specific bus by ID
+// exports.getBusById = async (req, res) => {
+//   try {
+//     const bus = await Bus.findOne({ bus_id: Number(req.params.bus_id) });
+//     if (!bus) return res.status(404).json({ message: 'Bus not found' });
+//     res.json(bus);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// };
+
+// // Get location of a specific bus
+// exports.getBusLocation = async (req, res) => {
+//   try {
+//     const bus = await Bus.findOne({ bus_id: Number(req.params.bus_id) });
+//     if (!bus) return res.status(404).json({ message: 'Bus not found' });
+//     res.json(bus.current_location);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// };

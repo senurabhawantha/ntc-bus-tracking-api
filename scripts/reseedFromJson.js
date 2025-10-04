@@ -1,72 +1,81 @@
 // scripts/reseedFromJson.js
-require("dotenv").config(); // make sure env is loaded before anything else
+require('dotenv').config();
 
-const path = require("path");
-const fs = require("fs/promises");
-const mongoose = require("mongoose");
-const { getMongoUri } = require("../config/db");
+const path = require('path');
+const fs = require('fs/promises');
+const mongoose = require('mongoose');
+const { getMongoUri } = require('../config/db');
 
-// Adjust model paths if your project uses different filenames/locations
-const Route = require("../models/route");
-const Bus = require("../models/bus");
+const Route = require('../models/route');
+const Bus = require('../models/bus');
 
 async function connect() {
   const uri = getMongoUri();
-  const redacted = uri.replace(/\/\/([^:/]+):([^@]+)@/, "//****:****@");
+  const redacted = uri.replace(/\/\/([^:/]+):([^@]+)@/, '//****:****@');
   console.log(`[Reseed] Connecting to Mongo: ${redacted}`);
 
   await mongoose.connect(uri, {
-    serverSelectionTimeoutMS: 10000,
+    serverSelectionTimeoutMS: 15000,
     socketTimeoutMS: 45000,
     maxPoolSize: 10,
     family: 4,
   });
-  console.log("[Reseed] Connected");
+  console.log('[Reseed] Connected');
+}
+
+function sameDay(a, b) {
+  const da = new Date(a), db = new Date(b);
+  return da.getFullYear() === db.getFullYear()
+    && da.getMonth() === db.getMonth()
+    && da.getDate() === db.getDate();
 }
 
 async function reseed() {
-  const dataFile = path.join(__dirname, "..", "data", "busSimulation.json");
+  const dataFile = path.join(__dirname, '..', 'data', 'busSimulation.json');
 
-  let raw;
-  try {
-    raw = await fs.readFile(dataFile, "utf-8");
-  } catch (e) {
-    console.error(`[Reseed] Could not read ${dataFile}. Make sure it exists.`);
-    throw e;
-  }
-
-  let json;
-  try {
-    json = JSON.parse(raw);
-  } catch (e) {
-    console.error("[Reseed] Invalid JSON in data/busSimulation.json");
-    throw e;
-  }
+  const raw = await fs.readFile(dataFile, 'utf-8');
+  const json = JSON.parse(raw);
 
   const routes = Array.isArray(json.routes) ? json.routes : [];
   const buses = Array.isArray(json.buses) ? json.buses : [];
 
   console.log(`[Reseed] Purging collections…`);
-  await Promise.all([
-    Route.deleteMany({}),
-    Bus.deleteMany({})
-  ]);
+  await Promise.all([Route.deleteMany({}), Bus.deleteMany({})]);
 
   if (routes.length) {
     console.log(`[Reseed] Inserting ${routes.length} routes…`);
     await Route.insertMany(routes);
   } else {
-    console.warn("[Reseed] No routes found in JSON.");
+    console.warn('[Reseed] No routes in JSON.');
   }
 
   if (buses.length) {
     console.log(`[Reseed] Inserting ${buses.length} buses…`);
-    await Bus.insertMany(buses);
+    // Enrich each bus with current fields based on the entry for "today"
+    const today = new Date();
+
+    const docs = buses.map(b => {
+      let current = b.dailyLocations?.find(x => sameDay(x.date, today));
+      if (!current && b.dailyLocations?.length) {
+        // if today not found (timezone drift), pick day 0
+        current = b.dailyLocations[0];
+      }
+      return {
+        bus_id: b.bus_id,
+        route_id: b.route_id,
+        dailyLocations: b.dailyLocations || [],
+        current_location: current?.location || { latitude: 6.9271, longitude: 79.8612 },
+        status: current?.status || 'On Time',
+        last_updated: current?.date || today
+      };
+    });
+
+    await Bus.insertMany(docs);
   } else {
-    console.warn("[Reseed] No buses found in JSON.");
+    console.warn('[Reseed] No buses in JSON.');
   }
 
-  console.log("[Reseed] Done.");
+  console.log('[Reseed] Done.');
 }
 
 (async () => {
@@ -74,10 +83,101 @@ async function reseed() {
     await connect();
     await reseed();
   } catch (err) {
-    console.error("❌ Reseed failed:", err);
+    console.error('❌ Reseed failed:', err);
     process.exitCode = 1;
   } finally {
     await mongoose.connection.close().catch(() => {});
   }
 })();
+
+
+
+
+
+
+
+
+
+// // scripts/reseedFromJson.js
+// require("dotenv").config(); // make sure env is loaded before anything else
+
+// const path = require("path");
+// const fs = require("fs/promises");
+// const mongoose = require("mongoose");
+// const { getMongoUri } = require("../config/db");
+
+// // Adjust model paths if your project uses different filenames/locations
+// const Route = require("../models/route");
+// const Bus = require("../models/bus");
+
+// async function connect() {
+//   const uri = getMongoUri();
+//   const redacted = uri.replace(/\/\/([^:/]+):([^@]+)@/, "//****:****@");
+//   console.log(`[Reseed] Connecting to Mongo: ${redacted}`);
+
+//   await mongoose.connect(uri, {
+//     serverSelectionTimeoutMS: 10000,
+//     socketTimeoutMS: 45000,
+//     maxPoolSize: 10,
+//     family: 4,
+//   });
+//   console.log("[Reseed] Connected");
+// }
+
+// async function reseed() {
+//   const dataFile = path.join(__dirname, "..", "data", "busSimulation.json");
+
+//   let raw;
+//   try {
+//     raw = await fs.readFile(dataFile, "utf-8");
+//   } catch (e) {
+//     console.error(`[Reseed] Could not read ${dataFile}. Make sure it exists.`);
+//     throw e;
+//   }
+
+//   let json;
+//   try {
+//     json = JSON.parse(raw);
+//   } catch (e) {
+//     console.error("[Reseed] Invalid JSON in data/busSimulation.json");
+//     throw e;
+//   }
+
+//   const routes = Array.isArray(json.routes) ? json.routes : [];
+//   const buses = Array.isArray(json.buses) ? json.buses : [];
+
+//   console.log(`[Reseed] Purging collections…`);
+//   await Promise.all([
+//     Route.deleteMany({}),
+//     Bus.deleteMany({})
+//   ]);
+
+//   if (routes.length) {
+//     console.log(`[Reseed] Inserting ${routes.length} routes…`);
+//     await Route.insertMany(routes);
+//   } else {
+//     console.warn("[Reseed] No routes found in JSON.");
+//   }
+
+//   if (buses.length) {
+//     console.log(`[Reseed] Inserting ${buses.length} buses…`);
+//     await Bus.insertMany(buses);
+//   } else {
+//     console.warn("[Reseed] No buses found in JSON.");
+//   }
+
+//   console.log("[Reseed] Done.");
+// }
+
+// (async () => {
+//   try {
+//     await connect();
+//     await reseed();
+//   } catch (err) {
+//     console.error("❌ Reseed failed:", err);
+//     process.exitCode = 1;
+//   } finally {
+//     await mongoose.connection.close().catch(() => {});
+//   }
+// })();
 

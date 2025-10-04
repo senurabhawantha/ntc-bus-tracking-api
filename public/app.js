@@ -1,5 +1,10 @@
+// public/app.js
 let map;
 let currentRouteId = 'all';
+
+// animation & geocode refresh handles (so we don't stack loops/intervals)
+let rafId = null;
+let locIntervalId = null;
 
 // Bus icons
 const busIcons = {
@@ -17,7 +22,7 @@ const busIcons = {
   })
 };
 
-// Realistic polyline coordinates for routes
+// Realistic-ish polylines
 const routesCoordinates = {
   101: [[6.9319, 79.8478],[6.966,79.900],[7.050,80.000],[7.200,80.200],[7.2955,80.6356]],
   102: [[6.9319,79.8478],[6.800,79.950],[6.600,80.100],[6.0367,80.217]],
@@ -26,75 +31,28 @@ const routesCoordinates = {
   105: [[8.3122,80.4131],[7.900,80.200],[7.500,80.000],[6.9319,79.8478]]
 };
 
-// Track bus positions/directions/markers
-const busData = {}; // { bus_id: { pos: 0..1, dir: 1|-1, marker: L.marker } }
+// Track bus pos/dir/marker
+const busData = {}; // { bus_id: { pos, dir, marker } }
 
-// ---------- Reverse Geocoding (Nominatim) ----------
-const geocodeCache = new Map(); // key: "lat,lng" (rounded), value: place string
-const geocodeQueue = [];
-let geocoderBusy = false;
-const GEOCODE_DELAY_MS = 1100; // ~1 req/sec to be nice to the free API
-
-function roundCoord(n) {
-  return Math.round(n * 1000) / 1000; // 3-decimal rounding helps cache hits
+function round3(n) {
+  return Math.round(n * 1000) / 1000;
 }
 
-function enqueueReverseGeocode(lat, lng, resolve) {
-  geocodeQueue.push({ lat, lng, resolve });
-  if (!geocoderBusy) processGeocodeQueue();
+// Interpolate along polyline
+function getPositionAlongRoute(routeId, t) {
+  const coords = routesCoordinates[routeId];
+  if (!coords) return [6.9271, 79.8612];
+  const totalSegments = coords.length - 1;
+  const segmentIndex = Math.floor(t * totalSegments);
+  const segmentT = (t * totalSegments) - segmentIndex;
+  const start = coords[segmentIndex];
+  const end = coords[segmentIndex + 1] || coords[coords.length - 1];
+  const lat = start[0] + (end[0] - start[0]) * segmentT;
+  const lng = start[1] + (end[1] - start[1]) * segmentT;
+  return [lat, lng];
 }
 
-async function processGeocodeQueue() {
-  geocoderBusy = true;
-  while (geocodeQueue.length) {
-    const { lat, lng, resolve } = geocodeQueue.shift();
-    try {
-      const place = await doReverseGeocode(lat, lng);
-      resolve(place);
-    } catch (e) {
-      resolve('Unknown'); // fall back gracefully
-    }
-    await new Promise(r => setTimeout(r, GEOCODE_DELAY_MS));
-  }
-  geocoderBusy = false;
-}
-
-async function doReverseGeocode(lat, lng) {
-  const key = `${roundCoord(lat)},${roundCoord(lng)}`;
-  if (geocodeCache.has(key)) return geocodeCache.get(key);
-
-  const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=10&addressdetails=1`;
-  // Note: some browsers can’t set custom User-Agent; for heavy use, proxy through your server.
-  const res = await fetch(url, {
-    headers: { 'Accept': 'application/json' }
-  });
-  if (!res.ok) throw new Error('Geocode failed');
-
-  const data = await res.json();
-  const addr = data.address || {};
-  // Try to pick a sensible label: town/city/village + state/country as fallback.
-  const label =
-    addr.city ||
-    addr.town ||
-    addr.village ||
-    addr.municipality ||
-    addr.county ||
-    addr.state ||
-    addr.country ||
-    'Unknown';
-
-  geocodeCache.set(key, label);
-  return label;
-}
-
-function reverseGeocode(lat, lng) {
-  return new Promise((resolve) => {
-    enqueueReverseGeocode(lat, lng, resolve);
-  });
-}
-// ---------- /Reverse Geocoding ----------
-
-// Initialize map
+// ---- map setup ----
 function initMap() {
   map = L.map('map').setView([7.8731, 80.7718], 7);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -103,14 +61,12 @@ function initMap() {
   drawPolylines();
 }
 
-// Draw polylines for routes
 function drawPolylines() {
   for (const routeId in routesCoordinates) {
     L.polyline(routesCoordinates[routeId], { color: 'blue', weight: 5, opacity: 0.5 }).addTo(map);
   }
 }
 
-// Map legend
 function addMapLegend() {
   const legend = L.control({ position: 'bottomright' });
   legend.onAdd = function(map) {
@@ -125,12 +81,14 @@ function addMapLegend() {
   legend.addTo(map);
 }
 
-// Fetch routes for dropdown
+// ---- data fetching ----
 async function fetchRoutes() {
   const res = await fetch('/routes');
   const routes = await res.json();
   const select = document.getElementById('routeSelect');
 
+  // wipe & add "All Routes"
+  select.innerHTML = '';
   const allOption = document.createElement('option');
   allOption.value = 'all';
   allOption.textContent = 'All Routes';
@@ -143,48 +101,59 @@ async function fetchRoutes() {
     select.appendChild(option);
   });
 
-  select.addEventListener('change', () => {
+  // avoid stacking multiple listeners
+  select.onchange = () => {
     currentRouteId = select.value;
     fetchAndAnimateBuses();
-  });
+  };
 
   select.selectedIndex = 0;
   fetchAndAnimateBuses();
 }
 
-// Interpolate along a polyline
-function getPositionAlongRoute(routeId, t) {
-  const coords = routesCoordinates[routeId];
-  if (!coords) return [6.9271, 79.8612];
-  const totalSegments = coords.length - 1;
-  const segmentIndex = Math.floor(t * totalSegments);
-  const segmentT = (t * totalSegments) - segmentIndex;
-  const start = coords[segmentIndex];
-  const end = coords[segmentIndex + 1] || coords[coords.length - 1];
-  const lat = start[0] + (end[0] - start[0]) * segmentT;
-  const lng = start[1] + (end[1] - start[1]) * segmentT;
-  return [lat, lng];
+async function fetchAndAnimateBuses() {
+  try {
+    const res = await fetch(currentRouteId === 'all' ? '/buses' : `/buses?route_id=${currentRouteId}`);
+    const buses = await res.json();
+    animateBuses(buses);
+  } catch (err) {
+    console.error('Error fetching buses:', err);
+  }
 }
 
-// Animate buses (back & forth)
-function animateBuses(routeBuses) {
+// ---- main animation & table (with periodic batch geocode) ----
+async function animateBuses(routeBuses) {
+  // cancel any previous loops/intervals to avoid stacking
+  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+  if (locIntervalId) { clearInterval(locIntervalId); locIntervalId = null; }
+
+  // Remove markers for buses that are no longer in selection
+  const keepIds = new Set(routeBuses.map(b => b.bus_id));
+  for (const id in busData) {
+    if (!keepIds.has(Number(id)) && busData[id]?.marker) {
+      map.removeLayer(busData[id].marker);
+      delete busData[id];
+    }
+  }
+
   const tableBody = document.getElementById('busList');
   tableBody.innerHTML = '';
 
+  // Build table rows now (location will be filled by batch geocode)
   routeBuses.forEach(bus => {
     if (!busData[bus.bus_id]) {
       busData[bus.bus_id] = {
-        pos: Math.random(),
-        dir: Math.random() < 0.5 ? 1 : -1,
+        pos: Math.random(),                      // random start along route
+        dir: Math.random() < 0.5 ? 1 : -1,       // random initial direction
         marker: null
       };
     }
 
     const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+    const icon = bus.status === 'On Time' ? busIcons.onTime : busIcons.delayed;
 
-    // Create or update marker
     if (!busData[bus.bus_id].marker) {
-      busData[bus.bus_id].marker = L.marker([lat, lng], { icon: bus.status === 'On Time' ? busIcons.onTime : busIcons.delayed })
+      busData[bus.bus_id].marker = L.marker([lat, lng], { icon })
         .bindPopup(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`)
         .addTo(map);
     } else {
@@ -192,30 +161,65 @@ function animateBuses(routeBuses) {
       busData[bus.bus_id].marker.setPopupContent(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`);
     }
 
-    // Build the row with a placeholder; we’ll fill location async
     const row = document.createElement('tr');
-    const locationCellId = `loc-${bus.bus_id}`;
     row.innerHTML = `
       <td>${bus.bus_id}</td>
       <td>${bus.route_id}</td>
       <td class="${bus.status === 'On Time' ? 'status-on-time' : 'status-delayed'}">${bus.status}</td>
-      <td id="${locationCellId}">Loading…</td>
-      <td>${new Date(bus.last_updated).toLocaleTimeString()}</td>
+      <td id="loc-${bus.bus_id}">Loading…</td>
+      <td id="ts-${bus.bus_id}">${new Date(bus.last_updated).toLocaleTimeString()}</td>
     `;
     tableBody.appendChild(row);
 
-    // Reverse-geocode for a friendly location name (city/town/village…)
-    reverseGeocode(lat, lng).then(place => {
-      const cell = document.getElementById(locationCellId);
-      if (cell) cell.textContent = place;
-    });
+    // Fallback: if “Loading…” hasn’t been replaced in 3.5s, show “Unknown”
+    setTimeout(() => {
+      const cell = document.getElementById(`loc-${bus.bus_id}`);
+      if (cell && cell.textContent === 'Loading…') cell.textContent = 'Unknown';
+    }, 3500);
   });
 
-  // Animation loop
-  function step() {
+  // function to batch-geocode current marker positions & refresh table cells
+  async function refreshLocationCells() {
+    const coords = routeBuses.map(b => {
+      const [lat, lng] = getPositionAlongRoute(b.route_id, busData[b.bus_id].pos);
+      return { bus_id: b.bus_id, key: `${round3(lat)},${round3(lng)}`, lat, lng };
+    });
+
+    // timeout wrapper for fetch (abort after 5s)
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), 5000);
+
+    try {
+      const res = await fetch('/geocode/batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ coords: coords.map(c => ({ lat: c.lat, lng: c.lng })) }),
+        signal: controller.signal
+      });
+      clearTimeout(t);
+
+      const { results } = await res.json();
+      coords.forEach(c => {
+        const cell = document.getElementById(`loc-${c.bus_id}`);
+        if (cell) cell.textContent = results[c.key] || 'Unknown';
+      });
+    } catch {
+      clearTimeout(t);
+      coords.forEach(c => {
+        const cell = document.getElementById(`loc-${c.bus_id}`);
+        if (cell && (cell.textContent === 'Loading…')) cell.textContent = 'Unknown';
+      });
+    }
+  }
+
+  // first fill immediately, then every 12s (keeps API load sensible)
+  refreshLocationCells();
+  locIntervalId = setInterval(refreshLocationCells, 12000);
+
+  // animation loop — speed adjustable
+  const step = () => {
     routeBuses.forEach(bus => {
-      // adjust travel speed here if you want
-      const speed = 0.00015 + Math.random() * 0.00025;
+      const speed = 0.0004 + Math.random() * 0.0005; // tweak to taste
       busData[bus.bus_id].pos += speed * busData[bus.bus_id].dir;
 
       // bounce at ends
@@ -231,28 +235,1006 @@ function animateBuses(routeBuses) {
       busData[bus.bus_id].marker.setLatLng([lat, lng]);
     });
 
-    requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
+    rafId = requestAnimationFrame(step);
+  };
+  rafId = requestAnimationFrame(step);
 }
 
-// Fetch buses & animate
-async function fetchAndAnimateBuses() {
-  try {
-    const res = await fetch(currentRouteId === 'all' ? '/buses' : `/buses?route_id=${currentRouteId}`);
-    const buses = await res.json();
-    animateBuses(buses);
-  } catch (err) {
-    console.error('Error fetching buses:', err);
-  }
-}
-
-// Init
+// ---- boot ----
 initMap();
 addMapLegend();
 fetchRoutes();
-// Refresh bus data (status/last_updated) every 30s
+
+// refresh bus data every 30s: rebuild table, pick up new statuses/last_updated,
+// and restart animation cleanly.
 setInterval(fetchAndAnimateBuses, 30000);
+
+
+
+
+
+
+
+
+
+// let map;
+// let currentRouteId = 'all';
+
+// // animation & geocode refresh handles (so we don't stack loops/intervals)
+// let rafId = null;
+// let locIntervalId = null;
+
+// // Bus icons
+// const busIcons = {
+//   onTime: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18042/18042856.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   }),
+//   delayed: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18357/18357012.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   })
+// };
+
+// // Realistic-ish polylines
+// const routesCoordinates = {
+//   101: [[6.9319, 79.8478],[6.966,79.900],[7.050,80.000],[7.200,80.200],[7.2955,80.6356]],
+//   102: [[6.9319,79.8478],[6.800,79.950],[6.600,80.100],[6.0367,80.217]],
+//   103: [[6.9319,79.8478],[6.700,79.900],[6.200,80.300],[5.9485,80.5353]],
+//   104: [[6.9319,79.8478],[7.500,79.900],[8.500,80.000],[9.6685,80.0074]],
+//   105: [[8.3122,80.4131],[7.900,80.200],[7.500,80.000],[6.9319,79.8478]]
+// };
+
+// // Track bus pos/dir/marker
+// const busData = {}; // { bus_id: { pos, dir, marker } }
+
+// // ---- helpers ----
+// function round3(n) {
+//   return Math.round(n * 1000) / 1000;
+// }
+
+// // Interpolate along polyline
+// function getPositionAlongRoute(routeId, t) {
+//   const coords = routesCoordinates[routeId];
+//   if (!coords) return [6.9271, 79.8612];
+//   const totalSegments = coords.length - 1;
+//   const segmentIndex = Math.floor(t * totalSegments);
+//   const segmentT = (t * totalSegments) - segmentIndex;
+//   const start = coords[segmentIndex];
+//   const end = coords[segmentIndex + 1] || coords[coords.length - 1];
+//   const lat = start[0] + (end[0] - start[0]) * segmentT;
+//   const lng = start[1] + (end[1] - start[1]) * segmentT;
+//   return [lat, lng];
+// }
+
+// // ---- map setup ----
+// function initMap() {
+//   map = L.map('map').setView([7.8731, 80.7718], 7);
+//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     attribution: '&copy; OpenStreetMap contributors'
+//   }).addTo(map);
+//   drawPolylines();
+// }
+
+// function drawPolylines() {
+//   for (const routeId in routesCoordinates) {
+//     L.polyline(routesCoordinates[routeId], { color: 'blue', weight: 5, opacity: 0.5 }).addTo(map);
+//   }
+// }
+
+// function addMapLegend() {
+//   const legend = L.control({ position: 'bottomright' });
+//   legend.onAdd = function(map) {
+//     const div = L.DomUtil.create('div', 'legend');
+//     div.innerHTML = `
+//       <h4>Bus Status</h4>
+//       <i style="background: #27ae60"></i> On Time<br>
+//       <i style="background: #e74c3c"></i> Delayed
+//     `;
+//     return div;
+//   };
+//   legend.addTo(map);
+// }
+
+// // ---- data fetching ----
+// async function fetchRoutes() {
+//   const res = await fetch('/routes');
+//   const routes = await res.json();
+//   const select = document.getElementById('routeSelect');
+
+//   // wipe & add "All Routes"
+//   select.innerHTML = '';
+//   const allOption = document.createElement('option');
+//   allOption.value = 'all';
+//   allOption.textContent = 'All Routes';
+//   select.appendChild(allOption);
+
+//   routes.forEach(route => {
+//     const option = document.createElement('option');
+//     option.value = route.route_id;
+//     option.textContent = route.name;
+//     select.appendChild(option);
+//   });
+
+//   select.onchange = () => {
+//     currentRouteId = select.value;
+//     fetchAndAnimateBuses();
+//   };
+
+//   select.selectedIndex = 0;
+//   fetchAndAnimateBuses();
+// }
+
+// async function fetchAndAnimateBuses() {
+//   try {
+//     const res = await fetch(currentRouteId === 'all' ? '/buses' : `/buses?route_id=${currentRouteId}`);
+//     const buses = await res.json();
+//     animateBuses(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//   }
+// }
+
+// // ---- main animation & table (with periodic batch geocode) ----
+// async function animateBuses(routeBuses) {
+//   // cancel any previous loops/intervals to avoid stacking
+//   if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+//   if (locIntervalId) { clearInterval(locIntervalId); locIntervalId = null; }
+
+//   const tableBody = document.getElementById('busList');
+//   tableBody.innerHTML = '';
+
+//   // Build table rows now (location will be filled by batch geocode)
+//   routeBuses.forEach(bus => {
+//     if (!busData[bus.bus_id]) {
+//       busData[bus.bus_id] = {
+//         pos: Math.random(),                      // random start along route
+//         dir: Math.random() < 0.5 ? 1 : -1,       // random initial direction
+//         marker: null
+//       };
+//     }
+
+//     const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+//     const icon = bus.status === 'On Time' ? busIcons.onTime : busIcons.delayed;
+
+//     if (!busData[bus.bus_id].marker) {
+//       busData[bus.bus_id].marker = L.marker([lat, lng], { icon })
+//         .bindPopup(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`)
+//         .addTo(map);
+//     } else {
+//       busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//       busData[bus.bus_id].marker.setPopupContent(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`);
+//     }
+
+//     const row = document.createElement('tr');
+//     row.innerHTML = `
+//       <td>${bus.bus_id}</td>
+//       <td>${bus.route_id}</td>
+//       <td class="${bus.status === 'On Time' ? 'status-on-time' : 'status-delayed'}">${bus.status}</td>
+//       <td id="loc-${bus.bus_id}">Loading…</td>
+//       <td id="ts-${bus.bus_id}">${new Date(bus.last_updated).toLocaleTimeString()}</td>
+//     `;
+//     tableBody.appendChild(row);
+//   });
+
+//   // function to batch-geocode current marker positions & refresh table cells
+//   async function refreshLocationCells() {
+//     // collect current positions from animation state (not from DB)
+//     const coords = routeBuses.map(b => {
+//       const [lat, lng] = getPositionAlongRoute(b.route_id, busData[b.bus_id].pos);
+//       return { bus_id: b.bus_id, key: `${round3(lat)},${round3(lng)}`, lat, lng };
+//     });
+
+//     try {
+//       const res = await fetch('/geocode/batch', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({ coords: coords.map(c => ({ lat: c.lat, lng: c.lng })) })
+//       });
+//       const { results } = await res.json();
+
+//       coords.forEach(c => {
+//         const cell = document.getElementById(`loc-${c.bus_id}`);
+//         if (cell) cell.textContent = results[c.key] || 'Unknown';
+//       });
+//     } catch {
+//       coords.forEach(c => {
+//         const cell = document.getElementById(`loc-${c.bus_id}`);
+//         if (cell) cell.textContent = 'Unknown';
+//       });
+//     }
+//   }
+
+//   // first fill immediately, then every 12s (keeps API load sensible)
+//   refreshLocationCells();
+//   locIntervalId = setInterval(refreshLocationCells, 12000);
+
+//   // animation loop — increase speed a bit so motion is obvious
+//   const step = () => {
+//     routeBuses.forEach(bus => {
+//       const speed = 0.0004 + Math.random() * 0.0005; // adjust to spread more
+//       busData[bus.bus_id].pos += speed * busData[bus.bus_id].dir;
+
+//       // bounce at ends
+//       if (busData[bus.bus_id].pos > 1) {
+//         busData[bus.bus_id].pos = 1;
+//         busData[bus.bus_id].dir = -1;
+//       } else if (busData[bus.bus_id].pos < 0) {
+//         busData[bus.bus_id].pos = 0;
+//         busData[bus.bus_id].dir = 1;
+//       }
+
+//       const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+//       busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//     });
+
+//     rafId = requestAnimationFrame(step);
+//   };
+//   rafId = requestAnimationFrame(step);
+// }
+
+// // ---- boot ----
+// initMap();
+// addMapLegend();
+// fetchRoutes();
+
+// // refresh bus data every 30s: this will rebuild the table rows,
+// // pick up new statuses/last_updated from the server, and restart animation cleanly.
+// setInterval(fetchAndAnimateBuses, 30000);
+
+
+
+
+
+
+
+
+// // public/app.js
+// let map;
+// let currentRouteId = 'all';
+
+// // animation handle so we don't stack loops
+// let rafId = null;
+
+// // Bus icons
+// const busIcons = {
+//   onTime: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18042/18042856.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   }),
+//   delayed: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18357/18357012.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   })
+// };
+
+// // Realistic-ish polylines
+// const routesCoordinates = {
+//   101: [[6.9319, 79.8478],[6.966,79.900],[7.050,80.000],[7.200,80.200],[7.2955,80.6356]],
+//   102: [[6.9319,79.8478],[6.800,79.950],[6.600,80.100],[6.0367,80.217]],
+//   103: [[6.9319,79.8478],[6.700,79.900],[6.200,80.300],[5.9485,80.5353]],
+//   104: [[6.9319,79.8478],[7.500,79.900],[8.500,80.000],[9.6685,80.0074]],
+//   105: [[8.3122,80.4131],[7.900,80.200],[7.500,80.000],[6.9319,79.8478]]
+// };
+
+// // Track bus pos/dir/marker
+// const busData = {}; // { bus_id: { pos, dir, marker } }
+
+// // ---- helpers ----
+// function round3(n) {
+//   return Math.round(n * 1000) / 1000;
+// }
+
+// // Interpolate along polyline
+// function getPositionAlongRoute(routeId, t) {
+//   const coords = routesCoordinates[routeId];
+//   if (!coords) return [6.9271, 79.8612];
+//   const totalSegments = coords.length - 1;
+//   const segmentIndex = Math.floor(t * totalSegments);
+//   const segmentT = (t * totalSegments) - segmentIndex;
+//   const start = coords[segmentIndex];
+//   const end = coords[segmentIndex + 1] || coords[coords.length - 1];
+//   const lat = start[0] + (end[0] - start[0]) * segmentT;
+//   const lng = start[1] + (end[1] - start[1]) * segmentT;
+//   return [lat, lng];
+// }
+
+// // ---- map setup ----
+// function initMap() {
+//   map = L.map('map').setView([7.8731, 80.7718], 7);
+//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     attribution: '&copy; OpenStreetMap contributors'
+//   }).addTo(map);
+//   drawPolylines();
+// }
+
+// function drawPolylines() {
+//   for (const routeId in routesCoordinates) {
+//     L.polyline(routesCoordinates[routeId], { color: 'blue', weight: 5, opacity: 0.5 }).addTo(map);
+//   }
+// }
+
+// function addMapLegend() {
+//   const legend = L.control({ position: 'bottomright' });
+//   legend.onAdd = function(map) {
+//     const div = L.DomUtil.create('div', 'legend');
+//     div.innerHTML = `
+//       <h4>Bus Status</h4>
+//       <i style="background: #27ae60"></i> On Time<br>
+//       <i style="background: #e74c3c"></i> Delayed
+//     `;
+//     return div;
+//   };
+//   legend.addTo(map);
+// }
+
+// // ---- data fetching ----
+// async function fetchRoutes() {
+//   const res = await fetch('/routes');
+//   const routes = await res.json();
+//   const select = document.getElementById('routeSelect');
+
+//   // wipe & add "All Routes"
+//   select.innerHTML = '';
+//   const allOption = document.createElement('option');
+//   allOption.value = 'all';
+//   allOption.textContent = 'All Routes';
+//   select.appendChild(allOption);
+
+//   routes.forEach(route => {
+//     const option = document.createElement('option');
+//     option.value = route.route_id;
+//     option.textContent = route.name;
+//     select.appendChild(option);
+//   });
+
+//   select.addEventListener('change', () => {
+//     currentRouteId = select.value;
+//     fetchAndAnimateBuses();
+//   });
+
+//   select.selectedIndex = 0;
+//   fetchAndAnimateBuses();
+// }
+
+// async function fetchAndAnimateBuses() {
+//   try {
+//     const res = await fetch(currentRouteId === 'all' ? '/buses' : `/buses?route_id=${currentRouteId}`);
+//     const buses = await res.json();
+//     animateBuses(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//   }
+// }
+
+// // ---- main animation & table (with batch geocode) ----
+// async function animateBuses(routeBuses) {
+//   // cancel any previous loop to avoid stacking
+//   if (rafId) {
+//     cancelAnimationFrame(rafId);
+//     rafId = null;
+//   }
+
+//   const tableBody = document.getElementById('busList');
+//   tableBody.innerHTML = '';
+
+//   // Prepare rows + gather coords for batch geocode
+//   const coordsToGeocode = []; // {bus_id, key, lat, lng}
+//   const rowIds = {}; // bus_id -> cellId
+
+//   routeBuses.forEach(bus => {
+//     if (!busData[bus.bus_id]) {
+//       busData[bus.bus_id] = {
+//         pos: Math.random(),
+//         dir: Math.random() < 0.5 ? 1 : -1,
+//         marker: null
+//       };
+//     }
+
+//     const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+
+//     // marker
+//     const icon = bus.status === 'On Time' ? busIcons.onTime : busIcons.delayed;
+//     if (!busData[bus.bus_id].marker) {
+//       busData[bus.bus_id].marker = L.marker([lat, lng], { icon })
+//         .bindPopup(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`)
+//         .addTo(map);
+//     } else {
+//       busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//       busData[bus.bus_id].marker.setPopupContent(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`);
+//     }
+
+//     const cellId = `loc-${bus.bus_id}`;
+//     rowIds[bus.bus_id] = cellId;
+
+//     const row = document.createElement('tr');
+//     row.innerHTML = `
+//       <td>${bus.bus_id}</td>
+//       <td>${bus.route_id}</td>
+//       <td class="${bus.status === 'On Time' ? 'status-on-time' : 'status-delayed'}">${bus.status}</td>
+//       <td id="${cellId}">Loading…</td>
+//       <td>${new Date(bus.last_updated).toLocaleTimeString()}</td>
+//     `;
+//     tableBody.appendChild(row);
+
+//     coordsToGeocode.push({
+//       bus_id: bus.bus_id,
+//       key: `${round3(lat)},${round3(lng)}`,
+//       lat,
+//       lng
+//     });
+//   });
+
+//   // Batch reverse-geocode
+//   try {
+//     const res = await fetch('/geocode/batch', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({
+//         coords: coordsToGeocode.map(c => ({ lat: c.lat, lng: c.lng }))
+//       })
+//     });
+//     const { results } = await res.json();
+//     coordsToGeocode.forEach(c => {
+//       const cell = document.getElementById(rowIds[c.bus_id]);
+//       if (cell) {
+//         cell.textContent = results[c.key] || 'Unknown';
+//       }
+//     });
+//   } catch (e) {
+//     // graceful fallback
+//     coordsToGeocode.forEach(c => {
+//       const cell = document.getElementById(rowIds[c.bus_id]);
+//       if (cell) cell.textContent = 'Unknown';
+//     });
+//   }
+
+//   // Start animation loop
+//   const step = () => {
+//     routeBuses.forEach(bus => {
+//       // tweak speed here if you want buses to spread more
+//       const speed = 0.00015 + Math.random() * 0.00025;
+//       busData[bus.bus_id].pos += speed * busData[bus.bus_id].dir;
+
+//       if (busData[bus.bus_id].pos > 1) {
+//         busData[bus.bus_id].pos = 1;
+//         busData[bus.bus_id].dir = -1;
+//       } else if (busData[bus.bus_id].pos < 0) {
+//         busData[bus.bus_id].pos = 0;
+//         busData[bus.bus_id].dir = 1;
+//       }
+
+//       const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+//       busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//     });
+
+//     rafId = requestAnimationFrame(step);
+//   };
+//   rafId = requestAnimationFrame(step);
+// }
+
+// // ---- boot ----
+// initMap();
+// addMapLegend();
+// fetchRoutes();
+
+// // refresh bus data every 30s (status/last_updated)
+// setInterval(fetchAndAnimateBuses, 30000);
+
+
+
+
+
+
+
+
+
+// let map;
+// let currentRouteId = 'all';
+
+// // Bus icons
+// const busIcons = {
+//   onTime: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18042/18042856.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   }),
+//   delayed: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18357/18357012.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   })
+// };
+
+// // Realistic polyline coordinates for routes
+// const routesCoordinates = {
+//   101: [[6.9319, 79.8478],[6.966,79.900],[7.050,80.000],[7.200,80.200],[7.2955,80.6356]],
+//   102: [[6.9319,79.8478],[6.800,79.950],[6.600,80.100],[6.0367,80.217]],
+//   103: [[6.9319,79.8478],[6.700,79.900],[6.200,80.300],[5.9485,80.5353]],
+//   104: [[6.9319,79.8478],[7.500,79.900],[8.500,80.000],[9.6685,80.0074]],
+//   105: [[8.3122,80.4131],[7.900,80.200],[7.500,80.000],[6.9319,79.8478]]
+// };
+
+// // Track bus positions, direction, and markers
+// const busData = {}; // { bus_id: { pos: 0..1, dir: 1|-1, marker: L.marker } }
+
+// // ------- Batch reverse geocoder (server) -------
+// function roundCoord(n) { return Math.round(n * 1000) / 1000; }
+
+// async function batchReverseGeocode(points) {
+//   // points: Array<{lat, lng}>
+//   const unique = {};
+//   points.forEach(p => {
+//     const key = `${roundCoord(p.lat)},${roundCoord(p.lng)}`;
+//     unique[key] = { lat: p.lat, lng: p.lng };
+//   });
+
+//   const res = await fetch('/geocode/batch', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({ coords: Object.values(unique) })
+//   });
+
+//   if (!res.ok) return {};
+//   const data = await res.json();
+//   return data.results || {};
+// }
+// // ----------------------------------------------
+
+// // Initialize map
+// function initMap() {
+//   map = L.map('map').setView([7.8731, 80.7718], 7);
+//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     attribution: '&copy; OpenStreetMap contributors'
+//   }).addTo(map);
+//   drawPolylines();
+// }
+
+// // Draw polylines for routes
+// function drawPolylines() {
+//   for (const routeId in routesCoordinates) {
+//     L.polyline(routesCoordinates[routeId], { color: 'blue', weight: 5, opacity: 0.5 }).addTo(map);
+//   }
+// }
+
+// // Map legend
+// function addMapLegend() {
+//   const legend = L.control({ position: 'bottomright' });
+//   legend.onAdd = function(map) {
+//     const div = L.DomUtil.create('div', 'legend');
+//     div.innerHTML = `
+//       <h4>Bus Status</h4>
+//       <i style="background: #27ae60"></i> On Time<br>
+//       <i style="background: #e74c3c"></i> Delayed
+//     `;
+//     return div;
+//   };
+//   legend.addTo(map);
+// }
+
+// // Fetch routes for dropdown
+// async function fetchRoutes() {
+//   const res = await fetch('/routes');
+//   const routes = await res.json();
+//   const select = document.getElementById('routeSelect');
+
+//   const allOption = document.createElement('option');
+//   allOption.value = 'all';
+//   allOption.textContent = 'All Routes';
+//   select.appendChild(allOption);
+
+//   routes.forEach(route => {
+//     const option = document.createElement('option');
+//     option.value = route.route_id;
+//     option.textContent = route.name;
+//     select.appendChild(option);
+//   });
+
+//   select.addEventListener('change', () => {
+//     currentRouteId = select.value;
+//     fetchAndAnimateBuses();
+//   });
+
+//   select.selectedIndex = 0;
+//   fetchAndAnimateBuses();
+// }
+
+// // Get position along polyline
+// function getPositionAlongRoute(routeId, t) {
+//   const coords = routesCoordinates[routeId];
+//   if (!coords) return [6.9271, 79.8612];
+//   const totalSegments = coords.length - 1;
+//   const segmentIndex = Math.floor(t * totalSegments);
+//   const segmentT = (t * totalSegments) - segmentIndex;
+//   const start = coords[segmentIndex];
+//   const end = coords[segmentIndex + 1] || coords[coords.length - 1];
+//   const lat = start[0] + (end[0] - start[0]) * segmentT;
+//   const lng = start[1] + (end[1] - start[1]) * segmentT;
+//   return [lat, lng];
+// }
+
+// // Animate buses
+// function animateBuses(routeBuses) {
+//   // Compute current positions first (no DOM yet)
+//   const rowsData = routeBuses.map(bus => {
+//     if (!busData[bus.bus_id]) {
+//       busData[bus.bus_id] = {
+//         pos: Math.random(), // random start position along the route
+//         dir: Math.random() < 0.5 ? 1 : -1, // random initial direction
+//         marker: null
+//       };
+//     }
+//     const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+//     return { bus, lat, lng };
+//   });
+
+//   // Batch geocode once for all rows
+//   batchReverseGeocode(rowsData.map(r => ({ lat: r.lat, lng: r.lng })))
+//     .then(geoMap => {
+//       const tableBody = document.getElementById('busList');
+//       tableBody.innerHTML = '';
+
+//       rowsData.forEach(({ bus, lat, lng }) => {
+//         const icon = bus.status === 'On Time' ? busIcons.onTime : busIcons.delayed;
+
+//         if (!busData[bus.bus_id].marker) {
+//           busData[bus.bus_id].marker = L.marker([lat, lng], { icon })
+//             .bindPopup(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`)
+//             .addTo(map);
+//         } else {
+//           busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//           busData[bus.bus_id].marker.setPopupContent(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`);
+//         }
+
+//         const key = `${roundCoord(lat)},${roundCoord(lng)}`;
+//         const place = geoMap[key] || 'Unknown';
+
+//         const row = document.createElement('tr');
+//         row.innerHTML = `
+//           <td>${bus.bus_id}</td>
+//           <td>${bus.route_id}</td>
+//           <td class="${bus.status === 'On Time' ? 'status-on-time' : 'status-delayed'}">${bus.status}</td>
+//           <td>${place}</td>
+//           <td>${new Date(bus.last_updated).toLocaleTimeString()}</td>
+//         `;
+//         tableBody.appendChild(row);
+//       });
+//     })
+//     .catch(() => {
+//       // fallback if geocode fails
+//       const tableBody = document.getElementById('busList');
+//       tableBody.innerHTML = '';
+//       rowsData.forEach(({ bus }) => {
+//         const row = document.createElement('tr');
+//         row.innerHTML = `
+//           <td>${bus.bus_id}</td>
+//           <td>${bus.route_id}</td>
+//           <td class="${bus.status === 'On Time' ? 'status-on-time' : 'status-delayed'}">${bus.status}</td>
+//           <td>Unknown</td>
+//           <td>${new Date(bus.last_updated).toLocaleTimeString()}</td>
+//         `;
+//         tableBody.appendChild(row);
+//       });
+//     });
+
+//   // Smooth animation (marker movement only; table refreshes on next fetch)
+//   function step() {
+//     routeBuses.forEach(bus => {
+//       // speed: tweak the 0.00025 to speed up/down movement
+//       busData[bus.bus_id].pos += (0.00025 + Math.random() * 0.00025) * busData[bus.bus_id].dir;
+
+//       // Reverse direction at ends of the route
+//       if (busData[bus.bus_id].pos > 1) {
+//         busData[bus.bus_id].pos = 1;
+//         busData[bus.bus_id].dir = -1;
+//       } else if (busData[bus.bus_id].pos < 0) {
+//         busData[bus.bus_id].pos = 0;
+//         busData[bus.bus_id].dir = 1;
+//       }
+
+//       const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+//       if (busData[bus.bus_id].marker) {
+//         busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//       }
+//     });
+
+//     requestAnimationFrame(step);
+//   }
+//   requestAnimationFrame(step);
+// }
+
+// // Fetch buses & animate
+// async function fetchAndAnimateBuses() {
+//   try {
+//     const res = await fetch(currentRouteId === 'all' ? '/buses' : `/buses?route_id=${currentRouteId}`);
+//     const buses = await res.json();
+//     animateBuses(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//   }
+// }
+
+// // Init
+// initMap();
+// addMapLegend();
+// fetchRoutes();
+
+// // Refresh status + table every 30s (animation keeps running)
+// setInterval(fetchAndAnimateBuses, 30000);
+
+
+
+
+
+
+
+
+
+// let map;
+// let currentRouteId = 'all';
+
+// // Bus icons
+// const busIcons = {
+//   onTime: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18042/18042856.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   }),
+//   delayed: L.icon({
+//     iconUrl: 'https://cdn-icons-png.flaticon.com/512/18357/18357012.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 30],
+//     popupAnchor: [0, -30]
+//   })
+// };
+
+// // Realistic polyline coordinates for routes
+// const routesCoordinates = {
+//   101: [[6.9319, 79.8478],[6.966,79.900],[7.050,80.000],[7.200,80.200],[7.2955,80.6356]],
+//   102: [[6.9319,79.8478],[6.800,79.950],[6.600,80.100],[6.0367,80.217]],
+//   103: [[6.9319,79.8478],[6.700,79.900],[6.200,80.300],[5.9485,80.5353]],
+//   104: [[6.9319,79.8478],[7.500,79.900],[8.500,80.000],[9.6685,80.0074]],
+//   105: [[8.3122,80.4131],[7.900,80.200],[7.500,80.000],[6.9319,79.8478]]
+// };
+
+// // Track bus positions/directions/markers
+// const busData = {}; // { bus_id: { pos: 0..1, dir: 1|-1, marker: L.marker } }
+
+// // ---------- Reverse Geocoding (Nominatim) ----------
+// const geocodeCache = new Map(); // key: "lat,lng" (rounded), value: place string
+// const geocodeQueue = [];
+// let geocoderBusy = false;
+// const GEOCODE_DELAY_MS = 1100; // ~1 req/sec to be nice to the free API
+
+// function roundCoord(n) {
+//   return Math.round(n * 1000) / 1000; // 3-decimal rounding helps cache hits
+// }
+
+// function enqueueReverseGeocode(lat, lng, resolve) {
+//   geocodeQueue.push({ lat, lng, resolve });
+//   if (!geocoderBusy) processGeocodeQueue();
+// }
+
+// async function processGeocodeQueue() {
+//   geocoderBusy = true;
+//   while (geocodeQueue.length) {
+//     const { lat, lng, resolve } = geocodeQueue.shift();
+//     try {
+//       const place = await doReverseGeocode(lat, lng);
+//       resolve(place);
+//     } catch (e) {
+//       resolve('Unknown'); // fall back gracefully
+//     }
+//     await new Promise(r => setTimeout(r, GEOCODE_DELAY_MS));
+//   }
+//   geocoderBusy = false;
+// }
+
+// async function doReverseGeocode(lat, lng) {
+//   const key = `${roundCoord(lat)},${roundCoord(lng)}`;
+//   if (geocodeCache.has(key)) return geocodeCache.get(key);
+
+//   const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=10&addressdetails=1`;
+//   // Note: some browsers can’t set custom User-Agent; for heavy use, proxy through your server.
+//   const res = await fetch(url, {
+//     headers: { 'Accept': 'application/json' }
+//   });
+//   if (!res.ok) throw new Error('Geocode failed');
+
+//   const data = await res.json();
+//   const addr = data.address || {};
+//   // Try to pick a sensible label: town/city/village + state/country as fallback.
+//   const label =
+//     addr.city ||
+//     addr.town ||
+//     addr.village ||
+//     addr.municipality ||
+//     addr.county ||
+//     addr.state ||
+//     addr.country ||
+//     'Unknown';
+
+//   geocodeCache.set(key, label);
+//   return label;
+// }
+
+// function reverseGeocode(lat, lng) {
+//   return new Promise((resolve) => {
+//     enqueueReverseGeocode(lat, lng, resolve);
+//   });
+// }
+// // ---------- /Reverse Geocoding ----------
+
+// // Initialize map
+// function initMap() {
+//   map = L.map('map').setView([7.8731, 80.7718], 7);
+//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     attribution: '&copy; OpenStreetMap contributors'
+//   }).addTo(map);
+//   drawPolylines();
+// }
+
+// // Draw polylines for routes
+// function drawPolylines() {
+//   for (const routeId in routesCoordinates) {
+//     L.polyline(routesCoordinates[routeId], { color: 'blue', weight: 5, opacity: 0.5 }).addTo(map);
+//   }
+// }
+
+// // Map legend
+// function addMapLegend() {
+//   const legend = L.control({ position: 'bottomright' });
+//   legend.onAdd = function(map) {
+//     const div = L.DomUtil.create('div', 'legend');
+//     div.innerHTML = `
+//       <h4>Bus Status</h4>
+//       <i style="background: #27ae60"></i> On Time<br>
+//       <i style="background: #e74c3c"></i> Delayed
+//     `;
+//     return div;
+//   };
+//   legend.addTo(map);
+// }
+
+// // Fetch routes for dropdown
+// async function fetchRoutes() {
+//   const res = await fetch('/routes');
+//   const routes = await res.json();
+//   const select = document.getElementById('routeSelect');
+
+//   const allOption = document.createElement('option');
+//   allOption.value = 'all';
+//   allOption.textContent = 'All Routes';
+//   select.appendChild(allOption);
+
+//   routes.forEach(route => {
+//     const option = document.createElement('option');
+//     option.value = route.route_id;
+//     option.textContent = route.name;
+//     select.appendChild(option);
+//   });
+
+//   select.addEventListener('change', () => {
+//     currentRouteId = select.value;
+//     fetchAndAnimateBuses();
+//   });
+
+//   select.selectedIndex = 0;
+//   fetchAndAnimateBuses();
+// }
+
+// // Interpolate along a polyline
+// function getPositionAlongRoute(routeId, t) {
+//   const coords = routesCoordinates[routeId];
+//   if (!coords) return [6.9271, 79.8612];
+//   const totalSegments = coords.length - 1;
+//   const segmentIndex = Math.floor(t * totalSegments);
+//   const segmentT = (t * totalSegments) - segmentIndex;
+//   const start = coords[segmentIndex];
+//   const end = coords[segmentIndex + 1] || coords[coords.length - 1];
+//   const lat = start[0] + (end[0] - start[0]) * segmentT;
+//   const lng = start[1] + (end[1] - start[1]) * segmentT;
+//   return [lat, lng];
+// }
+
+// // Animate buses (back & forth)
+// function animateBuses(routeBuses) {
+//   const tableBody = document.getElementById('busList');
+//   tableBody.innerHTML = '';
+
+//   routeBuses.forEach(bus => {
+//     if (!busData[bus.bus_id]) {
+//       busData[bus.bus_id] = {
+//         pos: Math.random(),
+//         dir: Math.random() < 0.5 ? 1 : -1,
+//         marker: null
+//       };
+//     }
+
+//     const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+
+//     // Create or update marker
+//     if (!busData[bus.bus_id].marker) {
+//       busData[bus.bus_id].marker = L.marker([lat, lng], { icon: bus.status === 'On Time' ? busIcons.onTime : busIcons.delayed })
+//         .bindPopup(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`)
+//         .addTo(map);
+//     } else {
+//       busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//       busData[bus.bus_id].marker.setPopupContent(`<strong>Bus ${bus.bus_id}</strong><br>Status: <span style="color: ${bus.status === 'On Time' ? 'green' : 'red'}">${bus.status}</span>`);
+//     }
+
+//     // Build the row with a placeholder; we’ll fill location async
+//     const row = document.createElement('tr');
+//     const locationCellId = `loc-${bus.bus_id}`;
+//     row.innerHTML = `
+//       <td>${bus.bus_id}</td>
+//       <td>${bus.route_id}</td>
+//       <td class="${bus.status === 'On Time' ? 'status-on-time' : 'status-delayed'}">${bus.status}</td>
+//       <td id="${locationCellId}">Loading…</td>
+//       <td>${new Date(bus.last_updated).toLocaleTimeString()}</td>
+//     `;
+//     tableBody.appendChild(row);
+
+//     // Reverse-geocode for a friendly location name (city/town/village…)
+//     reverseGeocode(lat, lng).then(place => {
+//       const cell = document.getElementById(locationCellId);
+//       if (cell) cell.textContent = place;
+//     });
+//   });
+
+//   // Animation loop
+//   function step() {
+//     routeBuses.forEach(bus => {
+//       // adjust travel speed here if you want
+//       const speed = 0.00015 + Math.random() * 0.00025;
+//       busData[bus.bus_id].pos += speed * busData[bus.bus_id].dir;
+
+//       // bounce at ends
+//       if (busData[bus.bus_id].pos > 1) {
+//         busData[bus.bus_id].pos = 1;
+//         busData[bus.bus_id].dir = -1;
+//       } else if (busData[bus.bus_id].pos < 0) {
+//         busData[bus.bus_id].pos = 0;
+//         busData[bus.bus_id].dir = 1;
+//       }
+
+//       const [lat, lng] = getPositionAlongRoute(bus.route_id, busData[bus.bus_id].pos);
+//       busData[bus.bus_id].marker.setLatLng([lat, lng]);
+//     });
+
+//     requestAnimationFrame(step);
+//   }
+//   requestAnimationFrame(step);
+// }
+
+// // Fetch buses & animate
+// async function fetchAndAnimateBuses() {
+//   try {
+//     const res = await fetch(currentRouteId === 'all' ? '/buses' : `/buses?route_id=${currentRouteId}`);
+//     const buses = await res.json();
+//     animateBuses(buses);
+//   } catch (err) {
+//     console.error('Error fetching buses:', err);
+//   }
+// }
+
+// // Init
+// initMap();
+// addMapLegend();
+// fetchRoutes();
+// // Refresh bus data (status/last_updated) every 30s
+// setInterval(fetchAndAnimateBuses, 30000);
 
 
 

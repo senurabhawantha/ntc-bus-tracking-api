@@ -10,15 +10,15 @@
     },
     {
       "route_id": 103,
-      "name": "Colombo to Matara"
-    },
-    {
-      "route_id": 104,
       "name": "Colombo to Jaffna"
     },
     {
+      "route_id": 104,
+      "name": "Colombo to Anuradhapura"
+    },
+    {
       "route_id": 105,
-      "name": "Anuradhapura to Colombo"
+      "name": "Colombo to Matara"
     }
   ],
   "buses": [
@@ -27,58 +27,58 @@
       "route_id": 101,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.266Z",
           "location": {
-            "latitude": 7.04436200858491,
-            "longitude": 79.99328810545823
+            "latitude": 6.945332983604606,
+            "longitude": 79.84548983738559
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.266Z",
           "location": {
-            "latitude": 7.173560217281684,
-            "longitude": 80.16474695637558
+            "latitude": 6.941801233620503,
+            "longitude": 79.84584752682777
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.266Z",
           "location": {
-            "latitude": 6.95703490611065,
-            "longitude": 79.88627630788787
+            "latitude": 6.913358406453541,
+            "longitude": 79.84168583814065
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.266Z",
           "location": {
-            "latitude": 7.284472587805211,
-            "longitude": 80.5853011439576
+            "latitude": 6.917840457005515,
+            "longitude": 79.86681859407602
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T09:36:14.266Z",
+          "location": {
+            "latitude": 6.934243609955602,
+            "longitude": 79.83170184226014
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.266Z",
           "location": {
-            "latitude": 6.979607000790644,
-            "longitude": 79.91619881046506
+            "latitude": 6.912198280803791,
+            "longitude": 79.84927619642893
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.266Z",
           "location": {
-            "latitude": 7.039139595695858,
-            "longitude": 79.98707094725697
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.0099958805850875,
-            "longitude": 79.95237604831559
+            "latitude": 6.945067561818532,
+            "longitude": 79.87255988977847
           },
           "status": "On Time"
         }
@@ -89,60 +89,60 @@
       "route_id": 101,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.266Z",
           "location": {
-            "latitude": 6.9808001693490676,
-            "longitude": 79.91761924922508
+            "latitude": 6.9104922809870635,
+            "longitude": 79.8267625843783
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.266Z",
           "location": {
-            "latitude": 7.001377245073265,
-            "longitude": 79.94211576794437
+            "latitude": 6.94365758381771,
+            "longitude": 79.83802660484712
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.266Z",
           "location": {
-            "latitude": 7.118918677730154,
-            "longitude": 80.09189157030687
+            "latitude": 6.939367290328988,
+            "longitude": 79.8274658648077
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.266Z",
           "location": {
-            "latitude": 6.9746262921809254,
-            "longitude": 79.91026939545348
+            "latitude": 6.935886288723898,
+            "longitude": 79.84368133823214
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.266Z",
           "location": {
-            "latitude": 6.956375682723501,
-            "longitude": 79.8852671741398
+            "latitude": 6.925996110026928,
+            "longitude": 79.83585589993207
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.266Z",
           "location": {
-            "latitude": 6.948361935154425,
-            "longitude": 79.87299979516308
+            "latitude": 6.923045297435154,
+            "longitude": 79.8366159299454
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.266Z",
           "location": {
-            "latitude": 6.962082225953384,
-            "longitude": 79.89400270365886
+            "latitude": 6.939622183850676,
+            "longitude": 79.82585656939659
           },
-          "status": "On Time"
+          "status": "Delayed"
         }
       ]
     },
@@ -151,60 +151,60 @@
       "route_id": 101,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.266Z",
           "location": {
-            "latitude": 6.961397084676105,
-            "longitude": 79.89295389501738
+            "latitude": 6.949475502517566,
+            "longitude": 79.84186953107613
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.266Z",
           "location": {
-            "latitude": 6.9937180363578735,
-            "longitude": 79.9329976623308
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.2081388752385305,
-            "longitude": 80.23712349794664
+            "latitude": 6.928915604359474,
+            "longitude": 79.86593396071628
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.266Z",
           "location": {
-            "latitude": 7.022928139595872,
-            "longitude": 79.967771594757
+            "latitude": 6.925636102910235,
+            "longitude": 79.86631956524216
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.266Z",
           "location": {
-            "latitude": 7.230989970691905,
-            "longitude": 80.34135320663239
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.1825457140401205,
-            "longitude": 80.17672761872016
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.17120016134273,
-            "longitude": 80.16160021512364
+            "latitude": 6.9235922743752,
+            "longitude": 79.8559647610819
           },
           "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T09:36:14.266Z",
+          "location": {
+            "latitude": 6.927821261446738,
+            "longitude": 79.85319874461008
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T09:36:14.266Z",
+          "location": {
+            "latitude": 6.920814836397655,
+            "longitude": 79.85130571355715
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-10T09:36:14.266Z",
+          "location": {
+            "latitude": 6.914096982164811,
+            "longitude": 79.827715706595
+          },
+          "status": "On Time"
         }
       ]
     },
@@ -213,58 +213,58 @@
       "route_id": 101,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.266Z",
           "location": {
-            "latitude": 6.965938137337152,
-            "longitude": 79.89990530114368
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.967038261802506,
-            "longitude": 79.90123602595537
+            "latitude": 6.921582032766629,
+            "longitude": 79.84108732900577
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.266Z",
           "location": {
-            "latitude": 7.246821541127321,
-            "longitude": 80.41356506089069
+            "latitude": 6.924359303107113,
+            "longitude": 79.83304510616797
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T09:36:14.266Z",
+          "location": {
+            "latitude": 6.929622945363356,
+            "longitude": 79.82680856437564
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.266Z",
           "location": {
-            "latitude": 7.278429440467716,
-            "longitude": 80.55773679861505
+            "latitude": 6.939794778142816,
+            "longitude": 79.82782120830063
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.266Z",
           "location": {
-            "latitude": 7.27996392085578,
-            "longitude": 80.56473595732751
+            "latitude": 6.9413780981617546,
+            "longitude": 79.83637297516951
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.266Z",
           "location": {
-            "latitude": 7.251520799450886,
-            "longitude": 80.43499958367336
+            "latitude": 6.922781134859694,
+            "longitude": 79.82791152192782
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.266Z",
           "location": {
-            "latitude": 6.9501060916421356,
-            "longitude": 79.87566973559295
+            "latitude": 6.931598631726467,
+            "longitude": 79.85184429597922
           },
           "status": "On Time"
         }
@@ -275,370 +275,60 @@
       "route_id": 101,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.266Z",
           "location": {
-            "latitude": 7.092663296187788,
-            "longitude": 80.05688439491705
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.221156209875282,
-            "longitude": 80.2964989007505
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.242773054517456,
-            "longitude": 80.39509887484611
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.039820736918447,
-            "longitude": 79.98788182966481
+            "latitude": 6.94260802031449,
+            "longitude": 79.8682484093593
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.266Z",
           "location": {
-            "latitude": 7.277351571154864,
-            "longitude": 80.55282036015768
+            "latitude": 6.926429773764922,
+            "longitude": 79.83765128962852
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T09:36:14.266Z",
+          "location": {
+            "latitude": 6.911396395226682,
+            "longitude": 79.85608502825741
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T09:36:14.266Z",
+          "location": {
+            "latitude": 6.910146790829331,
+            "longitude": 79.86813013324745
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.266Z",
           "location": {
-            "latitude": 7.041930590955205,
-            "longitude": 79.99039356066096
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.977271009634573,
-            "longitude": 79.9134178686126
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10106,
-      "route_id": 101,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.94673732346042,
-            "longitude": 79.87051285292182
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.964726131845883,
-            "longitude": 79.8980499730896
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.961792060545688,
-            "longitude": 79.89355852083534
+            "latitude": 6.947571889635123,
+            "longitude": 79.8422288510146
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.266Z",
           "location": {
-            "latitude": 7.0678114684945275,
-            "longitude": 80.02374862465938
+            "latitude": 6.943868375012,
+            "longitude": 79.85810110696781
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.266Z",
           "location": {
-            "latitude": 7.054531551462868,
-            "longitude": 80.00604206861716
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.247111602925916,
-            "longitude": 80.41488810716784
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.999009750213773,
-            "longitude": 79.93929732168307
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10107,
-      "route_id": 101,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.9470625949935725,
-            "longitude": 79.87101077591392
+            "latitude": 6.922295589670166,
+            "longitude": 79.86842918563595
           },
           "status": "Delayed"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.036405102881611,
-            "longitude": 79.98381559866858
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.155101181406955,
-            "longitude": 80.1401349085426
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.049577207043881,
-            "longitude": 79.99949667505224
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.991910713307366,
-            "longitude": 79.93084608727068
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.983484616610522,
-            "longitude": 79.92081501977444
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.289485011629827,
-            "longitude": 80.60816409493144
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10108,
-      "route_id": 101,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.964367685687396,
-            "longitude": 79.89750126665344
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.065361625295398,
-            "longitude": 80.02048216706054
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.114814838007583,
-            "longitude": 80.08641978401012
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.146646349606855,
-            "longitude": 80.12886179947581
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.15226126160086,
-            "longitude": 80.13634834880115
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.254551749359424,
-            "longitude": 80.44882452377973
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.9432891957957645,
-            "longitude": 79.86523448740584
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10109,
-      "route_id": 101,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.961486628755032,
-            "longitude": 79.89309096835815
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.961342355968088,
-            "longitude": 79.89287011676053
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.203896429456008,
-            "longitude": 80.2177726143564
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.251775953495758,
-            "longitude": 80.43616340673039
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.195191930334107,
-            "longitude": 80.19358924044548
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.289491059843392,
-            "longitude": 80.60819168238515
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.958421852561457,
-            "longitude": 79.88839943412634
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10110,
-      "route_id": 101,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.975308380887712,
-            "longitude": 79.9110814058187
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.941169285771863,
-            "longitude": 79.86198934654814
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.063054887399352,
-            "longitude": 80.01740651653247
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.219233301086193,
-            "longitude": 80.2877280204518
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.23788337373578,
-            "longitude": 80.37279578638017
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.11257274992817,
-            "longitude": 80.08343033323756
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.268884083877346,
-            "longitude": 80.5141979783976
-          },
-          "status": "On Time"
         }
       ]
     },
@@ -647,58 +337,58 @@
       "route_id": 102,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.266Z",
           "location": {
-            "latitude": 6.490101955706926,
-            "longitude": 80.12282632910046
+            "latitude": 6.95052271949473,
+            "longitude": 79.83801339108221
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.266Z",
           "location": {
-            "latitude": 6.6981887386688905,
-            "longitude": 80.02635844599833
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.774236147055777,
-            "longitude": 79.96932288970817
+            "latitude": 6.911289913386264,
+            "longitude": 79.85906861991553
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.266Z",
           "location": {
-            "latitude": 6.814179722333714,
-            "longitude": 79.93901313402195
+            "latitude": 6.917251171684095,
+            "longitude": 79.86069922048279
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T09:36:14.266Z",
+          "location": {
+            "latitude": 6.909358005924313,
+            "longitude": 79.82624185915323
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.266Z",
           "location": {
-            "latitude": 6.663954388281521,
-            "longitude": 80.05203420878885
+            "latitude": 6.927930113882073,
+            "longitude": 79.8707096190386
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.828428598868969,
-            "longitude": 79.92797268533428
+            "latitude": 6.912478892440572,
+            "longitude": 79.82647973564046
           },
-          "status": "On Time"
+          "status": "Delayed"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 6.901171893659914,
-            "longitude": 79.87160904069718
+            "latitude": 6.93112941743279,
+            "longitude": 79.84383464482009
           },
           "status": "On Time"
         }
@@ -709,58 +399,58 @@
       "route_id": 102,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.341755912339472,
-            "longitude": 80.15363848438892
+            "latitude": 6.950579826931279,
+            "longitude": 79.85870332394853
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.3916724027461,
-            "longitude": 80.14327059982017
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.806146332930694,
-            "longitude": 79.9452376404434
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.909510443279778,
-            "longitude": 79.86514808716306
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.854897246384148,
-            "longitude": 79.90746399863184
+            "latitude": 6.953839555002083,
+            "longitude": 79.84586119638632
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 6.777642687627225,
-            "longitude": 79.96676798427958
+            "latitude": 6.949461872656448,
+            "longitude": 79.85330194170955
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.86995962223097,
-            "longitude": 79.8957932267475
+            "latitude": 6.943211795695542,
+            "longitude": 79.83088939824272
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T09:36:14.267Z",
+          "location": {
+            "latitude": 6.909482084312116,
+            "longitude": 79.83318262696248
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T09:36:14.267Z",
+          "location": {
+            "latitude": 6.933368004362724,
+            "longitude": 79.82733641641303
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-10T09:36:14.267Z",
+          "location": {
+            "latitude": 6.930372455818899,
+            "longitude": 79.82910463165028
           },
           "status": "On Time"
         }
@@ -771,60 +461,60 @@
       "route_id": 102,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.903856264933372,
-            "longitude": 79.86952911087043
+            "latitude": 6.94149339851443,
+            "longitude": 79.86977768613735
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.869489379009285,
-            "longitude": 79.89615758502845
+            "latitude": 6.940000515051797,
+            "longitude": 79.84707718277345
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 6.677225112202543,
-            "longitude": 80.04208116584809
+            "latitude": 6.945638940348224,
+            "longitude": 79.83448729638157
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.802643575175865,
-            "longitude": 79.94795168018975
+            "latitude": 6.946679802058363,
+            "longitude": 79.83795966743695
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 6.524676787445503,
-            "longitude": 80.11564497757655
+            "latitude": 6.918652065119063,
+            "longitude": 79.83357780210831
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.75962180289381,
-            "longitude": 79.98028364782964
+            "latitude": 6.945161863804662,
+            "longitude": 79.82333172551182
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 6.639100237842661,
-            "longitude": 80.070674821618
+            "latitude": 6.920759926772809,
+            "longitude": 79.83861231077226
           },
-          "status": "On Time"
+          "status": "Delayed"
         }
       ]
     },
@@ -833,58 +523,58 @@
       "route_id": 102,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.071116566933913,
-            "longitude": 80.20985152080371
+            "latitude": 6.948880829424641,
+            "longitude": 79.83424750127652
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.459379670664865,
-            "longitude": 80.12920748896185
+            "latitude": 6.922762589425463,
+            "longitude": 79.86872264419449
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 6.896822954985823,
-            "longitude": 79.87497872631121
+            "latitude": 6.916646241214987,
+            "longitude": 79.82974937241048
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.706861773045103,
-            "longitude": 80.01985367021618
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.830180201752862,
-            "longitude": 79.9266154918943
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.630079015322185,
-            "longitude": 80.07744073850836
+            "latitude": 6.940397950447839,
+            "longitude": 79.85748858046975
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 6.478594581489467,
-            "longitude": 80.12521646363524
+            "latitude": 6.930133647623013,
+            "longitude": 79.83330169904012
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T09:36:14.267Z",
+          "location": {
+            "latitude": 6.939235012096326,
+            "longitude": 79.8672849730635
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-10T09:36:14.267Z",
+          "location": {
+            "latitude": 6.908671858674414,
+            "longitude": 79.86822180015312
           },
           "status": "Delayed"
         }
@@ -895,370 +585,60 @@
       "route_id": 102,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.712807002488598,
-            "longitude": 80.01539474813355
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.814713844801058,
-            "longitude": 79.93859928022238
+            "latitude": 6.9211798571825645,
+            "longitude": 79.84125586777431
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.601742305445343,
-            "longitude": 80.09869327091599
+            "latitude": 6.923371444047095,
+            "longitude": 79.8360129244199
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 6.926638404548917,
-            "longitude": 79.85187683893177
+            "latitude": 6.913086790328085,
+            "longitude": 79.84650962555303
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.283385907007994,
-            "longitude": 80.16576220287602
+            "latitude": 6.922872996062304,
+            "longitude": 79.86272191981706
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 6.788525913434487,
-            "longitude": 79.95860556492414
+            "latitude": 6.949678285284846,
+            "longitude": 79.83322407555501
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.680132250096352,
-            "longitude": 80.03990081242773
-          },
-          "status": "Delayed"
-        }
-      ]
-    },
-    {
-      "bus_id": 10206,
-      "route_id": 102,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.5859058970812825,
-            "longitude": 80.10292740997956
+            "latitude": 6.952804995555202,
+            "longitude": 79.83559325612237
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 6.1678176726250085,
-            "longitude": 80.18976625652915
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.687656431126794,
-            "longitude": 80.0342576766549
+            "latitude": 6.94780394575655,
+            "longitude": 79.82733566321491
           },
           "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.900024077999791,
-            "longitude": 79.87249840203505
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.772538130160703,
-            "longitude": 79.97059640237947
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.582254250669308,
-            "longitude": 80.10368587372925
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.674642450952414,
-            "longitude": 80.04401816178569
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10207,
-      "route_id": 102,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.437151709266217,
-            "longitude": 80.13382433874641
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.814941168172685,
-            "longitude": 79.93842314338706
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.82938097377422,
-            "longitude": 79.92723475724242
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.836082098521678,
-            "longitude": 79.9220425286663
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.3034212712225655,
-            "longitude": 80.16160076560794
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.095604732852754,
-            "longitude": 80.2047652161481
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.646924083224296,
-            "longitude": 80.06480693758178
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10208,
-      "route_id": 102,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.713486885995435,
-            "longitude": 80.01488483550342
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.86960801645505,
-            "longitude": 79.8960656612456
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.6110175960641735,
-            "longitude": 80.09173680295187
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.719630277512936,
-            "longitude": 80.0102772918653
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.630452145341494,
-            "longitude": 80.07716089099388
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.909978579690305,
-            "longitude": 79.86478536130137
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.898975421882117,
-            "longitude": 79.87331093164252
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10209,
-      "route_id": 102,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.728657143529185,
-            "longitude": 80.00350714235312
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.770505115698085,
-            "longitude": 79.97212116322643
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.420679195305095,
-            "longitude": 80.13724575563519
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.914097671896117,
-            "longitude": 79.86159376749217
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.874079216485032,
-            "longitude": 79.89260124393654
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.840355400146709,
-            "longitude": 79.91873144886283
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.71314115155576,
-            "longitude": 80.01514413633318
-          },
-          "status": "Delayed"
-        }
-      ]
-    },
-    {
-      "bus_id": 10210,
-      "route_id": 102,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.0581668201737395,
-            "longitude": 80.2125412427475
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.902263430674662,
-            "longitude": 79.87076328570924
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.759914283759726,
-            "longitude": 79.98006428718021
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.747637421438731,
-            "longitude": 79.98927193392095
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.476975692402498,
-            "longitude": 80.1255527143421
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.897110213443533,
-            "longitude": 79.87475615000812
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.691147293940563,
-            "longitude": 80.03163952954458
-          },
-          "status": "Delayed"
         }
       ]
     },
@@ -1267,60 +647,60 @@
       "route_id": 103,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.101008435221566,
-            "longitude": 80.39261516975095
+            "latitude": 6.910520550261608,
+            "longitude": 79.8367982929738
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.5860854903122155,
-            "longitude": 79.99113160775023
+            "latitude": 6.948976201481413,
+            "longitude": 79.84798901197134
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T09:36:14.267Z",
+          "location": {
+            "latitude": 6.9113498649114575,
+            "longitude": 79.83562272757901
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.13304186678637,
-            "longitude": 80.36264512423526
+            "latitude": 6.9550238877327715,
+            "longitude": 79.86929669062573
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 6.797743638557854,
-            "longitude": 79.87799819778905
+            "latitude": 6.954936577432438,
+            "longitude": 79.8546958347556
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.066626064090237,
-            "longitude": 80.42478285137005
+            "latitude": 6.910862293164332,
+            "longitude": 79.83869993559055
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 5.9631535743431865,
-            "longitude": 80.52159031394453
+            "latitude": 6.953625552076946,
+            "longitude": 79.85415479235697
           },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.472468892967838,
-            "longitude": 80.08202488562573
-          },
-          "status": "On Time"
+          "status": "Delayed"
         }
       ]
     },
@@ -1329,58 +709,58 @@
       "route_id": 103,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.140011484042182,
-            "longitude": 80.35612444455218
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.923690260451735,
-            "longitude": 79.84964798794489
+            "latitude": 6.929238582063799,
+            "longitude": 79.85028138919076
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.065234680951778,
-            "longitude": 80.42608461062444
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.89188687088953,
-            "longitude": 79.85680683630689
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.777575532627344,
-            "longitude": 79.88253797842542
+            "latitude": 6.90873349965397,
+            "longitude": 79.85993350892441
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 6.835007068392422,
-            "longitude": 79.86961031060767
+            "latitude": 6.9397300388989205,
+            "longitude": 79.86185034624248
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-07T09:36:14.267Z",
+          "location": {
+            "latitude": 6.920072901806818,
+            "longitude": 79.86896147342912
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 6.064680340199929,
-            "longitude": 80.4266032443378
+            "latitude": 6.952954863092924,
+            "longitude": 79.83336444063441
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-09T09:36:14.267Z",
+          "location": {
+            "latitude": 6.943299280300994,
+            "longitude": 79.85996402297658
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-10T09:36:14.267Z",
+          "location": {
+            "latitude": 6.912442362405267,
+            "longitude": 79.82646681628464
           },
           "status": "On Time"
         }
@@ -1391,58 +771,58 @@
       "route_id": 103,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 5.965071611922474,
-            "longitude": 80.51979582391509
+            "latitude": 6.9332523444008745,
+            "longitude": 79.8522027520798
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.343845422495622,
-            "longitude": 80.1849236620035
+            "latitude": 6.920366963163186,
+            "longitude": 79.83923489083712
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 6.096714811517651,
-            "longitude": 80.39663222604332
+            "latitude": 6.947527456200793,
+            "longitude": 79.84801052808038
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.8422809113414536,
-            "longitude": 79.86797299020257
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.103668638554468,
-            "longitude": 80.39012631947568
+            "latitude": 6.931815776367241,
+            "longitude": 79.82751465605556
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 6.845782648135452,
-            "longitude": 79.86718475966939
+            "latitude": 6.946000936312226,
+            "longitude": 79.86907194702047
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.836025407080541,
-            "longitude": 79.86938108559896
+            "latitude": 6.922180192060486,
+            "longitude": 79.87060492661308
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-10T09:36:14.267Z",
+          "location": {
+            "latitude": 6.950703910458476,
+            "longitude": 79.8662461863301
           },
           "status": "On Time"
         }
@@ -1453,58 +833,58 @@
       "route_id": 103,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.646482876675155,
-            "longitude": 79.94281369865988
+            "latitude": 6.922954897416026,
+            "longitude": 79.82333588183687
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.337316004505404,
-            "longitude": 80.19014719639567
+            "latitude": 6.930770223619715,
+            "longitude": 79.82937834920303
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-06T09:36:14.267Z",
+          "location": {
+            "latitude": 6.910580842468734,
+            "longitude": 79.87273780986988
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.662072359091407,
-            "longitude": 79.93034211272688
+            "latitude": 6.943139562942123,
+            "longitude": 79.82359679626887
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 5.963059535321697,
-            "longitude": 80.52167829558174
+            "latitude": 6.935985207222155,
+            "longitude": 79.85586112083334
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.204172866914179,
-            "longitude": 80.29666170646865
+            "latitude": 6.90756268429498,
+            "longitude": 79.87191663931574
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 6.559116210131789,
-            "longitude": 80.01270703189458
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.111041103174213,
-            "longitude": 80.38322874124496
+            "latitude": 6.946710384101529,
+            "longitude": 79.84120824793696
           },
           "status": "On Time"
         }
@@ -1515,370 +895,60 @@
       "route_id": 103,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 6.366523342769216,
-            "longitude": 80.16678132578463
+            "latitude": 6.930327560279255,
+            "longitude": 79.8273908223372
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 6.0715337382556775,
-            "longitude": 80.42019129776716
+            "latitude": 6.9445625676578455,
+            "longitude": 79.83535798350178
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 6.746775744412337,
-            "longitude": 79.8894709191103
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.032965713711183,
-            "longitude": 80.45627502013423
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.843283525065629,
-            "longitude": 79.86774730483646
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.328549799754191,
-            "longitude": 80.19716016019665
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.0847533908868465,
-            "longitude": 80.40782316948042
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10306,
-      "route_id": 103,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.792113973150187,
-            "longitude": 79.8792654187217
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.094481609036873,
-            "longitude": 80.39872158009393
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.7723265026086334,
-            "longitude": 79.88371951946456
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.543453636820499,
-            "longitude": 80.0252370905436
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.84724617483012,
-            "longitude": 79.86685532416503
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.700461182333882,
-            "longitude": 79.89989618922885
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.711844972202604,
-            "longitude": 79.89733373200097
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10307,
-      "route_id": 103,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.793102112289439,
-            "longitude": 79.87904299154158
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.849981403846748,
-            "longitude": 79.86623963225183
+            "latitude": 6.9411912287970345,
+            "longitude": 79.83793947574326
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 6.324615429655175,
-            "longitude": 80.20030765627585
+            "latitude": 6.935556119447278,
+            "longitude": 79.83515912731687
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 6.262215664072336,
-            "longitude": 80.25022746874212
+            "latitude": 6.908190856157048,
+            "longitude": 79.83783688568364
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.072944549403423,
-            "longitude": 80.41887136192992
+            "latitude": 6.941116613437071,
+            "longitude": 79.83147248336887
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 6.141286954136243,
-            "longitude": 80.35493113197512
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.826219353439693,
-            "longitude": 79.87158839909638
+            "latitude": 6.952807357914026,
+            "longitude": 79.85845884833597
           },
           "status": "Delayed"
-        }
-      ]
-    },
-    {
-      "bus_id": 10308,
-      "route_id": 103,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.463887816516239,
-            "longitude": 80.088889746787
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.549768214161714,
-            "longitude": 80.02018542867063
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.0221032287559115,
-            "longitude": 80.46643781420968
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.333155744028188,
-            "longitude": 80.19347540477744
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.308000291608183,
-            "longitude": 80.21359976671346
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.886860951266187,
-            "longitude": 79.85793815585988
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.045218553397975,
-            "longitude": 80.44481142896802
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10309,
-      "route_id": 103,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.774048835839429,
-            "longitude": 79.88333182737897
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.870280275351628,
-            "longitude": 79.86167041667376
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.047006462694436,
-            "longitude": 80.4431386852008
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.871880950609217,
-            "longitude": 79.86131010943596
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.842101282952874,
-            "longitude": 79.86801342401837
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.771781487453291,
-            "longitude": 79.88384220075437
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.486499928752804,
-            "longitude": 80.07080005699775
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10310,
-      "route_id": 103,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 6.817345200080329,
-            "longitude": 79.87358594461323
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.598172068843166,
-            "longitude": 79.98146234492548
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 6.166192884962398,
-            "longitude": 80.33162947979463
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.826801057965391,
-            "longitude": 79.87145745913845
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 6.153116899129139,
-            "longitude": 80.34386319536745
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 6.930502459818137,
-            "longitude": 79.84811458213667
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.186912190319202,
-            "longitude": 80.31224477780474
-          },
-          "status": "On Time"
         }
       ]
     },
@@ -1887,58 +957,58 @@
       "route_id": 104,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 7.420558550201605,
-            "longitude": 79.8927005039967
+            "latitude": 6.947555693567506,
+            "longitude": 79.86658518946646
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T09:36:14.267Z",
+          "location": {
+            "latitude": 6.91354683552683,
+            "longitude": 79.8621289856012
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-06T09:36:14.267Z",
+          "location": {
+            "latitude": 6.94600556827622,
+            "longitude": 79.86581554681416
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 7.720253465100259,
-            "longitude": 79.92202534651003
+            "latitude": 6.9270656781878275,
+            "longitude": 79.82960957207946
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 7.75118803355314,
-            "longitude": 79.92511880335532
+            "latitude": 6.925640041997608,
+            "longitude": 79.8568930215868
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T09:36:14.267Z",
+          "location": {
+            "latitude": 6.9150614636420045,
+            "longitude": 79.85705516718129
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 8.007673324706783,
-            "longitude": 79.95076733247068
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 9.643483167613496,
-            "longitude": 80.00724157076624
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 9.330171197079585,
-            "longitude": 80.0052573956854
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.985697491335641,
-            "longitude": 79.85274319494407
+            "latitude": 6.935538518646256,
+            "longitude": 79.83109934861892
           },
           "status": "On Time"
         }
@@ -1949,58 +1019,58 @@
       "route_id": 104,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 9.494492046059488,
-            "longitude": 80.00629802408288
+            "latitude": 6.952891775323671,
+            "longitude": 79.85566161420968
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 7.473359051049893,
-            "longitude": 79.89755209023906
+            "latitude": 6.914922767936809,
+            "longitude": 79.82697567282563
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 9.182750953667437,
-            "longitude": 80.00432379722477
+            "latitude": 6.938533256695925,
+            "longitude": 79.82287853416541
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 7.605371533244988,
-            "longitude": 79.9105371533245
+            "latitude": 6.936128792770108,
+            "longitude": 79.86044485983763
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 9.070233808618234,
-            "longitude": 80.00361123678543
+            "latitude": 6.949871881989857,
+            "longitude": 79.85655614941122
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T09:36:14.267Z",
+          "location": {
+            "latitude": 6.93020310953227,
+            "longitude": 79.86813450756179
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 9.459618619040466,
-            "longitude": 80.0060771739674
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 8.025950464868757,
-            "longitude": 79.95259504648688
+            "latitude": 6.9403476304457055,
+            "longitude": 79.86763125343649
           },
           "status": "On Time"
         }
@@ -2011,60 +1081,60 @@
       "route_id": 104,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 7.3049415147013255,
-            "longitude": 79.8820770059275
+            "latitude": 6.953989761989619,
+            "longitude": 79.82566169047686
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 8.79004001168687,
-            "longitude": 80.00183679596618
+            "latitude": 6.942024945787001,
+            "longitude": 79.85063650472787
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 7.174738396604346,
-            "longitude": 79.87011326228262
+            "latitude": 6.940928192660132,
+            "longitude": 79.85299005335476
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 8.645697115101894,
-            "longitude": 80.000922686052
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 9.302249207628977,
-            "longitude": 80.00508056836668
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.000023503477492,
-            "longitude": 79.85405954388581
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.719074877067349,
-            "longitude": 79.92190748770673
+            "latitude": 6.932507585207662,
+            "longitude": 79.84326716259055
           },
           "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T09:36:14.267Z",
+          "location": {
+            "latitude": 6.9313382010459526,
+            "longitude": 79.8440113425826
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-09T09:36:14.267Z",
+          "location": {
+            "latitude": 6.93846432635037,
+            "longitude": 79.82472819425634
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-10T09:36:14.267Z",
+          "location": {
+            "latitude": 6.910502757434134,
+            "longitude": 79.84304921802793
+          },
+          "status": "On Time"
         }
       ]
     },
@@ -2073,58 +1143,58 @@
       "route_id": 104,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 7.010344481455437,
-            "longitude": 79.85500788933635
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 9.237003792918356,
-            "longitude": 80.00466737532528
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 8.869740396918827,
-            "longitude": 80.00234153096893
+            "latitude": 6.948436759550944,
+            "longitude": 79.83122668754191
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 7.847045213896457,
-            "longitude": 79.93470452138965
+            "latitude": 6.950621538788876,
+            "longitude": 79.86408011446935
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 8.217950284800443,
-            "longitude": 79.97179502848005
+            "latitude": 6.933186841494095,
+            "longitude": 79.83129323576388
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-07T09:36:14.267Z",
+          "location": {
+            "latitude": 6.909180485608417,
+            "longitude": 79.82740641840434
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T09:36:14.267Z",
+          "location": {
+            "latitude": 6.931747249664794,
+            "longitude": 79.83888704912422
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 7.164198688330044,
-            "longitude": 79.86914481874817
+            "latitude": 6.947163773388826,
+            "longitude": 79.84936693983514
           },
-          "status": "On Time"
+          "status": "Delayed"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 7.27782658060975,
-            "longitude": 79.87958554393211
+            "latitude": 6.940846209157531,
+            "longitude": 79.8544222666863
           },
           "status": "On Time"
         }
@@ -2135,368 +1205,58 @@
       "route_id": 104,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 8.11946611843564,
-            "longitude": 79.96194661184357
+            "latitude": 6.927938894278721,
+            "longitude": 79.8460532883615
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 7.042056513097801,
-            "longitude": 79.85792175670429
+            "latitude": 6.941566613020032,
+            "longitude": 79.84810515485763
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 7.2168561229482995,
-            "longitude": 79.87398325931686
+            "latitude": 6.92601262052161,
+            "longitude": 79.84473766425066
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 9.098446291733504,
-            "longitude": 80.00378990377307
+            "latitude": 6.9223994057397995,
+            "longitude": 79.83284246186074
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 8.294154584083918,
-            "longitude": 79.9794154584084
+            "latitude": 6.912663500352822,
+            "longitude": 79.84858864880209
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 8.895784909329423,
-            "longitude": 80.00250646840311
+            "latitude": 6.924137458303012,
+            "longitude": 79.85794377873225
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 7.056078945378569,
-            "longitude": 79.85921021114024
-          },
-          "status": "Delayed"
-        }
-      ]
-    },
-    {
-      "bus_id": 10406,
-      "route_id": 104,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.964179882044351,
-            "longitude": 79.94641798820444
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.292384869825261,
-            "longitude": 79.88092323570653
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 9.014112386149124,
-            "longitude": 80.0032558251241
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 9.388419533541446,
-            "longitude": 80.00562627689192
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 8.228337088513914,
-            "longitude": 79.9728337088514
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 8.3609241774091,
-            "longitude": 79.9860924177409
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 8.91632944436034,
-            "longitude": 80.00263657500065
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10407,
-      "route_id": 104,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.33068051272203,
-            "longitude": 79.88444203971852
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.993024414925067,
-            "longitude": 79.9493024414925
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 9.317849629468324,
-            "longitude": 80.00517936436292
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.4331048107310185,
-            "longitude": 79.89385332004957
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.534270375467127,
-            "longitude": 79.90342703754672
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 9.59208513331874,
-            "longitude": 80.00691607187554
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.635236728027429,
-            "longitude": 79.91352367280275
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10408,
-      "route_id": 104,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 8.9592899353631,
-            "longitude": 80.0029086397276
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 8.196592343262303,
-            "longitude": 79.96965923432623
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.452637133162213,
-            "longitude": 79.89564805201738
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 8.392024892818313,
-            "longitude": 79.98920248928184
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 9.413286039588547,
-            "longitude": 80.0057837541232
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.006579967705033,
-            "longitude": 79.854661986119
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 8.37530508145442,
-            "longitude": 79.98753050814544
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10409,
-      "route_id": 104,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.307640503177456,
-            "longitude": 79.88232500310838
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 9.389317935715809,
-            "longitude": 80.00563196638794
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 8.285065310888092,
-            "longitude": 79.97850653108881
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.964354981168226,
-            "longitude": 79.94643549811683
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 8.416299279499965,
-            "longitude": 79.99162992795
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 8.279430663186078,
-            "longitude": 79.9779430663186
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 6.975576756924692,
-            "longitude": 79.85181324892004
-          },
-          "status": "Delayed"
-        }
-      ]
-    },
-    {
-      "bus_id": 10410,
-      "route_id": 104,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.385083496866207,
-            "longitude": 79.88944087050945
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.038039404142229,
-            "longitude": 79.85755264371805
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 9.51294043678468,
-            "longitude": 80.00641485599675
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 8.143218135466515,
-            "longitude": 79.96432181354665
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.818317082566526,
-            "longitude": 79.93183170825665
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.707959928453657,
-            "longitude": 79.92079599284537
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 8.913302978441445,
-            "longitude": 80.00261740867819
+            "latitude": 6.943750376379437,
+            "longitude": 79.8490936594084
           },
           "status": "On Time"
         }
@@ -2507,58 +1267,58 @@
       "route_id": 105,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 8.004699492382697,
-            "longitude": 80.25412775794942
+            "latitude": 6.907495654133628,
+            "longitude": 79.86880743807802
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 8.017663561795331,
-            "longitude": 80.26082994909895
+            "latitude": 6.925318782367282,
+            "longitude": 79.85771017072929
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 7.435927762230814,
-            "longitude": 79.98283436967353
+            "latitude": 6.924849160756057,
+            "longitude": 79.8443249576818
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 7.559424541120999,
-            "longitude": 80.0297122705605
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.470791808334523,
-            "longitude": 79.99217481645576
+            "latitude": 6.927106390251818,
+            "longitude": 79.85610408022066
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 7.145892160197372,
-            "longitude": 79.90513076356635
+            "latitude": 6.940238127608956,
+            "longitude": 79.85376005678826
           },
-          "status": "Delayed"
+          "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 7.963476000317981,
-            "longitude": 80.23281595261466
+            "latitude": 6.9527103608706335,
+            "longitude": 79.86493418645479
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-10T09:36:14.267Z",
+          "location": {
+            "latitude": 6.950260898871814,
+            "longitude": 79.86649193096083
           },
           "status": "On Time"
         }
@@ -2569,58 +1329,58 @@
       "route_id": 105,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 7.148335361272215,
-            "longitude": 79.90578532298123
+            "latitude": 6.947612601767466,
+            "longitude": 79.8640409316712
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 8.185365879668977,
-            "longitude": 80.3475290367721
+            "latitude": 6.919769273547167,
+            "longitude": 79.8433385589996
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 7.432109370998022,
-            "longitude": 79.98181138226703
+            "latitude": 6.920865616918012,
+            "longitude": 79.82586789697464
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 7.759396122546465,
-            "longitude": 80.12969806127323
+            "latitude": 6.908161309763747,
+            "longitude": 79.82906725271515
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 7.788806848399205,
-            "longitude": 80.14440342419961
+            "latitude": 6.911575036301548,
+            "longitude": 79.8437125860418
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 7.260607853780619,
-            "longitude": 79.93586431146878
+            "latitude": 6.921745091220361,
+            "longitude": 79.83301753763155
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 7.175253001035743,
-            "longitude": 79.9129968434389
+            "latitude": 6.9302181684396,
+            "longitude": 79.86252046085545
           },
           "status": "On Time"
         }
@@ -2631,58 +1391,58 @@
       "route_id": 105,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 7.5066460397917885,
-            "longitude": 80.00332301989589
+            "latitude": 6.9513152672577725,
+            "longitude": 79.82588069343998
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 7.292322880583738,
-            "longitude": 79.94436110266652
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.787170302126349,
-            "longitude": 80.14358515106318
+            "latitude": 6.937859416678836,
+            "longitude": 79.85903120494069
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 8.051203863258362,
-            "longitude": 80.27816968282474
+            "latitude": 6.930077289094857,
+            "longitude": 79.85638489742512
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 7.553383143222118,
-            "longitude": 80.02669157161105
+            "latitude": 6.943400301308736,
+            "longitude": 79.84818404050628
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 7.722411585147519,
-            "longitude": 80.11120579257376
+            "latitude": 6.9469819382267115,
+            "longitude": 79.8553465171864
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 7.388165440938918,
-            "longitude": 79.97003833851593
+            "latitude": 6.953907216729747,
+            "longitude": 79.84241238113039
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-10T09:36:14.267Z",
+          "location": {
+            "latitude": 6.928155955805822,
+            "longitude": 79.83176481181881
           },
           "status": "On Time"
         }
@@ -2693,58 +1453,58 @@
       "route_id": 105,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 7.506800459418597,
-            "longitude": 80.0034002297093
+            "latitude": 6.936704915206871,
+            "longitude": 79.83649049202788
+          },
+          "status": "On Time"
+        },
+        {
+          "date": "2025-10-05T09:36:14.267Z",
+          "location": {
+            "latitude": 6.933599558120631,
+            "longitude": 79.84808215232569
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 8.041463134576288,
-            "longitude": 80.27313390096606
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.998936646931182,
-            "longitude": 80.2511484703082
+            "latitude": 6.954854556805151,
+            "longitude": 79.85854077273287
           },
           "status": "Delayed"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 7.7486800347887925,
-            "longitude": 80.1243400173944
+            "latitude": 6.942454408431596,
+            "longitude": 79.82614687385919
+          },
+          "status": "Delayed"
+        },
+        {
+          "date": "2025-10-08T09:36:14.267Z",
+          "location": {
+            "latitude": 6.9284120652392875,
+            "longitude": 79.84058709843163
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 6.986324919087132,
-            "longitude": 79.86238101159138
+            "latitude": 6.92937335970934,
+            "longitude": 79.85537072502811
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 8.260621347754043,
-            "longitude": 80.38643476275203
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.694794427845409,
-            "longitude": 80.0973972139227
+            "latitude": 6.9531377782738835,
+            "longitude": 79.8346473616699
           },
           "status": "On Time"
         }
@@ -2755,368 +1515,58 @@
       "route_id": 105,
       "dailyLocations": [
         {
-          "date": "2025-10-03T11:33:46.396Z",
+          "date": "2025-10-04T09:36:14.267Z",
           "location": {
-            "latitude": 7.19670921941919,
-            "longitude": 79.91874519133181
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.468589917070642,
-            "longitude": 79.99158490649208
+            "latitude": 6.912495198222802,
+            "longitude": 79.84853495960633
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-05T11:33:46.396Z",
+          "date": "2025-10-05T09:36:14.267Z",
           "location": {
-            "latitude": 7.135009917570481,
-            "longitude": 79.90221529564202
+            "latitude": 6.9402650762811735,
+            "longitude": 79.85245333458558
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-06T11:33:46.396Z",
+          "date": "2025-10-06T09:36:14.267Z",
           "location": {
-            "latitude": 7.919928762460528,
-            "longitude": 80.21030281242197
+            "latitude": 6.932730559035862,
+            "longitude": 79.83208107552764
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-07T11:33:46.396Z",
+          "date": "2025-10-07T09:36:14.267Z",
           "location": {
-            "latitude": 8.058695010656656,
-            "longitude": 80.28204247154521
+            "latitude": 6.911716715692781,
+            "longitude": 79.82867243839382
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-08T11:33:46.396Z",
+          "date": "2025-10-08T09:36:14.267Z",
           "location": {
-            "latitude": 8.05408545394292,
-            "longitude": 80.27965941347705
+            "latitude": 6.948175671614183,
+            "longitude": 79.85290757009611
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-09T11:33:46.396Z",
+          "date": "2025-10-09T09:36:14.267Z",
           "location": {
-            "latitude": 7.578543913959283,
-            "longitude": 80.03927195697965
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10506,
-      "route_id": 105,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.44111833144265,
-            "longitude": 79.98422497807705
+            "latitude": 6.938101905070845,
+            "longitude": 79.86911359850784
           },
           "status": "On Time"
         },
         {
-          "date": "2025-10-04T11:33:46.396Z",
+          "date": "2025-10-10T09:36:14.267Z",
           "location": {
-            "latitude": 7.4606603413071,
-            "longitude": 79.98946048925707
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.30234562101816,
-            "longitude": 79.9470463008607
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.292596785959766,
-            "longitude": 79.94443448481444
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.986803597610014,
-            "longitude": 80.24487590162711
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.8033885568979775,
-            "longitude": 80.15169427844899
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.464677103336325,
-            "longitude": 79.99053662229852
-          },
-          "status": "Delayed"
-        }
-      ]
-    },
-    {
-      "bus_id": 10507,
-      "route_id": 105,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.0041853764016,
-            "longitude": 79.8671660170539
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 8.294445611540741,
-            "longitude": 80.40392129990134
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 7.25075729375509,
-            "longitude": 79.93322524222765
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 6.971749602966375,
-            "longitude": 79.85847613020856
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.772422191205062,
-            "longitude": 80.13621109560253
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.624700967808383,
-            "longitude": 80.0623504839042
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 8.066006095032098,
-            "longitude": 80.28582217091542
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10508,
-      "route_id": 105,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.3213415792633025,
-            "longitude": 79.95213551903517
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.606664093562031,
-            "longitude": 80.05333204678102
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 8.299957218114265,
-            "longitude": 80.40677070155301
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.025946475520406,
-            "longitude": 79.8729960457212
-          },
-          "status": "Delayed"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 8.293734713889855,
-            "longitude": 80.40355377857819
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.937886107243749,
-            "longitude": 80.21958643729657
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.081471759585938,
-            "longitude": 79.88787185673118
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10509,
-      "route_id": 105,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 7.72955064936445,
-            "longitude": 80.11477532468223
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 6.996849054336374,
-            "longitude": 79.86520053876077
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 8.048112069849985,
-            "longitude": 80.27657128113788
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.882227410587122,
-            "longitude": 80.19111370529356
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.6810892846003105,
-            "longitude": 80.09054464230016
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.09832360484602,
-            "longitude": 79.8923866443541
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.654352313926503,
-            "longitude": 80.07717615696325
-          },
-          "status": "On Time"
-        }
-      ]
-    },
-    {
-      "bus_id": 10510,
-      "route_id": 105,
-      "dailyLocations": [
-        {
-          "date": "2025-10-03T11:33:46.396Z",
-          "location": {
-            "latitude": 8.275294728641487,
-            "longitude": 80.39402063724769
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-04T11:33:46.396Z",
-          "location": {
-            "latitude": 7.490899603428839,
-            "longitude": 79.99756190748437
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-05T11:33:46.396Z",
-          "location": {
-            "latitude": 8.120864820718621,
-            "longitude": 80.31418314724682
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-06T11:33:46.396Z",
-          "location": {
-            "latitude": 7.697888885182399,
-            "longitude": 80.0989444425912
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-07T11:33:46.396Z",
-          "location": {
-            "latitude": 7.905080235497493,
-            "longitude": 80.20262639054953
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-08T11:33:46.396Z",
-          "location": {
-            "latitude": 7.276924438919333,
-            "longitude": 79.9402356972426
-          },
-          "status": "On Time"
-        },
-        {
-          "date": "2025-10-09T11:33:46.396Z",
-          "location": {
-            "latitude": 7.693902813303719,
-            "longitude": 80.09695140665185
+            "latitude": 6.911515297836264,
+            "longitude": 79.87201995656478
           },
           "status": "On Time"
         }

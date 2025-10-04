@@ -4,35 +4,41 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const fs = require('fs');
 const path = require('path');
-const rateLimit = require('express-rate-limit'); // <-- Added
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
+// If you run behind a proxy (Heroku/Render), this helps rate-limit identify real IP
+app.set('trust proxy', 1);
+
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 connectDB();
 
-// Import models
+// Models
 const Bus = require('./models/bus');
 const Route = require('./models/route');
 
-// Import routes
+// Routes
 const busRoutes = require('./routes/busRoutes');
 const routeRoutes = require('./routes/routeRoutes');
+const geocodeRoutes = require('./routes/geocodeRoutes');
 
-// Apply rate limiting (100 requests per 15 mins per IP)
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100,
-  message: { message: 'Too many requests from this IP, please try again after 15 minutes' }
+// API routes
+app.use('/buses', busRoutes);
+app.use('/routes', routeRoutes);
+
+// Dev-friendly geocode rate limit (bump up; tune for prod/demo)
+// Also configurable via env if you want: GEOCODE_MAX_PER_MIN
+const geocodeLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: Number(process.env.GEOCODE_MAX_PER_MIN || 120),
 });
-
-app.use('/buses', apiLimiter, busRoutes);
-app.use('/routes', apiLimiter, routeRoutes);
+app.use('/geocode', geocodeLimiter, geocodeRoutes);
 
 // Load 1-week simulation JSON
 const simulationData = JSON.parse(
@@ -41,7 +47,7 @@ const simulationData = JSON.parse(
 const routes = simulationData.routes;
 const buses = simulationData.buses;
 
-// Seed database
+// Seed DB
 const seedDB = async () => {
   try {
     const routeCount = await Route.countDocuments();
@@ -67,14 +73,366 @@ const seedDB = async () => {
 };
 seedDB();
 
-// Global error handler
-app.use((err, req, res, next) => {
-  console.error('Unexpected error:', err);
-  res.status(500).json({ message: 'Something went wrong. Please try again later.' });
-});
+// Simulate status flips every 20s so status/last_updated change
+setInterval(async () => {
+  try {
+    const all = await Bus.find({});
+    for (const b of all) {
+      // keep more On Time than Delayed (≈75% On Time)
+      b.status = Math.random() < 0.75 ? 'On Time' : 'Delayed';
+      b.last_updated = new Date();
+      await b.save();
+    }
+  } catch (e) {
+    console.error('Status flip error:', e.message);
+  }
+}, 20000);
 
-// Start server
 app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
+
+
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const connectDB = require('./config/db');
+// const fs = require('fs');
+// const path = require('path');
+// const rateLimit = require('express-rate-limit');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public'));
+
+// const PORT = process.env.PORT || 5000;
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Models
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+
+// // Routes
+// const busRoutes = require('./routes/busRoutes');
+// const routeRoutes = require('./routes/routeRoutes');
+// const geocodeRoutes = require('./routes/geocodeRoutes');
+
+// // API routes
+// app.use('/buses', busRoutes);
+// app.use('/routes', routeRoutes);
+
+// // rate limit only geocoding endpoints (e.g. 30 req/min per IP)
+// const geocodeLimiter = rateLimit({
+//   windowMs: 60 * 1000,
+//   max: 30,
+// });
+// app.use('/geocode', geocodeLimiter, geocodeRoutes);
+
+// // Load 1-week simulation JSON
+// const simulationData = JSON.parse(
+//   fs.readFileSync(path.join(__dirname, 'data', 'busSimulation.json'))
+// );
+// const routes = simulationData.routes;
+// const buses = simulationData.buses;
+
+// // Seed DB
+// const seedDB = async () => {
+//   try {
+//     const routeCount = await Route.countDocuments();
+//     const busCount = await Bus.countDocuments();
+
+//     if (routeCount === 0) await Route.insertMany(routes);
+//     if (busCount === 0) {
+//       await Bus.insertMany(
+//         buses.map(bus => ({
+//           bus_id: bus.bus_id,
+//           route_id: bus.route_id,
+//           current_location: bus.dailyLocations[0].location,
+//           status: bus.dailyLocations[0].status,
+//           last_updated: bus.dailyLocations[0].date
+//         }))
+//       );
+//     }
+
+//     console.log('Database seeded with 1-week simulation!');
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// };
+// seedDB();
+
+// // --- simulate status flips every 20s so status/last_updated change ---
+// setInterval(async () => {
+//   try {
+//     const buses = await Bus.find({});
+//     for (const b of buses) {
+//       // keep more On Time than Delayed (e.g. 75% On Time)
+//       b.status = Math.random() < 0.75 ? 'On Time' : 'Delayed';
+//       b.last_updated = new Date();
+//       await b.save();
+//     }
+//     // console.log('Statuses refreshed');
+//   } catch (e) {
+//     console.error('Status flip error:', e.message);
+//   }
+// }, 20000);
+
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // index.js
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const connectDB = require('./config/db');
+// const fs = require('fs');
+// const path = require('path');
+// const rateLimit = require('express-rate-limit');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public'));
+
+// const PORT = process.env.PORT || 5000;
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Models
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+
+// // Routes
+// const busRoutes = require('./routes/busRoutes');
+// const routeRoutes = require('./routes/routeRoutes');
+// const geocodeRoutes = require('./routes/geocodeRoutes');
+
+// // API routes
+// app.use('/buses', busRoutes);
+// app.use('/routes', routeRoutes);
+
+// // rate limit only geocoding endpoints (e.g. 30 req/min per IP)
+// const geocodeLimiter = rateLimit({
+//   windowMs: 60 * 1000,
+//   max: 30,
+// });
+// app.use('/geocode', geocodeLimiter, geocodeRoutes);
+
+// // Load 1-week simulation JSON
+// const simulationData = JSON.parse(
+//   fs.readFileSync(path.join(__dirname, 'data', 'busSimulation.json'))
+// );
+// const routes = simulationData.routes;
+// const buses = simulationData.buses;
+
+// // Seed DB
+// const seedDB = async () => {
+//   try {
+//     const routeCount = await Route.countDocuments();
+//     const busCount = await Bus.countDocuments();
+
+//     if (routeCount === 0) await Route.insertMany(routes);
+//     if (busCount === 0) {
+//       await Bus.insertMany(
+//         buses.map(bus => ({
+//           bus_id: bus.bus_id,
+//           route_id: bus.route_id,
+//           current_location: bus.dailyLocations[0].location,
+//           status: bus.dailyLocations[0].status,
+//           last_updated: bus.dailyLocations[0].date
+//         }))
+//       );
+//     }
+
+//     console.log('Database seeded with 1-week simulation!');
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// };
+// seedDB();
+
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
+
+
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const connectDB = require('./config/db');
+// const fs = require('fs');
+// const path = require('path');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public'));
+
+// const PORT = process.env.PORT || 5000;
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Import models
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+
+// // Import routes
+// const busRoutes = require('./routes/busRoutes');
+// const routeRoutes = require('./routes/routeRoutes');
+// const geocodeRoutes = require('./routes/geocodeRoutes'); // <-- NEW
+
+// app.use('/buses', busRoutes);
+// app.use('/routes', routeRoutes);
+// app.use('/geocode', geocodeRoutes); // <-- NEW
+
+// // Load 1-week simulation JSON
+// const simulationData = JSON.parse(
+//   fs.readFileSync(path.join(__dirname, 'data', 'busSimulation.json'))
+// );
+// const routes = simulationData.routes;
+// const buses = simulationData.buses;
+
+// // Seed database
+// const seedDB = async () => {
+//   try {
+//     const routeCount = await Route.countDocuments();
+//     const busCount = await Bus.countDocuments();
+
+//     if (routeCount === 0) await Route.insertMany(routes);
+//     if (busCount === 0) {
+//       await Bus.insertMany(
+//         buses.map(bus => ({
+//           bus_id: bus.bus_id,
+//           route_id: bus.route_id,
+//           current_location: bus.dailyLocations[0].location,
+//           status: bus.dailyLocations[0].status,
+//           last_updated: bus.dailyLocations[0].date
+//         }))
+//       );
+//     }
+
+//     console.log('Database seeded with 1-week simulation!');
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// };
+// seedDB();
+
+// // Start server
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+
+
+
+
+
+
+
+
+
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const connectDB = require('./config/db');
+// const fs = require('fs');
+// const path = require('path');
+// const rateLimit = require('express-rate-limit'); // <-- Added
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static('public'));
+
+// const PORT = process.env.PORT || 5000;
+
+// // Connect to MongoDB
+// connectDB();
+
+// // Import models
+// const Bus = require('./models/bus');
+// const Route = require('./models/route');
+
+// // Import routes
+// const busRoutes = require('./routes/busRoutes');
+// const routeRoutes = require('./routes/routeRoutes');
+
+// // Apply rate limiting (100 requests per 15 mins per IP)
+// const apiLimiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100,
+//   message: { message: 'Too many requests from this IP, please try again after 15 minutes' }
+// });
+
+// app.use('/buses', apiLimiter, busRoutes);
+// app.use('/routes', apiLimiter, routeRoutes);
+
+// // Load 1-week simulation JSON
+// const simulationData = JSON.parse(
+//   fs.readFileSync(path.join(__dirname, 'data', 'busSimulation.json'))
+// );
+// const routes = simulationData.routes;
+// const buses = simulationData.buses;
+
+// // Seed database
+// const seedDB = async () => {
+//   try {
+//     const routeCount = await Route.countDocuments();
+//     const busCount = await Bus.countDocuments();
+
+//     if (routeCount === 0) await Route.insertMany(routes);
+//     if (busCount === 0) {
+//       await Bus.insertMany(
+//         buses.map(bus => ({
+//           bus_id: bus.bus_id,
+//           route_id: bus.route_id,
+//           current_location: bus.dailyLocations[0].location,
+//           status: bus.dailyLocations[0].status,
+//           last_updated: bus.dailyLocations[0].date
+//         }))
+//       );
+//     }
+
+//     console.log('Database seeded with 1-week simulation!');
+//   } catch (err) {
+//     console.error('Error seeding database:', err);
+//   }
+// };
+// seedDB();
+
+// // Global error handler
+// app.use((err, req, res, next) => {
+//   console.error('Unexpected error:', err);
+//   res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+// });
+
+// // Start server
+// app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
 
 
 

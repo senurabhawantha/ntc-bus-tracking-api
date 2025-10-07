@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: NTC Real-Time Bus Tracking API
+  version: 1.0.0
+  description: >
+    RESTful API for real-time bus tracking and headway-based schedules.
+servers:
+  - url: https://YOUR_DEPLOYED_DOMAIN_HERE
+paths:
+  /routes:
+    get:
+      summary: List all routes
+      responses:
+        '200':
+          description: Array of routes
+  /routes/{route_id}:
+    get:
+      summary: Get route by ID
+      parameters:
+        - name: route_id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Route object }
+        '404': { description: Not found }
+  /routes/{route_id}/schedule:
+    get:
+      summary: Get generated schedule with fixed headway
+      parameters:
+        - name: route_id
+          in: path
+          required: true
+          schema: { type: integer }
+        - name: date
+          in: query
+          required: false
+          schema: { type: string, example: '2025-10-07' }
+        - name: headway
+          in: query
+          required: false
+          schema: { type: integer, default: 45 }
+        - name: start
+          in: query
+          required: false
+          schema: { type: string, example: '05:00' }
+        - name: end
+          in: query
+          required: false
+          schema: { type: string, example: '22:00' }
+      responses:
+        '200':
+          description: Array of trips (bus_id, route_id, start_time, start_city, end_city)
+  /buses:
+    get:
+      summary: List buses (optional filter by route and date)
+      parameters:
+        - in: query
+          name: route_id
+          schema: { type: integer }
+        - in: query
+          name: date
+          schema: { type: string, example: '2025-10-07' }
+      responses:
+        '200': { description: Array of buses }
+  /buses/{bus_id}:
+    get:
+      summary: Get a single bus (full doc)
+      parameters:
+        - in: path
+          name: bus_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Bus doc }
+        '404': { description: Not found }
+  /buses/{bus_id}/location:
+    get:
+      summary: Get bus location
+      parameters:
+        - in: path
+          name: bus_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Location }
+        '404': { description: Not found }
+    patch:
+      summary: Update bus location (operator)
+      parameters:
+        - in: path
+          name: bus_id
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [latitude, longitude]
+              properties:
+                latitude: { type: number }
+                longitude: { type: number }
+      responses:
+        '200': { description: Updated }
+        '401': { description: Unauthorized }
+        '404': { description: Not found }
+      security:
+        - apiKeyHeader: []
+  /buses/{bus_id}/status:
+    get:
+      summary: Get bus status
+      parameters:
+        - in: path
+          name: bus_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Status }
+        '404': { description: Not found }
+    patch:
+      summary: Update bus status (operator)
+      parameters:
+        - in: path
+          name: bus_id
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: ["On Time", "Delayed"]
+      responses:
+        '200': { description: Updated }
+        '401': { description: Unauthorized }
+        '404': { description: Not found }
+      security:
+        - apiKeyHeader: []
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: x-api-key

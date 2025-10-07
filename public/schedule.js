@@ -127,7 +127,7 @@ async function loadBuses() {
     });
 
     statusNote.textContent =
-      `Showing ${list.length} buses (${route === 'all' ? 'sorted by route, then bus id' : 'sorted by bus id'}). 45-minute gaps per route.`;
+      `Showing ${list.length} buses (${route === 'all' ? 'sorted by route' : 'for route ' + route}).`;
   } catch (e) {
     statusNote.textContent = 'Failed to load buses.';
     console.error(e);

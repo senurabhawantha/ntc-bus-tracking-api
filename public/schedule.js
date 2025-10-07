@@ -21,6 +21,15 @@ const routeCityMap = {
   105: { start: 'Colombo',        end: 'Matara' },
 };
 
+// Format time only (no date)
+function formatTimeOnly(value) {
+  if (!value) return '—';
+  const d = new Date(value);
+  if (isNaN(d)) return '—';
+  // e.g. "03:27 PM"
+  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
 async function fetchRoutes() {
   const res = await fetch('/routes');
   const routes = await res.json();
@@ -45,28 +54,27 @@ async function loadBuses() {
   loadBtn.disabled = true;
 
   const route = routeSelect.value;
-  const date  = dateInput.value; // YYYY-MM-DD
+  const date  = dateInput.value; // FYI: backend doesn’t filter by this (yet)
 
   const url = new URL(location.origin + '/buses');
   if (route && route !== 'all') url.searchParams.set('route_id', route);
-  if (date) url.searchParams.set('date', date);
+  // Do NOT send date since the API doesn’t support it; avoids confusion
 
   try {
     const res = await fetch(url.toString());
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const buses = await res.json();
 
-    // Render simple rows: Bus ID | Route ID | Start Time | Start City | End City
     buses.forEach(b => {
       const routeId = Number(b.route_id);
       const cities = routeCityMap[routeId] || { start: '—', end: '—' };
-      const startTime = b.last_updated ? new Date(b.last_updated).toLocaleString() : '—';
+      const timeOnly = formatTimeOnly(b.last_updated);
 
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${b.bus_id}</td>
         <td>${routeId}</td>
-        <td>${startTime}</td>
+        <td>${timeOnly}</td>
         <td>${cities.start}</td>
         <td>${cities.end}</td>
       `;
@@ -74,7 +82,7 @@ async function loadBuses() {
     });
 
     statusNote.textContent =
-      `Showing ${buses.length} buses for ${route === 'all' ? 'all routes' : 'route ' + route} on ${date || 'today'}.`;
+      `Showing ${buses.length} buses for ${route === 'all' ? 'all routes' : 'route ' + route}.`;
   } catch (e) {
     statusNote.textContent = 'Failed to load buses.';
     console.error(e);
@@ -89,11 +97,114 @@ async function loadBuses() {
   await loadBuses();
 
   loadBtn.addEventListener('click', loadBuses);
-  routeSelect.addEventListener('change', () => {/* manual Load keeps UX explicit */});
-  dateInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') loadBuses();
-  });
+  // keep UX explicit: click Load to refresh
 })();
+
+
+
+
+
+
+
+
+
+
+// // public/schedule.js
+// function toYMD(d) {
+//   const yyyy = d.getFullYear();
+//   const mm = String(d.getMonth()+1).padStart(2,'0');
+//   const dd = String(d.getDate()).padStart(2,'0');
+//   return `${yyyy}-${mm}-${dd}`;
+// }
+
+// const routeSelect = document.getElementById('routeSelect');
+// const dateInput   = document.getElementById('dateInput');
+// const loadBtn     = document.getElementById('loadBtn');
+// const busList     = document.getElementById('busList');
+// const statusNote  = document.getElementById('statusNote');
+
+// // Route → Start/End city labels (aligned with your polylines)
+// const routeCityMap = {
+//   101: { start: 'Colombo',        end: 'Kandy' },
+//   102: { start: 'Colombo',        end: 'Galle' },
+//   103: { start: 'Colombo',        end: 'Jaffna' },
+//   104: { start: 'Anuradhapura',   end: 'Colombo' },
+//   105: { start: 'Colombo',        end: 'Matara' },
+// };
+
+// async function fetchRoutes() {
+//   const res = await fetch('/routes');
+//   const routes = await res.json();
+
+//   routeSelect.innerHTML = '';
+//   const all = document.createElement('option');
+//   all.value = 'all';
+//   all.textContent = 'All Routes';
+//   routeSelect.appendChild(all);
+
+//   routes.forEach(r => {
+//     const opt = document.createElement('option');
+//     opt.value = String(r.route_id);
+//     opt.textContent = `${r.route_id} — ${r.name}`;
+//     routeSelect.appendChild(opt);
+//   });
+// }
+
+// async function loadBuses() {
+//   busList.innerHTML = '';
+//   statusNote.textContent = 'Loading…';
+//   loadBtn.disabled = true;
+
+//   const route = routeSelect.value;
+//   const date  = dateInput.value; // YYYY-MM-DD
+
+//   const url = new URL(location.origin + '/buses');
+//   if (route && route !== 'all') url.searchParams.set('route_id', route);
+//   if (date) url.searchParams.set('date', date);
+
+//   try {
+//     const res = await fetch(url.toString());
+//     if (!res.ok) throw new Error('HTTP ' + res.status);
+//     const buses = await res.json();
+
+//     // Render simple rows: Bus ID | Route ID | Start Time | Start City | End City
+//     buses.forEach(b => {
+//       const routeId = Number(b.route_id);
+//       const cities = routeCityMap[routeId] || { start: '—', end: '—' };
+//       const startTime = b.last_updated ? new Date(b.last_updated).toLocaleString() : '—';
+
+//       const tr = document.createElement('tr');
+//       tr.innerHTML = `
+//         <td>${b.bus_id}</td>
+//         <td>${routeId}</td>
+//         <td>${startTime}</td>
+//         <td>${cities.start}</td>
+//         <td>${cities.end}</td>
+//       `;
+//       busList.appendChild(tr);
+//     });
+
+//     statusNote.textContent =
+//       `Showing ${buses.length} buses for ${route === 'all' ? 'all routes' : 'route ' + route} on ${date || 'today'}.`;
+//   } catch (e) {
+//     statusNote.textContent = 'Failed to load buses.';
+//     console.error(e);
+//   } finally {
+//     loadBtn.disabled = false;
+//   }
+// }
+
+// (async function boot() {
+//   await fetchRoutes();
+//   dateInput.value = toYMD(new Date());
+//   await loadBuses();
+
+//   loadBtn.addEventListener('click', loadBuses);
+//   routeSelect.addEventListener('change', () => {/* manual Load keeps UX explicit */});
+//   dateInput.addEventListener('keydown', (e) => {
+//     if (e.key === 'Enter') loadBuses();
+//   });
+// })();
 
 
 

@@ -30,17 +30,7 @@
         border-radius: 6px;
         text-decoration: none;
       }
-      label {
-        font-weight: 600;
-      }
-      .toolbar {
-        width: 80%;
-        margin: 16px auto 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr auto;
-        gap: 12px;
-        align-items: end;
-      }
+      label { font-weight: 600; }
     </style>
   </head>
   <body>
@@ -63,10 +53,6 @@
       </a>
     </div>
 
-    <!-- <div class="top-actions">
-      <a href="schedule.html" target="_blank" class="btn">Bus Time Table</a>
-    </div> -->
-
     <div class="controls">
       <label for="routeSelect">Select Route:</label>
       <select id="routeSelect"></select>
@@ -87,6 +73,17 @@
     </table>
 
     <div id="map"></div>
+
+    <!-- Details panel -->
+    <aside id="busDetails" class="details-panel">
+      <div class="details-header">
+        <strong id="bd-title">Bus Details</strong>
+        <button id="bd-close" aria-label="Close">✕</button>
+      </div>
+      <div id="bd-content" class="details-body">
+        <!-- filled by app.js -->
+      </div>
+    </aside>
 
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

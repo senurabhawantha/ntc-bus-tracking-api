@@ -5,6 +5,8 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 
 const { connectDB } = require('./config/db'); // <-- use the exported function
 const Bus = require('./models/bus');
@@ -18,6 +20,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+
+// Swagger UI
+try {
+  const openapi = YAML.load(path.join(__dirname, 'openapi.yaml'));
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapi));
+  console.log('📘 API docs at /docs');
+} catch (e) {
+  console.warn('Swagger not mounted (openapi.yaml missing or invalid).');
+}
 
 const PORT = process.env.PORT || 5000;
 

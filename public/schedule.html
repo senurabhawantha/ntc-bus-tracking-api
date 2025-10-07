@@ -1,0 +1,64 @@
+<!-- public/schedule.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bus Day View</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .toolbar {
+      width: 80%;
+      margin: 16px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+    .toolbar label { display:block; text-align:left; font-weight:600; margin-bottom: 4px; }
+    .toolbar input, .toolbar select {
+      width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px;
+    }
+    .toolbar button {
+      padding: 10px 14px; border: none; border-radius: 6px; background: #2d7ef7; color: #fff; cursor: pointer;
+    }
+    .toolbar button:disabled { opacity: .6; cursor: not-allowed; }
+    #statusNote { width:80%; margin:10px auto 0; text-align:left; color:#555; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>Bus Day View</h1>
+
+  <div class="toolbar">
+    <div>
+      <label for="routeSelect">Route</label>
+      <select id="routeSelect"></select>
+    </div>
+    <div>
+      <label for="dateInput">Date</label>
+      <input id="dateInput" type="date" />
+    </div>
+    <div>
+      <button id="loadBtn">Load</button>
+    </div>
+  </div>
+
+  <div id="statusNote"></div>
+
+  <table id="busTable" style="width:80%; margin: 16px auto; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th>Bus ID</th>
+        <th>Route ID</th>
+        <th>Status</th>
+        <th>City</th>
+        <th>Lat</th>
+        <th>Lng</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody id="busList"></tbody>
+  </table>
+
+  <script src="schedule.js"></script>
+</body>
+</html>

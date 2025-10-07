@@ -1,4 +1,81 @@
-<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bus Tracking System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    crossorigin=""
+  />
+  <style>
+    .top-actions, .controls {
+      width: 80%;
+      margin: 10px auto;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      background: #2d7ef7;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    label { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Real-Time Bus Tracking</h1>
+
+  <div class="top-actions">
+    <a href="schedule.html" target="_blank" class="btn">Bus Time Table</a>
+  </div>
+
+  <div class="controls">
+    <label for="routeSelect">Select Route:</label>
+    <select id="routeSelect"></select>
+  </div>
+
+  <h2>Buses Preview</h2>
+  <table id="busTable">
+    <thead>
+      <tr>
+        <th>Bus ID</th>
+        <th>Route ID</th>
+        <th>Status</th>
+        <th>Location</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody id="busList"></tbody>
+  </table>
+
+  <div id="map"></div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    crossorigin=""
+  ></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- public/index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +166,7 @@
   <script src="app.js"></script>
 </body>
 </html>
-
+ -->
 
 
 

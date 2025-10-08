@@ -1,5 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Express Travels • Live Bus Tracking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+</head>
+<body class="app">
+  <!-- Header / Top Bar -->
+  <header class="topbar surface">
+    <div class="brand">
+      <img src="Logo.png" alt="Express Travels" class="brand-logo" />
+      <div class="brand-text">
+        <strong>Express Travels</strong>
+        <span>Inter-Provincial Live Tracking</span>
+      </div>
+    </div>
+
+    <nav class="top-actions">
+      <a href="schedule.html" class="btn btn-primary">🚌 Bus Time Table</a>
+
+      <div class="filter">
+        <label for="routeSelect">Route</label>
+        <select id="routeSelect" class="select"></select>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <main class="grid">
+    <section class="panel surface">
+      <header class="panel-head">
+        <h2>Live Map</h2>
+        <small id="summaryBadge" class="badge">Loading…</small>
+      </header>
+      <div id="map" class="map"></div>
+      <footer class="panel-foot subtle">
+        Tip: Click a bus marker (or table row) to open the details drawer.
+      </footer>
+    </section>
+
+    <section class="panel surface">
+      <header class="panel-head">
+        <h2>Active Buses</h2>
+      </header>
+
+      <div class="table-wrap">
+        <table id="busTable" class="table">
+          <thead>
+            <tr>
+              <th>Bus ID</th>
+              <th>Route</th>
+              <th>Status</th>
+              <th>Approx. Location</th>
+              <th>Last Updated</th>
+            </tr>
+          </thead>
+          <tbody id="busList"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Details Drawer -->
+  <aside id="busDetails" class="drawer">
+    <div class="drawer-header">
+      <div>
+        <div class="eyebrow">Bus Details</div>
+        <h3 id="bd-title">—</h3>
+      </div>
+      <button id="bd-close" class="icon-btn" aria-label="Close">✕</button>
+    </div>
+    <div id="bd-content" class="drawer-body"><!-- filled by app.js --></div>
+  </aside>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <!-- App -->
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Bus Tracking System</title>
@@ -74,15 +173,15 @@
 
     <div id="map"></div>
 
-    <!-- Details panel -->
-    <aside id="busDetails" class="details-panel">
+    <-- Details panel -->
+    <!-- <aside id="busDetails" class="details-panel">
       <div class="details-header">
         <strong id="bd-title">Bus Details</strong>
         <button id="bd-close" aria-label="Close">✕</button>
       </div>
       <div id="bd-content" class="details-body">
-        <!-- filled by app.js -->
-      </div>
+        <-- filled by app.js -->
+      <!-- </div>
     </aside>
 
     <script
@@ -91,4 +190,4 @@
     ></script>
     <script src="app.js"></script>
   </body>
-</html>
+</html>  -->

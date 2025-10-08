@@ -1,5 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bus Time Table • Express Travels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* page-specific tiny tweaks only */
+      .toolbar {
+        width: var(--container);
+        margin: 16px auto 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 12px;
+        align-items: end;
+      }
+      .toolbar label {
+        display: block;
+        text-align: left;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .toolbar input,
+      .toolbar select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #dfe3ea;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .toolbar button {
+        padding: 12px 16px;
+        border: none;
+        border-radius: 12px;
+        background: var(--brand);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(45, 126, 247, 0.25);
+      }
+      .toolbar button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      #statusNote {
+        width: var(--container);
+        margin: 12px auto 0;
+        text-align: left;
+        color: #697386;
+        font-size: 14px;
+      }
+
+      /* table wrapper to match index “card” feel */
+      .card {
+        width: var(--container);
+        margin: 16px auto 32px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        /* background: #fff; */
+        border: 1px solid #eef2f8;
+        border-radius: 16px;
+        /* box-shadow: 0 10px 30px rgba(50, 73, 120, 0.06); */
+        overflow: hidden;
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        /* background: #f7f9ff; */
+        border-bottom: 1px solid #eef2f8;
+      }
+    </style>
+  </head>
+  <body class="app">
+    <!-- shared brand header (same look as index.html) -->
+    <header class="topbar surface">
+      <div class="brand">
+        <img src="Logo.png" alt="Express Travels" class="brand-logo" />
+        <div class="brand-text">
+          <strong>Express Travels</strong>
+          <span>National Inter-Provincial Services</span>
+        </div>
+      </div>
+
+      <nav class="header-actions">
+        <a class="btn ghost" href="index.html">⬅ Live Map</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2 class="page-title">Bus Time Table</h2>
+
+      <div class="toolbar">
+        <div>
+          <label for="routeSelect">Route</label>
+          <select id="routeSelect"></select>
+        </div>
+        <div>
+          <label for="dateInput">Date</label>
+          <input id="dateInput" type="date" />
+        </div>
+        <div>
+          <button id="loadBtn">Search</button>
+        </div>
+      </div>
+
+      <div id="statusNote"></div>
+
+      <section class="card">
+        <div class="card-header">
+          <strong>Scheduled Departures (45-min intervals)</strong>
+          <a class="btn" href="index.html">Open Live Map</a>
+        </div>
+
+        <!-- 👇 same scroll/sticky behavior as index -->
+        <div class="table-wrap">
+          <table id="busTable" class="table">
+            <thead>
+              <tr>
+                <th>Bus ID</th>
+                <th>Route ID</th>
+                <th>Start Time</th>
+                <th>Start City</th>
+                <th>End City</th>
+              </tr>
+            </thead>
+            <tbody id="busList"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="schedule.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Bus Time Table • Express Travels</title>
@@ -45,8 +183,8 @@
   </style>
 </head>
 <body>
-  <!-- shared brand header (same look as index.html) -->
-  <header class="site-header">
+  <-- shared brand header (same look as index.html) -->
+<!-- <header class="site-header">
     <div class="brand">
       <img src="logo.png" alt="Express Travels" />
       <div class="brand-meta">
@@ -101,19 +239,7 @@
 
   <script src="schedule.js"></script>
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
+</html> -->
 
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -164,10 +290,10 @@
   <div id="statusNote"></div>
 
   <-- NEW table layout -->
-  <!-- <table id="busTable">
+<!-- <table id="busTable">
     <thead>
       <tr> -->
-        <!-- <th>Bus ID</th>
+<!-- <th>Bus ID</th>
         <th>Route ID</th>
         <th>Start Time</th>
         <th>Start City</th>
@@ -180,5 +306,3 @@
   <script src="schedule.js"></script>
 </body>
 </html>  -->
-
-

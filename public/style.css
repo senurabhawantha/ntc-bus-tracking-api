@@ -18,7 +18,7 @@
 }
 html,
 body {
-  height: 125%;
+  height: 117%;
 }
 body.app {
   margin: 0;
@@ -436,3 +436,43 @@ body {
   color: #e11d48;
   font-weight: 700;
 }
+
+/* ===============  Footer  =============== */
+.footer {
+  background: var(--surface-2);
+  color: var(--muted);
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  height: 200px;
+}
+
+.footer .footer-content {
+  max-width: var(--container);
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.footer .footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer .footer-links a {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer .footer-links a:hover {
+  color: var(--primary);
+}
+

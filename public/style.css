@@ -1,4 +1,6 @@
 /* ===============  Theme  =============== */
+
+/* ===============  Theme  =============== */
 :root {
   --bg: #0b1221;
   --surface: #111a2f;
@@ -12,6 +14,20 @@
   --danger: #ff5b57;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
+
+/* :root {
+  --bg: #0b1221;
+  --surface: #111a2f;
+  --surface-2: #0d162a;
+  --border: #23314e;
+  --text: #e7eefc;
+  --muted: #a9b6d4;
+  --primary: #2d7ef7;
+  --primary-2: #1f65cf;
+  --success: #28c76f;
+  --danger: #ff5b57;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+} */
 
 * {
   box-sizing: border-box;
@@ -438,7 +454,7 @@ body {
 }
 
 /* ===============  Footer  =============== */
-.footer {
+/* .footer {
   background: var(--surface-2);
   color: var(--muted);
   padding: 20px;
@@ -475,4 +491,43 @@ body {
 .footer .footer-links a:hover {
   color: var(--primary);
 }
+ */
 
+
+ .footer {
+  background: var(--surface-2);
+  color: var(--muted);
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  height: 200px;
+}
+
+.footer .footer-content {
+  max-width: var(--container);
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.footer .footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer .footer-links a {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer .footer-links a:hover {
+  color: var(--primary);
+}

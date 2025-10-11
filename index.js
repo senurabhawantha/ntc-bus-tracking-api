@@ -30,7 +30,8 @@ try {
   console.warn('Swagger not mounted (openapi.yaml missing or invalid).');
 }
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; // fallback to 5000 for local dev
+app.listen(PORT, () => console.log(`API running on port ${PORT}`));
 
 // ---------------- API ROUTES ----------------
 app.use('/buses', busRoutes);

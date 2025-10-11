@@ -7,13 +7,22 @@ const loadBtn = document.getElementById('loadBtn');
 const busList = document.getElementById('busList');
 const statusNote = document.getElementById('statusNote');
 
+// Route → Start/End city labels (aligned with your polylines)
 const routeCityMap = {
-  101: { start: 'Colombo', end: 'Kandy' },
-  102: { start: 'Colombo', end: 'Galle' },
-  103: { start: 'Colombo', end: 'Jaffna' },
-  104: { start: 'Anuradhapura', end: 'Colombo' },
-  105: { start: 'Colombo', end: 'Matara' }
+  101: [{ start: 'Colombo', end: 'Kandy' }, { start: 'Kandy', end: 'Colombo' }],
+  102: [{ start: 'Colombo', end: 'Galle' }, { start: 'Galle', end: 'Colombo' }],
+  103: [{ start: 'Colombo', end: 'Jaffna' }, { start: 'Jaffna', end: 'Colombo' }],
+  104: [{ start: 'Anuradhapura', end: 'Colombo' }, { start: 'Colombo', end: 'Anuradhapura' }],
+  105: [{ start: 'Colombo', end: 'Matara' }, { start: 'Matara', end: 'Colombo' }]
 };
+
+// const routeCityMap = {
+//   101: { start: 'Colombo', end: 'Kandy' },
+//   102: { start: 'Colombo', end: 'Galle' },
+//   103: { start: 'Colombo', end: 'Jaffna' },
+//   104: { start: 'Anuradhapura', end: 'Colombo' },
+//   105: { start: 'Colombo', end: 'Matara' }
+// };
 
 function baseStartForRoute(routeId, selectedDate){
   const d = selectedDate?new Date(selectedDate):new Date();
